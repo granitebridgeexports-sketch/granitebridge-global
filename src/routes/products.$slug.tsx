@@ -62,11 +62,11 @@ function ProductDetail() {
 
       <section className="py-24 bg-onyx text-bone">
         <div className="container-wide grid gap-12 md:grid-cols-3">
-          {[
+          {([
             { t: "Finishes", v: p.finishes },
             { t: "Thickness", v: p.thickness },
             { t: "Applications", v: p.applications },
-          ].map((s) => (
+          ] as { t: string; v: string[] }[]).map((s) => (
             <div key={s.t}>
               <div className="text-[10px] uppercase tracking-[0.28em] text-gold mb-5">{s.t}</div>
               <ul className="space-y-3">
