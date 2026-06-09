@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "../components/site/SiteHeader";
 import { SiteFooter } from "../components/site/SiteFooter";
 import { FloatingActions } from "../components/site/FloatingActions";
+import { Toaster } from "sonner";
 
 function NotFoundComponent() {
   return (
@@ -131,6 +132,7 @@ function RootComponent() {
         </main>
         <SiteFooter />
         <FloatingActions />
+        <Toaster position="top-center" theme="dark" />
       </div>
     </QueryClientProvider>
   );
