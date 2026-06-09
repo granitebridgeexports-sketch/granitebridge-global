@@ -1,0 +1,25 @@
+# GraniteBridge Exports
+
+> A professional Indian granite export company supplying premium natural stone — slabs, tiles, cut-to-size, and finished monuments — to importers, distributors, developers, and construction companies across Europe and the Middle East.
+
+GraniteBridge Exports Pvt Ltd is not a broker or marketplace. We procure granite directly from trusted Indian quarries, run quality inspections, handle export documentation, supervise container loading, and coordinate international shipping.
+
+## Pages
+- [Home](/): Company overview, products, process, markets
+- [About](/about): Company story, sourcing, operational ownership
+- [Products](/products): Full granite catalogue
+- [Export Process](/process): Nine-stage export workflow
+- [Markets](/markets): Countries we serve
+- [Contact](/contact): Request a quotation within 24 hours
+
+## Markets
+- [Germany](/exporter/germany)
+- [Spain](/exporter/spain)
+- [Italy](/exporter/italy)
+- [France](/exporter/france)
+- [Netherlands](/exporter/netherlands)
+- [Belgium](/exporter/belgium)
+- [Cyprus](/exporter/cyprus)
+- [United Kingdom](/exporter/united-kingdom)
+- [Greece](/exporter/greece)
+- [Poland](/exporter/poland)

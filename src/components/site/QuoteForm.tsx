@@ -1,0 +1,88 @@
+import { useState } from "react";
+import { toast } from "sonner";
+
+const COUNTRIES = [
+  "Germany","Spain","Italy","France","Netherlands","Belgium","Cyprus",
+  "United Kingdom","Greece","Poland","United States","UAE","Saudi Arabia","Other",
+];
+
+export function QuoteForm({ dark = false }: { dark?: boolean }) {
+  const [loading, setLoading] = useState(false);
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      (e.target as HTMLFormElement).reset();
+      toast.success("Inquiry received", {
+        description: "Our export team will respond within 24 hours.",
+      });
+    }, 900);
+  };
+
+  const base = dark
+    ? "bg-transparent border-b border-white/20 text-bone placeholder:text-bone/40 focus:border-gold"
+    : "bg-transparent border-b border-onyx/20 text-onyx placeholder:text-onyx/40 focus:border-gold";
+  const inp = `w-full px-0 py-3 text-sm outline-none transition-colors ${base}`;
+  const lbl = `text-[10px] uppercase tracking-[0.22em] ${dark ? "text-bone/50" : "text-onyx/50"} mb-1 block`;
+
+  return (
+    <form onSubmit={onSubmit} className="grid gap-6 md:grid-cols-2">
+      <div>
+        <label className={lbl}>Full Name *</label>
+        <input required name="name" className={inp} placeholder="John Müller" />
+      </div>
+      <div>
+        <label className={lbl}>Company *</label>
+        <input required name="company" className={inp} placeholder="Acme Stone GmbH" />
+      </div>
+      <div>
+        <label className={lbl}>Country *</label>
+        <select required name="country" className={`${inp} appearance-none`}>
+          <option value="" className="text-onyx">Select country</option>
+          {COUNTRIES.map((c) => (
+            <option key={c} value={c} className="text-onyx">{c}</option>
+          ))}
+        </select>
+      </div>
+      <div>
+        <label className={lbl}>Destination Port</label>
+        <input name="port" className={inp} placeholder="e.g. Hamburg, Valencia" />
+      </div>
+      <div>
+        <label className={lbl}>Email *</label>
+        <input required type="email" name="email" className={inp} placeholder="you@company.com" />
+      </div>
+      <div>
+        <label className={lbl}>Phone</label>
+        <input name="phone" className={inp} placeholder="+49 30 1234 5678" />
+      </div>
+      <div>
+        <label className={lbl}>Product Requirement *</label>
+        <input required name="product" className={inp} placeholder="Black Galaxy slabs 18mm" />
+      </div>
+      <div>
+        <label className={lbl}>Quantity</label>
+        <input name="qty" className={inp} placeholder="2 × 40ft containers" />
+      </div>
+      <div className="md:col-span-2">
+        <label className={lbl}>Project Details</label>
+        <textarea
+          name="message"
+          rows={4}
+          className={`${inp} resize-none`}
+          placeholder="Tell us about your project, timeline, finishes, dimensions…"
+        />
+      </div>
+      <div className="md:col-span-2 flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-2">
+        <button type="submit" disabled={loading} className="btn-gold">
+          {loading ? "Sending…" : "Get a Quotation in 24 Hours"}
+        </button>
+        <span className={`text-xs ${dark ? "text-bone/40" : "text-onyx/50"}`}>
+          Direct response from our export desk. No intermediaries.
+        </span>
+      </div>
+    </form>
+  );
+}
