@@ -69,75 +69,75 @@
 :root {
   --radius: 0.125rem;
   /* brand */
-  --onyx: #0F0F0F;      /* Primary: Deep Luxury Black */
-  --charcoal: #1A1A1A;  /* Secondary: Rich Charcoal */
-  --stone: #E5E2DD;     /* Stone Grey */
-  --bone: #F7F5F2;      /* Background: Warm Ivory */
-  --gold: #C9A66B;      /* Accent: Gold */
-  --gold-soft: #DFC7A1; /* Soft Gold for borders and subtle hovers */
+  --onyx: #0f0f0f; /* Primary: Deep Luxury Black */
+  --charcoal: #1a1a1a; /* Secondary: Rich Charcoal */
+  --stone: #e5e2dd; /* Stone Grey */
+  --bone: #f7f5f2; /* Background: Warm Ivory */
+  --gold: #c9a66b; /* Accent: Gold */
+  --gold-soft: #dfc7a1; /* Soft Gold for borders and subtle hovers */
   /* semantic */
-  --background: #F7F5F2; /* Background: Warm Ivory */
+  --background: #f7f5f2; /* Background: Warm Ivory */
   --foreground: #222222; /* Text: Charcoal */
-  --card: #FFFFFF;
+  --card: #ffffff;
   --card-foreground: #222222;
-  --popover: #FFFFFF;
+  --popover: #ffffff;
   --popover-foreground: #222222;
-  --primary: #0F0F0F;    /* Primary: Deep Luxury Black */
-  --primary-foreground: #F7F5F2;
-  --secondary: #1A1A1A;  /* Secondary: Rich Charcoal */
-  --secondary-foreground: #F7F5F2;
-  --muted: #E5E2DD;
+  --primary: #0f0f0f; /* Primary: Deep Luxury Black */
+  --primary-foreground: #f7f5f2;
+  --secondary: #1a1a1a; /* Secondary: Rich Charcoal */
+  --secondary-foreground: #f7f5f2;
+  --muted: #e5e2dd;
   --muted-foreground: #666666;
-  --accent: #C9A66B;     /* Accent: Gold */
-  --accent-foreground: #0F0F0F;
+  --accent: #c9a66b; /* Accent: Gold */
+  --accent-foreground: #0f0f0f;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: #E5E2DD;
-  --input: #E5E2DD;
-  --ring: #C9A66B;
+  --border: #e5e2dd;
+  --input: #e5e2dd;
+  --ring: #c9a66b;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: #F7F5F2;
+  --sidebar: #f7f5f2;
   --sidebar-foreground: #222222;
-  --sidebar-primary: #0F0F0F;
-  --sidebar-primary-foreground: #F7F5F2;
-  --sidebar-accent: #E5E2DD;
-  --sidebar-accent-foreground: #0F0F0F;
-  --sidebar-border: #E5E2DD;
-  --sidebar-ring: #C9A66B;
+  --sidebar-primary: #0f0f0f;
+  --sidebar-primary-foreground: #f7f5f2;
+  --sidebar-accent: #e5e2dd;
+  --sidebar-accent-foreground: #0f0f0f;
+  --sidebar-border: #e5e2dd;
+  --sidebar-ring: #c9a66b;
 }
 
 .dark {
-  --background: #0F0F0F;
-  --foreground: #F7F5F2;
-  --card: #1A1A1A;
-  --card-foreground: #F7F5F2;
-  --popover: #1A1A1A;
-  --popover-foreground: #F7F5F2;
-  --primary: #F7F5F2;
-  --primary-foreground: #0F0F0F;
-  --secondary: #1A1A1A;
-  --secondary-foreground: #F7F5F2;
-  --muted: #1A1A1A;
+  --background: #0f0f0f;
+  --foreground: #f7f5f2;
+  --card: #1a1a1a;
+  --card-foreground: #f7f5f2;
+  --popover: #1a1a1a;
+  --popover-foreground: #f7f5f2;
+  --primary: #f7f5f2;
+  --primary-foreground: #0f0f0f;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #f7f5f2;
+  --muted: #1a1a1a;
   --muted-foreground: #888888;
-  --accent: #C9A66B;
-  --accent-foreground: #0F0F0F;
+  --accent: #c9a66b;
+  --accent-foreground: #0f0f0f;
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: #2D2D2D;
-  --input: #2D2D2D;
-  --ring: #C9A66B;
-  --sidebar: #1A1A1A;
-  --sidebar-foreground: #F7F5F2;
-  --sidebar-primary: #C9A66B;
-  --sidebar-primary-foreground: #0F0F0F;
-  --sidebar-accent: #2D2D2D;
-  --sidebar-accent-foreground: #F7F5F2;
-  --sidebar-border: #2D2D2D;
-  --sidebar-ring: #C9A66B;
+  --border: #2d2d2d;
+  --input: #2d2d2d;
+  --ring: #c9a66b;
+  --sidebar: #1a1a1a;
+  --sidebar-foreground: #f7f5f2;
+  --sidebar-primary: #c9a66b;
+  --sidebar-primary-foreground: #0f0f0f;
+  --sidebar-accent: #2d2d2d;
+  --sidebar-accent-foreground: #f7f5f2;
+  --sidebar-border: #2d2d2d;
+  --sidebar-ring: #c9a66b;
 }
 
 @layer base {
@@ -153,7 +153,10 @@
     text-rendering: optimizeLegibility;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
     font-weight: 400;
     letter-spacing: -0.01em;
@@ -174,7 +177,9 @@
   max-width: 1400px;
   margin-inline: auto;
   padding-inline: 1.5rem;
-  @media (min-width: 1024px) { padding-inline: 3rem; }
+  @media (min-width: 1024px) {
+    padding-inline: 3rem;
+  }
 }
 
 @utility eyebrow {

@@ -30,16 +30,22 @@ export function SiteHeader() {
           : "top-0 bg-transparent"
       }`}
     >
-      <div className={`container-wide flex items-center justify-between transition-all duration-500 ${scrolled ? "h-16 px-6 lg:px-8" : "h-20"}`}>
+      <div
+        className={`container-wide flex items-center justify-between transition-all duration-500 ${scrolled ? "h-16 px-6 lg:px-8" : "h-20"}`}
+      >
         <Link to="/" className="group flex items-center gap-3">
           <span className="flex h-9 w-9 items-center justify-center border border-gold text-gold font-display text-lg tracking-widest transition-transform duration-500 group-hover:rotate-180">
             G
           </span>
           <span className="flex flex-col leading-tight">
-            <span className={`font-display text-lg tracking-wide transition-colors duration-500 ${scrolled ? "text-bone" : "text-onyx"}`}>
+            <span
+              className={`font-display text-lg tracking-wide transition-colors duration-500 ${scrolled ? "text-bone" : "text-onyx"}`}
+            >
               GraniteBridge
             </span>
-            <span className={`text-[9px] uppercase tracking-[0.32em] transition-colors duration-500 ${scrolled ? "text-gold/80" : "text-gold"}`}>
+            <span
+              className={`text-[9px] uppercase tracking-[0.32em] transition-colors duration-500 ${scrolled ? "text-gold/80" : "text-gold"}`}
+            >
               Exports Pvt Ltd
             </span>
           </span>
@@ -88,7 +94,11 @@ export function SiteHeader() {
                 {n.label}
               </Link>
             ))}
-            <Link to="/contact" onClick={() => setOpen(false)} className="btn-gold mt-4 rounded-full text-center">
+            <Link
+              to="/contact"
+              onClick={() => setOpen(false)}
+              className="btn-gold mt-4 rounded-full text-center"
+            >
               Request Quote
             </Link>
           </nav>

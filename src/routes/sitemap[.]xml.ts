@@ -27,7 +27,7 @@ export const Route = createFileRoute("/sitemap.xml")({
       ].map((c) => `/exporter/${c}`),
     ];
     const urls = paths.map(
-      (p) => `  <url><loc>${BASE_URL}${p}</loc><changefreq>weekly</changefreq></url>`
+      (p) => `  <url><loc>${BASE_URL}${p}</loc><changefreq>weekly</changefreq></url>`,
     );
     const xml = [
       `<?xml version="1.0" encoding="UTF-8"?>`,

@@ -20,6 +20,7 @@ import {
   FileText,
   Clock,
   ExternalLink,
+  Globe2,
 } from "lucide-react";
 
 import factoryImg from "@/assets/factory.jpg";
@@ -138,7 +139,9 @@ function Hero() {
 
           {/* Description paragraph */}
           <p className="text-[1.2rem] leading-[1.8] text-white/88 max-w-[650px]">
-            We source, inspect, and export premium Indian granite directly from trusted quarries to importers, distributors, and construction projects across Europe, Cyprus, UAE, and global markets.
+            We source, inspect, and export premium Indian granite directly from trusted quarries to
+            importers, distributors, and construction projects across Europe, Cyprus, UAE, and
+            global markets.
           </p>
 
           {/* Call-to-action buttons */}
@@ -198,10 +201,15 @@ const BADGES = [
 function Marquee() {
   return (
     <div className="bg-onyx border-y border-white/5 py-6 overflow-hidden">
-      <div className="flex gap-12 animate-[scroll_40s_linear_infinite] whitespace-nowrap"
-        style={{ animation: "scroll 45s linear infinite" }}>
+      <div
+        className="flex gap-12 animate-[scroll_40s_linear_infinite] whitespace-nowrap"
+        style={{ animation: "scroll 45s linear infinite" }}
+      >
         {[...BADGES, ...BADGES, ...BADGES].map((b, i) => (
-          <span key={i} className="text-bone/40 text-[11px] uppercase tracking-[0.32em] flex items-center gap-3">
+          <span
+            key={i}
+            className="text-bone/40 text-[11px] uppercase tracking-[0.32em] flex items-center gap-3"
+          >
             <span className="size-1 rounded-full bg-gold" />
             {b}
           </span>
@@ -235,22 +243,23 @@ function About() {
         </Reveal>
         <Reveal delay={0.1} className="lg:col-span-7 lg:pt-4">
           <p className="text-lg leading-relaxed text-onyx/70">
-            GraniteBridge Exports Pvt Ltd is a professional Indian granite export
-            company — not a broker or marketplace. We procure granite directly from
-            trusted Indian suppliers and manufacturing partners, conduct rigorous
-            quality inspections, manage export documentation, container loading, and
-            international shipping.
+            GraniteBridge Exports Pvt Ltd is a professional Indian granite export company — not a
+            broker or marketplace. We procure granite directly from trusted Indian suppliers and
+            manufacturing partners, conduct rigorous quality inspections, manage export
+            documentation, container loading, and international shipping.
           </p>
           <p className="mt-6 text-lg leading-relaxed text-onyx/70">
-            We take full responsibility for quality, procurement, customer support,
-            and timely delivery — built for buyers handling large commercial orders
-            and long-term supply contracts.
+            We take full responsibility for quality, procurement, customer support, and timely
+            delivery — built for buyers handling large commercial orders and long-term supply
+            contracts.
           </p>
 
           <div className="mt-14 grid grid-cols-2 sm:grid-cols-5 gap-x-6 gap-y-10 border-t border-onyx/10 pt-12">
             {STATS.map((s) => (
               <div key={s.l} className="group/stat">
-                <div className="font-display text-4xl text-onyx group-hover/stat:text-gold transition-colors duration-300">{s.n}</div>
+                <div className="font-display text-4xl text-onyx group-hover/stat:text-gold transition-colors duration-300">
+                  {s.n}
+                </div>
                 <div className="mt-2 text-[11px] uppercase tracking-[0.18em] text-onyx/50 group-hover/stat:text-onyx transition-colors duration-300">
                   {s.l}
                 </div>
@@ -304,10 +313,16 @@ function Products() {
                   </div>
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-2">
-                      <span className="text-[10px] uppercase tracking-[0.28em] text-gold">{p.family} Granite</span>
-                      <span className="text-[10px] text-bone/40">{p.origin.split(",")[1] || p.origin}</span>
+                      <span className="text-[10px] uppercase tracking-[0.28em] text-gold">
+                        {p.family} Granite
+                      </span>
+                      <span className="text-[10px] text-bone/40">
+                        {p.origin.split(",")[1] || p.origin}
+                      </span>
                     </div>
-                    <h3 className="font-display text-2xl text-bone group-hover:text-gold transition-colors duration-300">{p.name}</h3>
+                    <h3 className="font-display text-2xl text-bone group-hover:text-gold transition-colors duration-300">
+                      {p.name}
+                    </h3>
                     <p className="text-sm text-bone/50 mt-2 leading-relaxed">{p.tagline}</p>
                   </div>
                 </div>
@@ -401,20 +416,68 @@ function WhyUs() {
 }
 
 const STEPS = [
-  { n: "01", icon: Search, t: "Material Selection", d: "Inquiry intake. We match your specifications to the right Indian quarry and variety." },
-  { n: "02", icon: Handshake, t: "Procurement", d: "Direct purchase from our trusted quarry and factory partners — no intermediaries." },
-  { n: "03", icon: Hammer, t: "Processing", d: "Cutting, polishing, and finishing in our partner factories to your specifications." },
-  { n: "04", icon: ShieldCheck, t: "Quality Inspection", d: "Surface, dimensions, finish, and tolerance verification by our QC team." },
-  { n: "05", icon: Boxes, t: "Packaging", d: "Export-grade wooden crates with fumigation, edge protection, and lashing." },
-  { n: "06", icon: ClipboardCheck, t: "Container Loading", d: "Loading supervision at Chennai and Krishnapatnam ports with photo documentation." },
-  { n: "07", icon: FileText, t: "Export Documentation", d: "Bill of lading, certificate of origin, fumigation, MSDS, commercial invoices." },
-  { n: "08", icon: Ship, t: "International Shipping", d: "Booking, tracking, and coordination with leading global freight forwarders." },
-  { n: "09", icon: MapPin, t: "Delivery", d: "Customs clearance support and final handover at your destination port." },
+  {
+    n: "01",
+    icon: Search,
+    t: "Material Selection",
+    d: "Inquiry intake. We match your specifications to the right Indian quarry and variety.",
+  },
+  {
+    n: "02",
+    icon: Handshake,
+    t: "Procurement",
+    d: "Direct purchase from our trusted quarry and factory partners — no intermediaries.",
+  },
+  {
+    n: "03",
+    icon: Hammer,
+    t: "Processing",
+    d: "Cutting, polishing, and finishing in our partner factories to your specifications.",
+  },
+  {
+    n: "04",
+    icon: ShieldCheck,
+    t: "Quality Inspection",
+    d: "Surface, dimensions, finish, and tolerance verification by our QC team.",
+  },
+  {
+    n: "05",
+    icon: Boxes,
+    t: "Packaging",
+    d: "Export-grade wooden crates with fumigation, edge protection, and lashing.",
+  },
+  {
+    n: "06",
+    icon: ClipboardCheck,
+    t: "Container Loading",
+    d: "Loading supervision at Chennai and Krishnapatnam ports with photo documentation.",
+  },
+  {
+    n: "07",
+    icon: FileText,
+    t: "Export Documentation",
+    d: "Bill of lading, certificate of origin, fumigation, MSDS, commercial invoices.",
+  },
+  {
+    n: "08",
+    icon: Ship,
+    t: "International Shipping",
+    d: "Booking, tracking, and coordination with leading global freight forwarders.",
+  },
+  {
+    n: "09",
+    icon: MapPin,
+    t: "Delivery",
+    d: "Customs clearance support and final handover at your destination port.",
+  },
 ];
 
 function Process() {
   return (
-    <section id="process" className="py-28 lg:py-40 bg-[#0c0c0c] text-bone relative overflow-hidden">
+    <section
+      id="process"
+      className="py-28 lg:py-40 bg-[#0c0c0c] text-bone relative overflow-hidden"
+    >
       <div className="absolute inset-0 opacity-30">
         <img src={factoryImg} alt="" className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0c0c0c] via-[#0c0c0c]/85 to-[#0c0c0c]" />
@@ -439,9 +502,14 @@ function Process() {
                     <div className="font-display text-5xl text-gold/20 group-hover:text-gold transition-all duration-500">
                       {s.n}
                     </div>
-                    <s.icon className="size-6 text-gold/40 group-hover:text-gold group-hover:scale-110 transition-all duration-500" strokeWidth={1.5} />
+                    <s.icon
+                      className="size-6 text-gold/40 group-hover:text-gold group-hover:scale-110 transition-all duration-500"
+                      strokeWidth={1.5}
+                    />
                   </div>
-                  <h3 className="font-display text-2xl text-bone group-hover:text-gold transition-colors duration-300">{s.t}</h3>
+                  <h3 className="font-display text-2xl text-bone group-hover:text-gold transition-colors duration-300">
+                    {s.t}
+                  </h3>
                   <p className="mt-3 text-sm text-bone/60 leading-relaxed">{s.d}</p>
                 </div>
               </div>
@@ -454,18 +522,82 @@ function Process() {
 }
 
 const PORTS = [
-  { name: "UAE", port: "Port of Jebel Ali (Dubai)", x: 580, y: 260, days: 12, region: "Middle East", transit: "Direct Ocean Freight" },
-  { name: "Cyprus", port: "Port of Limassol", x: 460, y: 220, days: 22, region: "Eastern Mediterranean", transit: "Feeder Connection" },
-  { name: "Italy", port: "Port of Genoa", x: 390, y: 180, days: 20, region: "Mediterranean", transit: "Direct Ocean Freight" },
-  { name: "Spain", port: "Port of Valencia", x: 330, y: 195, days: 24, region: "Western Mediterranean", transit: "Direct Ocean Freight" },
-  { name: "France", port: "Port of Marseille", x: 370, y: 175, days: 22, region: "Western Mediterranean", transit: "Transshipment" },
-  { name: "Belgium", port: "Port of Antwerp", x: 375, y: 140, days: 30, region: "North Europe", transit: "Direct Ocean Freight" },
-  { name: "Netherlands", port: "Port of Rotterdam", x: 385, y: 135, days: 29, region: "North Europe", transit: "Direct Ocean Freight" },
-  { name: "Germany", port: "Port of Hamburg", x: 405, y: 130, days: 28, region: "North Europe", transit: "Direct Ocean Freight" },
+  {
+    name: "UAE",
+    port: "Port of Jebel Ali (Dubai)",
+    x: 580,
+    y: 260,
+    days: 12,
+    region: "Middle East",
+    transit: "Direct Ocean Freight",
+  },
+  {
+    name: "Cyprus",
+    port: "Port of Limassol",
+    x: 460,
+    y: 220,
+    days: 22,
+    region: "Eastern Mediterranean",
+    transit: "Feeder Connection",
+  },
+  {
+    name: "Italy",
+    port: "Port of Genoa",
+    x: 390,
+    y: 180,
+    days: 20,
+    region: "Mediterranean",
+    transit: "Direct Ocean Freight",
+  },
+  {
+    name: "Spain",
+    port: "Port of Valencia",
+    x: 330,
+    y: 195,
+    days: 24,
+    region: "Western Mediterranean",
+    transit: "Direct Ocean Freight",
+  },
+  {
+    name: "France",
+    port: "Port of Marseille",
+    x: 370,
+    y: 175,
+    days: 22,
+    region: "Western Mediterranean",
+    transit: "Transshipment",
+  },
+  {
+    name: "Belgium",
+    port: "Port of Antwerp",
+    x: 375,
+    y: 140,
+    days: 30,
+    region: "North Europe",
+    transit: "Direct Ocean Freight",
+  },
+  {
+    name: "Netherlands",
+    port: "Port of Rotterdam",
+    x: 385,
+    y: 135,
+    days: 29,
+    region: "North Europe",
+    transit: "Direct Ocean Freight",
+  },
+  {
+    name: "Germany",
+    port: "Port of Hamburg",
+    x: 405,
+    y: 130,
+    days: 28,
+    region: "North Europe",
+    transit: "Direct Ocean Freight",
+  },
 ];
 
 function Markets() {
-  const [hoveredPort, setHoveredPort] = useState<typeof PORTS[0] | null>(null);
+  const [hoveredPort, setHoveredPort] = useState<(typeof PORTS)[0] | null>(null);
 
   return (
     <section className="py-28 lg:py-40 bg-onyx text-bone relative overflow-hidden border-t border-white/5">
@@ -484,25 +616,34 @@ function Markets() {
               Global logistics, predictable transit times.
             </h2>
             <p className="text-bone/70 leading-relaxed">
-              We ship container loads from Chennai, Krishnapatnam, and Tuticorin ports directly to key global trading hubs. Hover over any destination port to check standard B2B sea transit timelines.
+              We ship container loads from Chennai, Krishnapatnam, and Tuticorin ports directly to
+              key global trading hubs. Hover over any destination port to check standard B2B sea
+              transit timelines.
             </p>
 
             <div className="mt-8 p-6 bg-[#1A1A1A] border border-white/5 rounded-2xl min-h-[160px] flex flex-col justify-center">
               {hoveredPort ? (
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-gold font-semibold">{hoveredPort.region}</span>
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-gold font-semibold">
+                      {hoveredPort.region}
+                    </span>
                     <span className="text-[10px] text-bone/40 flex items-center gap-1">
                       <Clock className="size-3" /> {hoveredPort.days} Days Transit
                     </span>
                   </div>
                   <h4 className="font-display text-2xl text-bone mb-1">{hoveredPort.name}</h4>
                   <p className="text-sm text-gold/80 font-medium mb-2">{hoveredPort.port}</p>
-                  <p className="text-xs text-bone/50">{hoveredPort.transit} route from Indian East Coast ports.</p>
+                  <p className="text-xs text-bone/50">
+                    {hoveredPort.transit} route from Indian East Coast ports.
+                  </p>
                 </div>
               ) : (
                 <div className="text-center text-bone/40 text-sm py-4">
-                  <Globe2 className="size-8 text-gold/30 mx-auto mb-3 animate-pulse" strokeWidth={1} />
+                  <Globe2
+                    className="size-8 text-gold/30 mx-auto mb-3 animate-pulse"
+                    strokeWidth={1}
+                  />
                   Hover over the shipping destination ports on the map to view transit details.
                 </div>
               )}
@@ -585,7 +726,14 @@ function Markets() {
                 <g transform="translate(700, 310)">
                   <circle cx="0" cy="0" r="10" fill="rgba(201,166,107,0.15)" />
                   <circle cx="0" cy="0" r="4" fill="#C9A66B" />
-                  <text x="10" y="4" fill="#C9A66B" className="text-[9px] uppercase tracking-[0.2em] font-bold">Origin (IN)</text>
+                  <text
+                    x="10"
+                    y="4"
+                    fill="#C9A66B"
+                    className="text-[9px] uppercase tracking-[0.2em] font-bold"
+                  >
+                    Origin (IN)
+                  </text>
                 </g>
 
                 {/* Destination Port Nodes */}
@@ -677,8 +825,12 @@ function Gallery() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-onyx via-onyx/40 to-transparent group-hover:via-onyx/20 transition-all duration-700" />
                 <figcaption className="absolute bottom-6 left-6 right-6">
-                  <div className="text-[10px] uppercase tracking-[0.28em] text-gold mb-1">Project Type</div>
-                  <div className="font-display text-2xl text-bone group-hover:text-gold transition-colors duration-300">{g.t}</div>
+                  <div className="text-[10px] uppercase tracking-[0.28em] text-gold mb-1">
+                    Project Type
+                  </div>
+                  <div className="font-display text-2xl text-bone group-hover:text-gold transition-colors duration-300">
+                    {g.t}
+                  </div>
                 </figcaption>
               </figure>
             </Reveal>
@@ -734,7 +886,9 @@ function Testimonials() {
                 <p className="font-display text-lg leading-relaxed text-onyx flex-1">"{t.q}"</p>
                 <footer className="mt-8 pt-6 border-t border-[#E5E2DD]">
                   <div className="font-semibold text-onyx text-sm">{t.n}</div>
-                  <div className="text-xs text-onyx/50 mt-1">{t.c} · {t.co}</div>
+                  <div className="text-xs text-onyx/50 mt-1">
+                    {t.c} · {t.co}
+                  </div>
                 </footer>
               </blockquote>
             </Reveal>
@@ -746,14 +900,38 @@ function Testimonials() {
 }
 
 const FAQS = [
-  { q: "What is your minimum order quantity?", a: "We typically work in container loads — one 20ft or 40ft container minimum. For new buyers we can structure trial orders with mixed varieties." },
-  { q: "Do you provide samples?", a: "Yes. We ship A4 or 10×10cm samples of any variety in our catalogue. Sample cost is credited against your first commercial order." },
-  { q: "Which countries do you export to?", a: "Active markets include Germany, Spain, Italy, France, Netherlands, Belgium, Cyprus, the UK, Greece, Poland, and the Middle East. We can ship to any port served by major container lines." },
-  { q: "What payment methods are accepted?", a: "30% advance via T/T, balance against scanned bill of lading. Letters of Credit (irrevocable, at sight) are accepted for orders above three containers." },
-  { q: "What are typical shipping timelines?", a: "Production: 20–35 days depending on finish and volume. Sea freight to North Europe: 28–35 days; to the Mediterranean: 18–25 days." },
-  { q: "Can you produce custom sizes and finishes?", a: "Yes. Cut-to-size, calibrated thicknesses, polished/honed/leathered/flamed/brushed finishes, and bespoke edge profiles are routine work." },
-  { q: "What are your packaging standards?", a: "Heat-treated wooden A-frame crates with foam edge protection, plastic strapping, and certified ISPM-15 fumigation marks." },
-  { q: "What's a typical container capacity?", a: "A 20ft container holds approximately 22–25 tons of slabs; a 40ft holds 26–28 tons. Cut-to-size and monument shipments vary by piece weight." },
+  {
+    q: "What is your minimum order quantity?",
+    a: "We typically work in container loads — one 20ft or 40ft container minimum. For new buyers we can structure trial orders with mixed varieties.",
+  },
+  {
+    q: "Do you provide samples?",
+    a: "Yes. We ship A4 or 10×10cm samples of any variety in our catalogue. Sample cost is credited against your first commercial order.",
+  },
+  {
+    q: "Which countries do you export to?",
+    a: "Active markets include Germany, Spain, Italy, France, Netherlands, Belgium, Cyprus, the UK, Greece, Poland, and the Middle East. We can ship to any port served by major container lines.",
+  },
+  {
+    q: "What payment methods are accepted?",
+    a: "30% advance via T/T, balance against scanned bill of lading. Letters of Credit (irrevocable, at sight) are accepted for orders above three containers.",
+  },
+  {
+    q: "What are typical shipping timelines?",
+    a: "Production: 20–35 days depending on finish and volume. Sea freight to North Europe: 28–35 days; to the Mediterranean: 18–25 days.",
+  },
+  {
+    q: "Can you produce custom sizes and finishes?",
+    a: "Yes. Cut-to-size, calibrated thicknesses, polished/honed/leathered/flamed/brushed finishes, and bespoke edge profiles are routine work.",
+  },
+  {
+    q: "What are your packaging standards?",
+    a: "Heat-treated wooden A-frame crates with foam edge protection, plastic strapping, and certified ISPM-15 fumigation marks.",
+  },
+  {
+    q: "What's a typical container capacity?",
+    a: "A 20ft container holds approximately 22–25 tons of slabs; a 40ft holds 26–28 tons. Cut-to-size and monument shipments vary by piece weight.",
+  },
 ];
 
 function FAQ() {
@@ -771,14 +949,18 @@ function FAQ() {
           <p className="mt-6 text-onyx/60">
             Don't see your question? Our export desk replies within 24 hours.
           </p>
-          <Link to="/contact" className="btn-ghost-dark rounded-full mt-8 inline-flex">Ask Our Team</Link>
+          <Link to="/contact" className="btn-ghost-dark rounded-full mt-8 inline-flex">
+            Ask Our Team
+          </Link>
         </Reveal>
         <div className="lg:col-span-8">
           <div className="divide-y divide-onyx/10 border-y border-onyx/10">
             {FAQS.map((f, i) => (
               <details key={i} className="group py-6">
                 <summary className="flex items-center justify-between cursor-pointer list-none">
-                  <span className="font-display text-xl text-onyx pr-6 group-hover:text-gold transition-colors duration-300">{f.q}</span>
+                  <span className="font-display text-xl text-onyx pr-6 group-hover:text-gold transition-colors duration-300">
+                    {f.q}
+                  </span>
                   <span className="size-8 rounded-full border border-onyx/20 flex items-center justify-center text-onyx/60 group-hover:border-gold group-hover:text-gold group-open:rotate-45 transition-all duration-300">
                     +
                   </span>
@@ -811,13 +993,26 @@ function ContactCTA() {
               Get a quotation within <span className="text-gold italic">24 hours.</span>
             </h2>
             <p className="mt-6 text-bone/65 leading-relaxed max-w-md">
-              Tell us about your project, destination port, and requirements. A
-              dedicated export coordinator will respond — direct, no call centers.
+              Tell us about your project, destination port, and requirements. A dedicated export
+              coordinator will respond — direct, no call centers.
             </p>
             <div className="mt-12 space-y-4 text-sm">
-              <div><span className="text-bone/40 text-xs uppercase tracking-[0.22em]">Email</span><div className="mt-1">granitebridgeexports@gmail.com</div></div>
-              <div><span className="text-bone/40 text-xs uppercase tracking-[0.22em]">Phone / WhatsApp</span><div className="mt-1">+91 93927 53192</div></div>
-              <div><span className="text-bone/40 text-xs uppercase tracking-[0.22em]">Headquarters</span><div className="mt-1">Khammam · Telangana · India</div></div>
+              <div>
+                <span className="text-bone/40 text-xs uppercase tracking-[0.22em]">Email</span>
+                <div className="mt-1">granitebridgeexports@gmail.com</div>
+              </div>
+              <div>
+                <span className="text-bone/40 text-xs uppercase tracking-[0.22em]">
+                  Phone / WhatsApp
+                </span>
+                <div className="mt-1">+91 93927 53192</div>
+              </div>
+              <div>
+                <span className="text-bone/40 text-xs uppercase tracking-[0.22em]">
+                  Headquarters
+                </span>
+                <div className="mt-1">Khammam · Telangana · India</div>
+              </div>
             </div>
           </Reveal>
         </div>

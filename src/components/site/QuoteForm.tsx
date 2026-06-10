@@ -2,8 +2,20 @@ import { useState } from "react";
 import { toast } from "sonner";
 
 const COUNTRIES = [
-  "Germany","Spain","Italy","France","Netherlands","Belgium","Cyprus",
-  "United Kingdom","Greece","Poland","United States","UAE","Saudi Arabia","Other",
+  "Germany",
+  "Spain",
+  "Italy",
+  "France",
+  "Netherlands",
+  "Belgium",
+  "Cyprus",
+  "United Kingdom",
+  "Greece",
+  "Poland",
+  "United States",
+  "UAE",
+  "Saudi Arabia",
+  "Other",
 ];
 
 export function QuoteForm({ dark = false }: { dark?: boolean }) {
@@ -40,9 +52,13 @@ export function QuoteForm({ dark = false }: { dark?: boolean }) {
       <div>
         <label className={lbl}>Country *</label>
         <select required name="country" className={`${inp} appearance-none`}>
-          <option value="" className="text-onyx">Select country</option>
+          <option value="" className="text-onyx">
+            Select country
+          </option>
           {COUNTRIES.map((c) => (
-            <option key={c} value={c} className="text-onyx">{c}</option>
+            <option key={c} value={c} className="text-onyx">
+              {c}
+            </option>
           ))}
         </select>
       </div>

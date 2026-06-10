@@ -110,7 +110,12 @@ export const PRODUCTS: Product[] = [
       "A striking, highly durable granite with a dramatic crimson red base swept with bold, flowing bands of black, orange, and dark grey. Widely exported to European and Asian markets for monuments and feature architectural installations.",
     finishes: ["Polished", "Honed", "Flamed"],
     thickness: ["20mm", "30mm", "50mm", "Custom Blocks"],
-    applications: ["Monuments", "Architectural Highlights", "Public Landscaping", "Exterior Paving"],
+    applications: [
+      "Monuments",
+      "Architectural Highlights",
+      "Public Landscaping",
+      "Exterior Paving",
+    ],
   },
   {
     slug: "colonial-white",
