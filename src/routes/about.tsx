@@ -4,16 +4,18 @@ import quarryImg from "@/assets/hero-quarry.jpg";
 import { Reveal } from "@/components/site/Reveal";
 
 export const Route = createFileRoute("/about")({
-  meta: () => [
-    { title: "About GraniteBridge Exports — Indian Granite Export Company" },
-    { name: "description", content: "GraniteBridge Exports Pvt Ltd is a professional Indian granite export company supplying premium natural stone to importers and developers worldwide." },
-    { property: "og:title", content: "About GraniteBridge Exports" },
-    { property: "og:description", content: "Procurement, quality control, packaging, container loading, and international shipping — under one roof." },
-    { property: "og:url", content: "/about" },
-  ],
-  links: () => [{ rel: "canonical", href: "/about" }],
+  head: () => ({
+    meta: [
+      { title: "About GraniteBridge Exports — Indian Granite Export Company" },
+      { name: "description", content: "GraniteBridge Exports Pvt Ltd is a professional Indian granite export company supplying premium natural stone to importers and developers worldwide." },
+      { property: "og:title", content: "About GraniteBridge Exports" },
+      { property: "og:description", content: "Procurement, quality control, packaging, container loading, and international shipping — under one roof." },
+      { property: "og:url", content: "/about" },
+    ],
+    links: [{ rel: "canonical", href: "/about" }],
+  }),
   component: AboutPage,
-} as any);
+});
 
 function AboutPage() {
   return (

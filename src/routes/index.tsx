@@ -25,43 +25,45 @@ import { Reveal } from "@/components/site/Reveal";
 import { QuoteForm } from "@/components/site/QuoteForm";
 
 export const Route = createFileRoute("/")({
-  meta: () => [
-    { title: "GraniteBridge Exports — Premium Indian Granite for Global Projects" },
-    {
-      name: "description",
-      content:
-        "GraniteBridge Exports Pvt Ltd supplies premium Indian granite to importers, distributors, developers and construction companies across Europe and the Middle East.",
-    },
-    { property: "og:title", content: "GraniteBridge Exports — Premium Indian Granite Worldwide" },
-    {
-      property: "og:description",
-      content: "A company that connects the world's buyers with high-quality Indian granite.",
-    },
-    { property: "og:image", content: "/og-image.jpg" },
-    { property: "og:url", content: "/" },
-  ],
-  links: () => [{ rel: "canonical", href: "/" }],
-  scripts: () => [
-    {
-      type: "application/ld+json",
-      children: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        name: "GraniteBridge Exports Pvt Ltd",
-        url: "/",
-        description:
-          "Premium Indian granite export company supplying slabs, tiles, and monuments worldwide.",
-        address: {
-          "@type": "PostalAddress",
-          addressCountry: "IN",
-          addressRegion: "Telangana",
-          addressLocality: "Khammam",
-        },
-      }),
-    },
-  ],
+  head: () => ({
+    meta: [
+      { title: "GraniteBridge Exports — Premium Indian Granite for Global Projects" },
+      {
+        name: "description",
+        content:
+          "GraniteBridge Exports Pvt Ltd supplies premium Indian granite to importers, distributors, developers and construction companies across Europe and the Middle East.",
+      },
+      { property: "og:title", content: "GraniteBridge Exports — Premium Indian Granite Worldwide" },
+      {
+        property: "og:description",
+        content: "A company that connects the world's buyers with high-quality Indian granite.",
+      },
+      { property: "og:image", content: "/og-image.jpg" },
+      { property: "og:url", content: "/" },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "GraniteBridge Exports Pvt Ltd",
+          url: "/",
+          description:
+            "Premium Indian granite export company supplying slabs, tiles, and monuments worldwide.",
+          address: {
+            "@type": "PostalAddress",
+            addressCountry: "IN",
+            addressRegion: "Telangana",
+            addressLocality: "Khammam",
+          },
+        }),
+      },
+    ],
+  }),
   component: HomePage,
-} as any);
+});
 
 function HomePage() {
   return (

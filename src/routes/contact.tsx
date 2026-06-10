@@ -4,16 +4,18 @@ import { Reveal } from "@/components/site/Reveal";
 import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
-  meta: () => [
-    { title: "Contact GraniteBridge Exports — Request a Quote in 24 Hours" },
-    { name: "description", content: "Request a quotation for Indian granite slabs, tiles, monuments, and cut-to-size. Our export desk responds within 24 hours." },
-    { property: "og:title", content: "Contact GraniteBridge Exports" },
-    { property: "og:description", content: "Get a granite export quotation in 24 hours." },
-    { property: "og:url", content: "/contact" },
-  ],
-  links: () => [{ rel: "canonical", href: "/contact" }],
+  head: () => ({
+    meta: [
+      { title: "Contact GraniteBridge Exports — Request a Quote in 24 Hours" },
+      { name: "description", content: "Request a quotation for Indian granite slabs, tiles, monuments, and cut-to-size. Our export desk responds within 24 hours." },
+      { property: "og:title", content: "Contact GraniteBridge Exports" },
+      { property: "og:description", content: "Get a granite export quotation in 24 hours." },
+      { property: "og:url", content: "/contact" },
+    ],
+    links: [{ rel: "canonical", href: "/contact" }],
+  }),
   component: ContactPage,
-} as any);
+});
 
 function ContactPage() {
   return (
