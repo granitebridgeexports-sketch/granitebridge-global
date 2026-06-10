@@ -61,7 +61,7 @@ export const Route = createFileRoute("/")({
     },
   ],
   component: HomePage,
-});
+} as any);
 
 function HomePage() {
   return (
@@ -116,10 +116,10 @@ function Hero() {
             distributors, and developers across Europe and beyond.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4">
-            <Link to="/contact" className="btn-gold">
+            <Link to="/contact" className="btn-gold rounded-full">
               Request a Quote <ArrowRight className="size-4" />
             </Link>
-            <Link to="/products" className="btn-ghost-light">
+            <Link to="/products" className="btn-ghost-light rounded-full">
               Explore Catalogue
             </Link>
           </div>
@@ -203,9 +203,9 @@ function About() {
 
           <div className="mt-14 grid grid-cols-2 sm:grid-cols-5 gap-x-6 gap-y-10 border-t border-onyx/10 pt-12">
             {STATS.map((s) => (
-              <div key={s.l}>
-                <div className="font-display text-4xl text-onyx">{s.n}</div>
-                <div className="mt-2 text-[11px] uppercase tracking-[0.18em] text-onyx/50">
+              <div key={s.l} className="group/stat">
+                <div className="font-display text-4xl text-onyx group-hover/stat:text-gold transition-colors duration-300">{s.n}</div>
+                <div className="mt-2 text-[11px] uppercase tracking-[0.18em] text-onyx/50 group-hover/stat:text-onyx transition-colors duration-300">
                   {s.l}
                 </div>
               </div>
@@ -238,29 +238,32 @@ function Products() {
           </Reveal>
         </div>
 
-        <div className="grid gap-px bg-white/5 sm:grid-cols-2 lg:grid-cols-3 border border-white/5">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {PRODUCTS.map((p, i) => (
             <Reveal key={p.slug} delay={i * 0.05}>
               <Link
                 to="/products/$slug"
                 params={{ slug: p.slug }}
-                className="group relative block bg-onyx p-8 h-full overflow-hidden"
+                className="group relative block bg-[#1A1A1A] border border-white/5 hover:border-gold/30 p-6 h-full overflow-hidden transition-all duration-500 shadow-xl hover:-translate-y-1"
               >
-                <div className="aspect-[4/3] overflow-hidden">
+                <div className="aspect-[4/3] overflow-hidden relative">
                   <img
                     src={p.image}
                     alt={p.name}
                     loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
+                    className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-[#0F0F0F]/10 group-hover:bg-transparent transition-colors duration-500" />
                 </div>
                 <div className="pt-6 flex items-start justify-between">
                   <div>
                     <div className="text-[10px] uppercase tracking-[0.28em] text-gold mb-2">{p.family} Granite</div>
-                    <h3 className="font-display text-2xl text-bone">{p.name}</h3>
-                    <p className="text-sm text-bone/50 mt-2 max-w-xs">{p.tagline}</p>
+                    <h3 className="font-display text-2xl text-bone group-hover:text-gold transition-colors duration-300">{p.name}</h3>
+                    <p className="text-sm text-bone/50 mt-2 max-w-xs leading-relaxed">{p.tagline}</p>
                   </div>
-                  <ArrowRight className="size-5 text-bone/40 group-hover:text-gold group-hover:translate-x-1 transition-all" />
+                  <span className="flex size-9 items-center justify-center rounded-full border border-white/10 text-bone/40 group-hover:border-gold group-hover:text-gold group-hover:translate-x-1 transition-all duration-300 mt-1">
+                    <ArrowRight className="size-4" />
+                  </span>
                 </div>
               </Link>
             </Reveal>
@@ -296,11 +299,13 @@ function WhyUs() {
           </h2>
         </Reveal>
 
-        <div className="mt-20 grid gap-px bg-onyx/10 sm:grid-cols-2 lg:grid-cols-4 border border-onyx/10">
+        <div className="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {WHY.map((w, i) => (
             <Reveal key={w.t} delay={i * 0.04}>
-              <div className="bg-bone p-8 lg:p-10 h-full">
-                <w.icon className="size-7 text-gold mb-8" strokeWidth={1.2} />
+              <div className="bg-white border border-[#E5E2DD] hover:border-gold/40 p-8 lg:p-10 h-full transition-all duration-500 hover:-translate-y-1 hover:shadow-lg">
+                <div className="inline-flex size-12 items-center justify-center rounded-full bg-[#F7F5F2] text-gold mb-8 transition-transform duration-500 hover:rotate-6">
+                  <w.icon className="size-5" strokeWidth={1.4} />
+                </div>
                 <h3 className="font-display text-xl text-onyx">{w.t}</h3>
                 <p className="mt-3 text-sm text-onyx/60 leading-relaxed">{w.d}</p>
               </div>
@@ -345,12 +350,12 @@ function Process() {
         <div className="mt-20 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {STEPS.map((s, i) => (
             <Reveal key={s.n} delay={i * 0.04}>
-              <div className="group relative border border-white/10 p-8 hover:border-gold/60 transition-colors duration-500 h-full">
-                <div className="font-display text-5xl text-gold/30 group-hover:text-gold transition-colors">
+              <div className="group relative border border-white/5 bg-[#1A1A1A]/35 backdrop-blur-sm p-8 hover:border-gold/40 hover:bg-[#1A1A1A]/60 transition-all duration-500 h-full shadow-lg">
+                <div className="font-display text-5xl text-gold/20 group-hover:text-gold transition-all duration-500">
                   {s.n}
                 </div>
-                <h3 className="font-display text-2xl mt-4">{s.t}</h3>
-                <p className="mt-3 text-sm text-bone/55 leading-relaxed">{s.d}</p>
+                <h3 className="font-display text-2xl mt-4 text-bone group-hover:text-gold transition-colors duration-300">{s.t}</h3>
+                <p className="mt-3 text-sm text-bone/60 leading-relaxed">{s.d}</p>
               </div>
             </Reveal>
           ))}
@@ -381,12 +386,12 @@ function Markets() {
             Our containers ship from Chennai, Krishnapatnam, and Tuticorin to leading
             European ports — Hamburg, Antwerp, Valencia, Genoa, Piraeus, and Felixstowe.
           </p>
-          <Link to="/contact" className="btn-ghost-dark mt-10 inline-flex">
+          <Link to="/contact" className="btn-ghost-dark rounded-full mt-10 inline-flex">
             Discuss your market
           </Link>
         </Reveal>
         <Reveal delay={0.15} className="lg:col-span-7">
-          <div className="relative aspect-[5/4] bg-onyx text-bone overflow-hidden">
+          <div className="relative aspect-[5/4] bg-onyx text-bone overflow-hidden border border-white/10 shadow-2xl">
             <img src={shippingImg} alt="Container port at night" className="absolute inset-0 h-full w-full object-cover opacity-50" />
             <div className="absolute inset-0 bg-gradient-to-tr from-onyx via-onyx/60 to-transparent" />
             <div className="absolute inset-0 p-10 flex flex-col justify-end">
@@ -432,17 +437,17 @@ function Gallery() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {GALLERY.map((g, i) => (
             <Reveal key={g.t} delay={i * 0.06}>
-              <figure className="group relative overflow-hidden aspect-[3/4]">
+              <figure className="group relative overflow-hidden aspect-[3/4] border border-white/5 hover:border-gold/30 transition-colors duration-500 shadow-2xl">
                 <img
                   src={g.src}
                   alt={g.t}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-[1500ms] group-hover:scale-110"
+                  className="h-full w-full object-cover transition-transform duration-[1500ms] group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-onyx via-onyx/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-onyx via-onyx/40 to-transparent group-hover:via-onyx/20 transition-all duration-700" />
                 <figcaption className="absolute bottom-6 left-6 right-6">
                   <div className="text-[10px] uppercase tracking-[0.28em] text-gold mb-1">Project Type</div>
-                  <div className="font-display text-2xl">{g.t}</div>
+                  <div className="font-display text-2xl text-bone group-hover:text-gold transition-colors duration-300">{g.t}</div>
                 </figcaption>
               </figure>
             </Reveal>
@@ -488,16 +493,16 @@ function Testimonials() {
           </h2>
         </Reveal>
 
-        <div className="mt-16 grid gap-px bg-onyx/10 md:grid-cols-3 border border-onyx/10">
+        <div className="mt-16 grid gap-8 md:grid-cols-3">
           {TESTIMONIALS.map((t, i) => (
             <Reveal key={t.n} delay={i * 0.08}>
-              <blockquote className="bg-bone p-10 h-full flex flex-col">
-                <svg className="size-8 text-gold mb-6" viewBox="0 0 32 32" fill="currentColor">
+              <blockquote className="bg-white border border-[#E5E2DD] p-8 lg:p-10 h-full flex flex-col hover:border-gold/30 hover:shadow-lg transition-all duration-500">
+                <svg className="size-8 text-gold/30 mb-6" viewBox="0 0 32 32" fill="currentColor">
                   <path d="M12 8H4v8h4c0 4-2 6-4 6v4c6 0 12-4 12-12V8zm16 0h-8v8h4c0 4-2 6-4 6v4c6 0 12-4 12-12V8h-4z" />
                 </svg>
-                <p className="font-display text-xl leading-snug text-onyx flex-1">"{t.q}"</p>
-                <footer className="mt-8 pt-6 border-t border-onyx/10">
-                  <div className="font-medium text-onyx text-sm">{t.n}</div>
+                <p className="font-display text-lg leading-relaxed text-onyx flex-1">"{t.q}"</p>
+                <footer className="mt-8 pt-6 border-t border-[#E5E2DD]">
+                  <div className="font-semibold text-onyx text-sm">{t.n}</div>
                   <div className="text-xs text-onyx/50 mt-1">{t.c} · {t.co}</div>
                 </footer>
               </blockquote>
@@ -535,15 +540,15 @@ function FAQ() {
           <p className="mt-6 text-onyx/60">
             Don't see your question? Our export desk replies within 24 hours.
           </p>
-          <Link to="/contact" className="btn-ghost-dark mt-8 inline-flex">Ask Our Team</Link>
+          <Link to="/contact" className="btn-ghost-dark rounded-full mt-8 inline-flex">Ask Our Team</Link>
         </Reveal>
         <div className="lg:col-span-8">
           <div className="divide-y divide-onyx/10 border-y border-onyx/10">
             {FAQS.map((f, i) => (
               <details key={i} className="group py-6">
                 <summary className="flex items-center justify-between cursor-pointer list-none">
-                  <span className="font-display text-xl text-onyx pr-6">{f.q}</span>
-                  <span className="size-8 border border-onyx/20 flex items-center justify-center text-onyx/60 group-open:rotate-45 transition-transform">
+                  <span className="font-display text-xl text-onyx pr-6 group-hover:text-gold transition-colors duration-300">{f.q}</span>
+                  <span className="size-8 rounded-full border border-onyx/20 flex items-center justify-center text-onyx/60 group-hover:border-gold group-hover:text-gold group-open:rotate-45 transition-all duration-300">
                     +
                   </span>
                 </summary>

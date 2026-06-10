@@ -13,7 +13,7 @@ export const Route = createFileRoute("/contact")({
   ],
   links: () => [{ rel: "canonical", href: "/contact" }],
   component: ContactPage,
-});
+} as any);
 
 function ContactPage() {
   return (

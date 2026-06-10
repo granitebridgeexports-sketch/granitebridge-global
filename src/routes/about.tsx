@@ -13,7 +13,7 @@ export const Route = createFileRoute("/about")({
   ],
   links: () => [{ rel: "canonical", href: "/about" }],
   component: AboutPage,
-});
+} as any);
 
 function AboutPage() {
   return (
@@ -67,7 +67,7 @@ function AboutPage() {
                 </li>
               ))}
             </ul>
-            <Link to="/contact" className="btn-gold mt-12 inline-flex">Work With Us</Link>
+            <Link to="/contact" className="btn-gold rounded-full mt-12 inline-flex">Work With Us</Link>
           </Reveal>
         </div>
       </section>
