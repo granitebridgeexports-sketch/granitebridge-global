@@ -1,5 +1,7 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 import { nitro } from "nitro/vite";
+import tsconfigPaths from "vite-tsconfig-paths";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   tanstackStart: {
@@ -9,6 +11,8 @@ export default defineConfig({
   },
   vite: {
     plugins: [
+      tsconfigPaths(),
+      tailwindcss(),
       nitro({
         preset: "vercel",
       }),
