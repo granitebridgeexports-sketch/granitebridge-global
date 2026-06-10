@@ -94,7 +94,7 @@ function HomePage() {
 
 function Hero() {
   return (
-    <section className="relative min-h-[90svh] lg:h-screen lg:min-h-[700px] w-full overflow-hidden flex items-center bg-[#0B0B0B] pt-24 lg:pt-0 pb-16 lg:pb-0">
+    <section className="relative min-h-screen w-full overflow-hidden flex items-center bg-[#0B0B0B] pt-[120px] lg:pt-[130px] pb-16 lg:pb-20">
       {/* Content: Two-column layout with constrained width & 100px padding on desktop */}
       <div className="mx-auto w-full max-w-[1400px] px-6 lg:px-[100px] relative z-10">
         <div className="grid lg:grid-cols-[45%_55%] gap-12 lg:gap-16 items-center w-full">
@@ -111,7 +111,7 @@ function Hero() {
 
             {/* Heading */}
             <h1
-              className="font-display text-white text-[2.2rem] md:text-[3.2rem] lg:text-[clamp(3rem,4vw,4.5rem)] font-medium leading-[1.05] tracking-tight max-w-[600px]"
+              className="font-display text-white text-[2rem] md:text-[2.8rem] lg:text-[clamp(2.2rem,3.5vw,3.8rem)] font-medium leading-[1.05] tracking-tight max-w-[600px]"
               style={{ fontFamily: "Playfair Display, Cormorant Garamond, serif" }}
             >
               A company that connects
@@ -122,7 +122,7 @@ function Hero() {
             </h1>
 
             {/* Description */}
-            <p className="text-[18px] leading-[1.8] text-white/85 max-w-[550px]">
+            <p className="text-[16px] lg:text-[18px] leading-[1.8] text-white/85 max-w-[550px]">
               We source, inspect, and export premium Indian granite directly from trusted quarries
               to importers, distributors, and construction projects across Europe, Cyprus, UAE, and
               global markets.
@@ -167,7 +167,7 @@ function Hero() {
           </div>
 
           {/* Right Side: Image container (55%) */}
-          <div className="relative w-full h-[350px] sm:h-[450px] lg:h-[600px] overflow-hidden rounded-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-10">
+          <div className="relative w-full aspect-[4/3] lg:aspect-[1.1] max-h-[500px] overflow-hidden rounded-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-10">
             <img
               src="/hero-showroom.jpg"
               alt="Premium luxury granite showroom with polished Indian stone slabs"
