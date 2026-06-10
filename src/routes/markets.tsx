@@ -16,18 +16,16 @@ const MARKETS = [
 ];
 
 export const Route = createFileRoute("/markets")({
-  head: () => ({
-    meta: [
-      { title: "Global Markets — Granite Export to Europe & Middle East | GraniteBridge" },
-      { name: "description", content: "GraniteBridge exports premium Indian granite to Germany, Spain, Italy, France, Netherlands, Belgium, Cyprus, UK, Greece, Poland, and the Middle East." },
-      { property: "og:title", content: "Markets We Serve | GraniteBridge" },
-      { property: "og:description", content: "Ten core markets across Europe and the Middle East." },
-      { property: "og:url", content: "/markets" },
-    ],
-    links: [{ rel: "canonical", href: "/markets" }],
-  }),
+  meta: () => [
+    { title: "Global Markets — Granite Export to Europe & Middle East | GraniteBridge" },
+    { name: "description", content: "GraniteBridge exports premium Indian granite to Germany, Spain, Italy, France, Netherlands, Belgium, Cyprus, UK, Greece, Poland, and the Middle East." },
+    { property: "og:title", content: "Markets We Serve | GraniteBridge" },
+    { property: "og:description", content: "Ten core markets across Europe and the Middle East." },
+    { property: "og:url", content: "/markets" },
+  ],
+  links: () => [{ rel: "canonical", href: "/markets" }],
   component: MarketsPage,
-});
+} as any);
 
 function MarketsPage() {
   return (
@@ -44,13 +42,13 @@ function MarketsPage() {
       </section>
 
       <section className="py-20 bg-bone">
-        <div className="container-wide grid gap-px bg-onyx/10 sm:grid-cols-2 lg:grid-cols-2 border border-onyx/10">
+        <div className="container-wide grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
           {MARKETS.map((m, i) => (
             <Reveal key={m.c} delay={i * 0.03}>
-              <Link to="/exporter/$country" params={{ country: m.slug }} className="group block bg-bone p-10 hover:bg-stone/40 transition-colors duration-500 h-full">
+              <Link to="/exporter/$country" params={{ country: m.slug }} className="group block bg-white border border-[#E5E2DD] p-10 hover:border-gold/40 hover:-translate-y-1 hover:shadow-lg transition-all duration-500 h-full">
                 <div className="flex items-baseline justify-between">
-                  <h2 className="font-display text-3xl text-onyx">{m.c}</h2>
-                  <span className="text-[10px] uppercase tracking-[0.28em] text-gold group-hover:translate-x-1 transition-transform">View →</span>
+                  <h2 className="font-display text-3xl text-onyx group-hover:text-gold transition-colors duration-300">{m.c}</h2>
+                  <span className="text-[10px] uppercase tracking-[0.28em] text-gold group-hover:translate-x-1 transition-all duration-300">View →</span>
                 </div>
                 <div className="text-[10px] uppercase tracking-[0.22em] text-onyx/40 mt-3">Port of Entry</div>
                 <div className="text-sm text-onyx/70 mt-1">{m.port}</div>

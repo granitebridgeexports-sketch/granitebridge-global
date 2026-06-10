@@ -15,18 +15,16 @@ const STEPS = [
 ];
 
 export const Route = createFileRoute("/process")({
-  head: () => ({
-    meta: [
-      { title: "Export Process — How GraniteBridge Delivers Container Loads | GraniteBridge" },
-      { name: "description", content: "Nine deliberate stages from quarry selection to delivery at your destination port. Quality, documentation, and timing under one roof." },
-      { property: "og:title", content: "Granite Export Process | GraniteBridge" },
-      { property: "og:description", content: "From quarry to your destination port — nine deliberate stages." },
-      { property: "og:url", content: "/process" },
-    ],
-    links: [{ rel: "canonical", href: "/process" }],
-  }),
+  meta: () => [
+    { title: "Export Process — How GraniteBridge Delivers Container Loads | GraniteBridge" },
+    { name: "description", content: "Nine deliberate stages from quarry selection to delivery at your destination port. Quality, documentation, and timing under one roof." },
+    { property: "og:title", content: "Granite Export Process | GraniteBridge" },
+    { property: "og:description", content: "From quarry to your destination port — nine deliberate stages." },
+    { property: "og:url", content: "/process" },
+  ],
+  links: () => [{ rel: "canonical", href: "/process" }],
   component: ProcessPage,
-});
+} as any);
 
 function ProcessPage() {
   return (
@@ -46,16 +44,16 @@ function ProcessPage() {
         <div className="container-wide grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {STEPS.map((s, i) => (
             <Reveal key={s.n} delay={i * 0.04}>
-              <div className="border border-white/10 p-10 h-full hover:border-gold/60 transition-colors duration-500">
-                <div className="font-display text-6xl text-gold/40">{s.n}</div>
-                <h2 className="font-display text-2xl mt-4">{s.t}</h2>
-                <p className="mt-3 text-sm text-bone/55 leading-relaxed">{s.d}</p>
+              <div className="group relative border border-white/5 bg-[#1A1A1A]/35 backdrop-blur-sm p-10 hover:border-gold/40 hover:bg-[#1A1A1A]/60 transition-all duration-500 h-full shadow-lg">
+                <div className="font-display text-6xl text-gold/20 group-hover:text-gold transition-all duration-500">{s.n}</div>
+                <h2 className="font-display text-2xl mt-4 text-bone group-hover:text-gold transition-colors duration-300">{s.t}</h2>
+                <p className="mt-3 text-sm text-bone/60 leading-relaxed">{s.d}</p>
               </div>
             </Reveal>
           ))}
         </div>
         <div className="container-wide mt-20 text-center">
-          <Link to="/contact" className="btn-gold">Start Your Order</Link>
+          <Link to="/contact" className="btn-gold rounded-full">Start Your Order</Link>
         </div>
       </section>
     </>

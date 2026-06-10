@@ -17,34 +17,31 @@ const COUNTRIES: Record<string, { name: string; port: string; intro: string; por
 };
 
 export const Route = createFileRoute("/exporter/$country")({
-  loader: ({ params }) => {
+  loader: ({ params }: any) => {
     const data = COUNTRIES[params.country];
     if (!data) throw notFound();
     return { country: data, slug: params.country };
   },
-  head: ({ loaderData }) => {
-    const c = loaderData?.country;
-    return {
-      meta: [
-        { title: `Granite Exporter in ${c?.name ?? ""} — Premium Indian Granite | GraniteBridge` },
-        { name: "description", content: `GraniteBridge Exports supplies premium Indian granite slabs, tiles, and monuments to importers and developers in ${c?.name ?? ""}. Direct shipping to ${c?.port ?? ""}.` },
-        { property: "og:title", content: `Granite Exporter in ${c?.name ?? ""}` },
-        { property: "og:description", content: `Container loads of premium Indian granite shipped to ${c?.name ?? ""}.` },
-        { property: "og:url", content: `/exporter/${loaderData?.slug ?? ""}` },
-      ],
-      links: [{ rel: "canonical", href: `/exporter/${loaderData?.slug ?? ""}` }],
-    };
-  },
+  meta: ({ loaderData }: any) => [
+    { title: `Granite Exporter in ${loaderData?.country?.name ?? ""} — Premium Indian Granite | GraniteBridge` },
+    { name: "description", content: `GraniteBridge Exports supplies premium Indian granite slabs, tiles, and monuments to importers and developers in ${loaderData?.country?.name ?? ""}. Direct shipping to ${loaderData?.country?.port ?? ""}.` },
+    { property: "og:title", content: `Granite Exporter in ${loaderData?.country?.name ?? ""}` },
+    { property: "og:description", content: `Container loads of premium Indian granite shipped to ${loaderData?.country?.name ?? ""}.` },
+    { property: "og:url", content: `/exporter/${loaderData?.slug ?? ""}` },
+  ],
+  links: ({ loaderData }: any) => [
+    { rel: "canonical", href: `/exporter/${loaderData?.slug ?? ""}` }
+  ],
   component: CountryPage,
   notFoundComponent: () => (
     <div className="min-h-screen flex items-center justify-center bg-bone">
-      <Link to="/markets" className="btn-ghost-dark">View All Markets</Link>
+      <Link to="/markets" className="btn-ghost-dark rounded-full">View All Markets</Link>
     </div>
   ),
-});
+} as any);
 
 function CountryPage() {
-  const { country: c } = Route.useLoaderData();
+  const { country: c } = Route.useLoaderData() as any;
   return (
     <>
       <section className="relative pt-40 pb-24 bg-onyx text-bone overflow-hidden">
@@ -60,16 +57,16 @@ function CountryPage() {
       </section>
 
       <section className="py-24 bg-bone">
-        <div className="container-wide grid gap-12 lg:grid-cols-3">
+        <div className="container-wide grid gap-8 lg:grid-cols-3">
           {[
             { t: "Discharge Ports", v: c.ports },
             { t: "Typical Transit", v: "18–35 days from Indian load port" },
             { t: "Documentation", v: "B/L, CoO, MSDS, fumigation, packing list, commercial invoice" },
           ].map((b) => (
             <Reveal key={b.t}>
-              <div className="border-t border-onyx/15 pt-6">
+              <div className="bg-white border border-[#E5E2DD] p-8 hover:border-gold/30 hover:shadow-lg transition-all duration-500 h-full">
                 <div className="text-[10px] uppercase tracking-[0.28em] text-gold">{b.t}</div>
-                <div className="mt-3 font-display text-2xl text-onyx leading-snug">{b.v}</div>
+                <div className="mt-4 font-display text-2xl text-onyx leading-snug">{b.v}</div>
               </div>
             </Reveal>
           ))}

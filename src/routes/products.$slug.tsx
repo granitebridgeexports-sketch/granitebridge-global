@@ -3,39 +3,36 @@ import { findProduct, PRODUCTS } from "@/lib/products";
 import { Reveal } from "@/components/site/Reveal";
 
 export const Route = createFileRoute("/products/$slug")({
-  loader: ({ params }) => {
+  loader: ({ params }: any) => {
     const product = findProduct(params.slug);
     if (!product) throw notFound();
     return { product };
   },
-  head: ({ loaderData }) => {
-    const p = loaderData?.product;
-    return {
-      meta: [
-        { title: p ? `${p.name} — Premium ${p.family} Granite | GraniteBridge` : "Granite" },
-        { name: "description", content: p?.description ?? "Premium Indian granite for export." },
-        { property: "og:title", content: p?.name ?? "Granite" },
-        { property: "og:description", content: p?.tagline ?? "" },
-        { property: "og:image", content: p?.image ?? "" },
-        { property: "og:url", content: `/products/${p?.slug ?? ""}` },
-      ],
-      links: [{ rel: "canonical", href: `/products/${p?.slug ?? ""}` }],
-    };
-  },
+  meta: ({ loaderData }: any) => [
+    { title: loaderData?.product ? `${loaderData.product.name} — Premium ${loaderData.product.family} Granite | GraniteBridge` : "Granite" },
+    { name: "description", content: loaderData?.product?.description ?? "Premium Indian granite for export." },
+    { property: "og:title", content: loaderData?.product?.name ?? "Granite" },
+    { property: "og:description", content: loaderData?.product?.tagline ?? "" },
+    { property: "og:image", content: loaderData?.product?.image ?? "" },
+    { property: "og:url", content: `/products/${loaderData?.product?.slug ?? ""}` },
+  ],
+  links: ({ loaderData }: any) => [
+    { rel: "canonical", href: `/products/${loaderData?.product?.slug ?? ""}` }
+  ],
   component: ProductDetail,
   notFoundComponent: () => (
     <div className="min-h-screen flex items-center justify-center bg-bone">
       <div className="text-center">
         <p className="eyebrow">Not Found</p>
         <h1 className="font-display text-4xl mt-3 text-onyx">This product doesn't exist.</h1>
-        <Link to="/products" className="btn-ghost-dark mt-6 inline-flex">View Catalogue</Link>
+        <Link to="/products" className="btn-ghost-dark rounded-full mt-6 inline-flex">View Catalogue</Link>
       </div>
     </div>
   ),
-});
+} as any);
 
 function ProductDetail() {
-  const { product: p } = Route.useLoaderData();
+  const { product: p } = Route.useLoaderData() as any;
   const related = PRODUCTS.filter((x) => x.slug !== p.slug).slice(0, 3);
 
   return (
@@ -53,8 +50,8 @@ function ProductDetail() {
             <p className="mt-6 text-lg text-onyx/65 italic font-display">{p.tagline}</p>
             <p className="mt-6 text-onyx/70 leading-relaxed">{p.description}</p>
             <div className="mt-10 flex flex-wrap gap-3">
-              <Link to="/contact" className="btn-gold">Request Quote</Link>
-              <Link to="/contact" className="btn-ghost-dark">Request Sample</Link>
+              <Link to="/contact" className="btn-gold rounded-full">Request Quote</Link>
+              <Link to="/contact" className="btn-ghost-dark rounded-full">Request Sample</Link>
             </div>
           </Reveal>
         </div>
@@ -82,15 +79,16 @@ function ProductDetail() {
       <section className="py-24 bg-bone">
         <div className="container-wide">
           <div className="flex items-center gap-3 mb-10"><span className="hairline" /><span className="eyebrow">Also from our catalogue</span></div>
-          <div className="grid gap-px bg-onyx/10 sm:grid-cols-3 border border-onyx/10">
+          <div className="grid gap-6 sm:grid-cols-3">
             {related.map((r) => (
-              <Link key={r.slug} to="/products/$slug" params={{ slug: r.slug }} className="group bg-bone p-6">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img src={r.image} alt={r.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-110" />
+              <Link key={r.slug} to="/products/$slug" params={{ slug: r.slug }} className="group bg-white border border-[#E5E2DD] p-6 hover:border-gold/40 hover:-translate-y-1 hover:shadow-lg transition-all duration-500">
+                <div className="aspect-[4/3] overflow-hidden relative">
+                  <img src={r.image} alt={r.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-onyx/5 group-hover:bg-transparent transition-colors duration-500" />
                 </div>
                 <div className="pt-5">
-                  <div className="text-[10px] uppercase tracking-[0.28em] text-gold">{r.family}</div>
-                  <h3 className="font-display text-xl mt-1 text-onyx">{r.name}</h3>
+                  <div className="text-[10px] uppercase tracking-[0.28em] text-gold">{r.family} Granite</div>
+                  <h3 className="font-display text-xl mt-1 text-onyx group-hover:text-gold transition-colors duration-300">{r.name}</h3>
                 </div>
               </Link>
             ))}
