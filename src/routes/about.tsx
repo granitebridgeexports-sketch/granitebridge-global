@@ -4,16 +4,14 @@ import quarryImg from "@/assets/hero-quarry.jpg";
 import { Reveal } from "@/components/site/Reveal";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About GraniteBridge Exports — Indian Granite Export Company" },
-      { name: "description", content: "GraniteBridge Exports Pvt Ltd is a professional Indian granite export company supplying premium natural stone to importers and developers worldwide." },
-      { property: "og:title", content: "About GraniteBridge Exports" },
-      { property: "og:description", content: "Procurement, quality control, packaging, container loading, and international shipping — under one roof." },
-      { property: "og:url", content: "/about" },
-    ],
-    links: [{ rel: "canonical", href: "/about" }],
-  }),
+  meta: () => [
+    { title: "About GraniteBridge Exports — Indian Granite Export Company" },
+    { name: "description", content: "GraniteBridge Exports Pvt Ltd is a professional Indian granite export company supplying premium natural stone to importers and developers worldwide." },
+    { property: "og:title", content: "About GraniteBridge Exports" },
+    { property: "og:description", content: "Procurement, quality control, packaging, container loading, and international shipping — under one roof." },
+    { property: "og:url", content: "/about" },
+  ],
+  links: () => [{ rel: "canonical", href: "/about" }],
   component: AboutPage,
 });
 
@@ -39,7 +37,7 @@ function AboutPage() {
             <h2 className="font-display text-4xl lg:text-5xl text-onyx">Built on direct sourcing & operational ownership.</h2>
           </Reveal>
           <div className="lg:col-span-7 space-y-6 text-onyx/70 text-lg leading-relaxed">
-            <Reveal><p>GraniteBridge Exports Pvt Ltd is headquartered in Bangalore with strong sourcing relationships across Karnataka, Andhra Pradesh, Tamil Nadu, and Rajasthan — the four states that produce the world's most exported granite.</p></Reveal>
+            <Reveal><p>GraniteBridge Exports Pvt Ltd is headquartered in Khammam, Telangana, India with strong sourcing relationships across Karnataka, Andhra Pradesh, Tamil Nadu, and Rajasthan — the four states that produce the world's most exported granite.</p></Reveal>
             <Reveal delay={0.05}><p>We are not a broker, a directory, or an online platform. We procure stone directly, run quality inspections inside our partner factories, manage export documentation in-house, and supervise container loading at Chennai and Krishnapatnam ports.</p></Reveal>
             <Reveal delay={0.1}><p>The result for international buyers: a single, accountable counterparty for granite supply — with consistent quality, predictable lead times, and complete paperwork ready for European customs.</p></Reveal>
           </div>

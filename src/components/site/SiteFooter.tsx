@@ -23,15 +23,15 @@ export function SiteFooter() {
               buyers with high-quality natural stone from India's finest quarries.
             </p>
             <div className="mt-8 space-y-3 text-sm">
-              <a href="mailto:exports@granitebridge.com" className="flex items-center gap-3 hover:text-gold transition-colors">
-                <Mail className="size-4 text-gold" /> exports@granitebridge.com
+              <a href="mailto:granitebridgeexports@gmail.com" className="flex items-center gap-3 hover:text-gold transition-colors">
+                <Mail className="size-4 text-gold" /> granitebridgeexports@gmail.com
               </a>
-              <a href="tel:+919999999999" className="flex items-center gap-3 hover:text-gold transition-colors">
-                <Phone className="size-4 text-gold" /> +91 99999 99999
+              <a href="tel:+919392753192" className="flex items-center gap-3 hover:text-gold transition-colors">
+                <Phone className="size-4 text-gold" /> +91 93927 53192
               </a>
               <div className="flex items-start gap-3">
                 <MapPin className="size-4 text-gold mt-0.5" />
-                <span>Bangalore · Karnataka · India</span>
+                <span>Khammam · Telangana · India</span>
               </div>
             </div>
           </div>

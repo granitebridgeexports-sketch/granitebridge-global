@@ -4,16 +4,14 @@ import { Reveal } from "@/components/site/Reveal";
 import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact GraniteBridge Exports — Request a Quote in 24 Hours" },
-      { name: "description", content: "Request a quotation for Indian granite slabs, tiles, monuments, and cut-to-size. Our export desk responds within 24 hours." },
-      { property: "og:title", content: "Contact GraniteBridge Exports" },
-      { property: "og:description", content: "Get a granite export quotation in 24 hours." },
-      { property: "og:url", content: "/contact" },
-    ],
-    links: [{ rel: "canonical", href: "/contact" }],
-  }),
+  meta: () => [
+    { title: "Contact GraniteBridge Exports — Request a Quote in 24 Hours" },
+    { name: "description", content: "Request a quotation for Indian granite slabs, tiles, monuments, and cut-to-size. Our export desk responds within 24 hours." },
+    { property: "og:title", content: "Contact GraniteBridge Exports" },
+    { property: "og:description", content: "Get a granite export quotation in 24 hours." },
+    { property: "og:url", content: "/contact" },
+  ],
+  links: () => [{ rel: "canonical", href: "/contact" }],
   component: ContactPage,
 });
 
@@ -31,10 +29,10 @@ function ContactPage() {
           </p>
 
           <div className="mt-14 space-y-6">
-            <ContactRow icon={Mail} label="Email" value="exports@granitebridge.com" href="mailto:exports@granitebridge.com" />
-            <ContactRow icon={Phone} label="Phone" value="+91 99999 99999" href="tel:+919999999999" />
-            <ContactRow icon={MessageCircle} label="WhatsApp" value="+91 99999 99999" href="https://wa.me/919999999999" />
-            <ContactRow icon={MapPin} label="Headquarters" value="Bangalore, Karnataka, India" />
+            <ContactRow icon={Mail} label="Email" value="granitebridgeexports@gmail.com" href="mailto:granitebridgeexports@gmail.com" />
+            <ContactRow icon={Phone} label="Phone" value="+91 93927 53192" href="tel:+919392753192" />
+            <ContactRow icon={MessageCircle} label="WhatsApp" value="+91 93927 53192" href="https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%27m%20interested%20in%20your%20granite%20products." />
+            <ContactRow icon={MapPin} label="Headquarters" value="Khammam, Telangana, India" />
           </div>
 
           <div className="mt-14 pt-8 border-t border-white/10">

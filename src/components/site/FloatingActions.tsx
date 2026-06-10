@@ -29,7 +29,7 @@ export function FloatingActions() {
         Request Quote
       </Link>
       <a
-        href="https://wa.me/919999999999"
+        href="https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%27m%20interested%20in%20your%20granite%20products."
         target="_blank"
         rel="noopener"
         className="size-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-2xl hover:scale-105 transition"
