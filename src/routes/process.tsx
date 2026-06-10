@@ -15,16 +15,18 @@ const STEPS = [
 ];
 
 export const Route = createFileRoute("/process")({
-  meta: () => [
-    { title: "Export Process — How GraniteBridge Delivers Container Loads | GraniteBridge" },
-    { name: "description", content: "Nine deliberate stages from quarry selection to delivery at your destination port. Quality, documentation, and timing under one roof." },
-    { property: "og:title", content: "Granite Export Process | GraniteBridge" },
-    { property: "og:description", content: "From quarry to your destination port — nine deliberate stages." },
-    { property: "og:url", content: "/process" },
-  ],
-  links: () => [{ rel: "canonical", href: "/process" }],
+  head: () => ({
+    meta: [
+      { title: "Export Process — How GraniteBridge Delivers Container Loads | GraniteBridge" },
+      { name: "description", content: "Nine deliberate stages from quarry selection to delivery at your destination port. Quality, documentation, and timing under one roof." },
+      { property: "og:title", content: "Granite Export Process | GraniteBridge" },
+      { property: "og:description", content: "From quarry to your destination port — nine deliberate stages." },
+      { property: "og:url", content: "/process" },
+    ],
+    links: [{ rel: "canonical", href: "/process" }],
+  }),
   component: ProcessPage,
-} as any);
+});
 
 function ProcessPage() {
   return (

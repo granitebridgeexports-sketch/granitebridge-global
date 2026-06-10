@@ -16,16 +16,18 @@ const MARKETS = [
 ];
 
 export const Route = createFileRoute("/markets")({
-  meta: () => [
-    { title: "Global Markets — Granite Export to Europe & Middle East | GraniteBridge" },
-    { name: "description", content: "GraniteBridge exports premium Indian granite to Germany, Spain, Italy, France, Netherlands, Belgium, Cyprus, UK, Greece, Poland, and the Middle East." },
-    { property: "og:title", content: "Markets We Serve | GraniteBridge" },
-    { property: "og:description", content: "Ten core markets across Europe and the Middle East." },
-    { property: "og:url", content: "/markets" },
-  ],
-  links: () => [{ rel: "canonical", href: "/markets" }],
+  head: () => ({
+    meta: [
+      { title: "Global Markets — Granite Export to Europe & Middle East | GraniteBridge" },
+      { name: "description", content: "GraniteBridge exports premium Indian granite to Germany, Spain, Italy, France, Netherlands, Belgium, Cyprus, UK, Greece, Poland, and the Middle East." },
+      { property: "og:title", content: "Markets We Serve | GraniteBridge" },
+      { property: "og:description", content: "Ten core markets across Europe and the Middle East." },
+      { property: "og:url", content: "/markets" },
+    ],
+    links: [{ rel: "canonical", href: "/markets" }],
+  }),
   component: MarketsPage,
-} as any);
+});
 
 function MarketsPage() {
   return (

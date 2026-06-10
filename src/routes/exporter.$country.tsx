@@ -22,23 +22,25 @@ export const Route = createFileRoute("/exporter/$country")({
     if (!data) throw notFound();
     return { country: data, slug: params.country };
   },
-  meta: ({ loaderData }: any) => [
-    { title: `Granite Exporter in ${loaderData?.country?.name ?? ""} — Premium Indian Granite | GraniteBridge` },
-    { name: "description", content: `GraniteBridge Exports supplies premium Indian granite slabs, tiles, and monuments to importers and developers in ${loaderData?.country?.name ?? ""}. Direct shipping to ${loaderData?.country?.port ?? ""}.` },
-    { property: "og:title", content: `Granite Exporter in ${loaderData?.country?.name ?? ""}` },
-    { property: "og:description", content: `Container loads of premium Indian granite shipped to ${loaderData?.country?.name ?? ""}.` },
-    { property: "og:url", content: `/exporter/${loaderData?.slug ?? ""}` },
-  ],
-  links: ({ loaderData }: any) => [
-    { rel: "canonical", href: `/exporter/${loaderData?.slug ?? ""}` }
-  ],
+  head: ({ loaderData }: any) => ({
+    meta: [
+      { title: `Granite Exporter in ${loaderData?.country?.name ?? ""} — Premium Indian Granite | GraniteBridge` },
+      { name: "description", content: `GraniteBridge Exports supplies premium Indian granite slabs, tiles, and monuments to importers and developers in ${loaderData?.country?.name ?? ""}. Direct shipping to ${loaderData?.country?.port ?? ""}.` },
+      { property: "og:title", content: `Granite Exporter in ${loaderData?.country?.name ?? ""}` },
+      { property: "og:description", content: `Container loads of premium Indian granite shipped to ${loaderData?.country?.name ?? ""}.` },
+      { property: "og:url", content: `/exporter/${loaderData?.slug ?? ""}` },
+    ],
+    links: [
+      { rel: "canonical", href: `/exporter/${loaderData?.slug ?? ""}` }
+    ],
+  }),
   component: CountryPage,
   notFoundComponent: () => (
     <div className="min-h-screen flex items-center justify-center bg-bone">
       <Link to="/markets" className="btn-ghost-dark rounded-full">View All Markets</Link>
     </div>
   ),
-} as any);
+});
 
 function CountryPage() {
   const { country: c } = Route.useLoaderData() as any;

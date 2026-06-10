@@ -4,16 +4,18 @@ import { Reveal } from "@/components/site/Reveal";
 import { ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/products")({
-  meta: () => [
-    { title: "Granite Catalogue — Black, White, Grey, Brown, Red & Monument | GraniteBridge" },
-    { name: "description", content: "Browse our premium Indian granite catalogue — Absolute Black, Kashmir White, Steel Grey, Tan Brown, Imperial Red, and Monument series. Slabs, tiles, cut-to-size." },
-    { property: "og:title", content: "Granite Catalogue | GraniteBridge Exports" },
-    { property: "og:description", content: "Premium Indian granite — slabs, tiles, monuments — ready for international export." },
-    { property: "og:url", content: "/products" },
-  ],
-  links: () => [{ rel: "canonical", href: "/products" }],
+  head: () => ({
+    meta: [
+      { title: "Granite Catalogue — Black, White, Grey, Brown, Red & Monument | GraniteBridge" },
+      { name: "description", content: "Browse our premium Indian granite catalogue — Absolute Black, Kashmir White, Steel Grey, Tan Brown, Imperial Red, and Monument series. Slabs, tiles, cut-to-size." },
+      { property: "og:title", content: "Granite Catalogue | GraniteBridge Exports" },
+      { property: "og:description", content: "Premium Indian granite — slabs, tiles, monuments — ready for international export." },
+      { property: "og:url", content: "/products" },
+    ],
+    links: [{ rel: "canonical", href: "/products" }],
+  }),
   component: ProductsPage,
-} as any);
+});
 
 function ProductsPage() {
   return (

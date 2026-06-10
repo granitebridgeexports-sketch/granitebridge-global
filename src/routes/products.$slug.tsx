@@ -8,17 +8,19 @@ export const Route = createFileRoute("/products/$slug")({
     if (!product) throw notFound();
     return { product };
   },
-  meta: ({ loaderData }: any) => [
-    { title: loaderData?.product ? `${loaderData.product.name} — Premium ${loaderData.product.family} Granite | GraniteBridge` : "Granite" },
-    { name: "description", content: loaderData?.product?.description ?? "Premium Indian granite for export." },
-    { property: "og:title", content: loaderData?.product?.name ?? "Granite" },
-    { property: "og:description", content: loaderData?.product?.tagline ?? "" },
-    { property: "og:image", content: loaderData?.product?.image ?? "" },
-    { property: "og:url", content: `/products/${loaderData?.product?.slug ?? ""}` },
-  ],
-  links: ({ loaderData }: any) => [
-    { rel: "canonical", href: `/products/${loaderData?.product?.slug ?? ""}` }
-  ],
+  head: ({ loaderData }: any) => ({
+    meta: [
+      { title: loaderData?.product ? `${loaderData.product.name} — Premium ${loaderData.product.family} Granite | GraniteBridge` : "Granite" },
+      { name: "description", content: loaderData?.product?.description ?? "Premium Indian granite for export." },
+      { property: "og:title", content: loaderData?.product?.name ?? "Granite" },
+      { property: "og:description", content: loaderData?.product?.tagline ?? "" },
+      { property: "og:image", content: loaderData?.product?.image ?? "" },
+      { property: "og:url", content: `/products/${loaderData?.product?.slug ?? ""}` },
+    ],
+    links: [
+      { rel: "canonical", href: `/products/${loaderData?.product?.slug ?? ""}` }
+    ],
+  }),
   component: ProductDetail,
   notFoundComponent: () => (
     <div className="min-h-screen flex items-center justify-center bg-bone">
@@ -29,7 +31,7 @@ export const Route = createFileRoute("/products/$slug")({
       </div>
     </div>
   ),
-} as any);
+});
 
 function ProductDetail() {
   const { product: p } = Route.useLoaderData() as any;
