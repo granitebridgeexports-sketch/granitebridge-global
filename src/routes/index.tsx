@@ -23,7 +23,6 @@ import {
   ExternalLink,
 } from "lucide-react";
 
-import slabsImg from "@/assets/hero-slabs.png";
 import factoryImg from "@/assets/factory.jpg";
 import shippingImg from "@/assets/shipping.jpg";
 import hotelImg from "@/assets/project-hotel.jpg";
@@ -94,36 +93,63 @@ function HomePage() {
 }
 
 function Hero() {
-  return (
-    <section className="relative min-h-[90svh] lg:min-h-screen w-full bg-bone overflow-hidden pt-36 pb-24 lg:py-48 flex items-center">
-      {/* Background Accent Grid / Shadow */}
-      <div className="absolute inset-0 opacity-15 pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(45deg,#E5E2DD_1px,transparent_1px)] [background-size:40px_40px]" />
-        <div className="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-white/40 via-transparent to-transparent" />
-      </div>
+  const ref = useRef<HTMLDivElement | null>(null);
+  const { scrollYProgress } = useScroll({ target: ref });
+  const y = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.06]);
 
-      <div className="container-wide relative z-10">
+  return (
+    <section ref={ref} className="relative min-h-[90svh] lg:min-h-screen w-full overflow-hidden pt-36 pb-24 lg:py-48 flex items-center bg-onyx">
+      {/* Background: blurred far layer + sharp slab layer (same image) */}
+      <motion.div style={{ y }} className="absolute inset-0 pointer-events-none">
+        {/* Far background - subtle blur and darker for depth */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.img
+            src="/hero-showroom.jpg"
+            alt="Granite showroom background (blurred)"
+            className="w-full h-full object-cover object-[70%] sm:object-right lg:object-center"
+            style={{ transformOrigin: "center", scale }}
+            aria-hidden
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+          />
+          <div className="absolute inset-0 bg-black" style={{ opacity: 0.55 }} />
+          <div className="absolute inset-0 blur-[6px] -scale-y-0" />
+        </div>
+
+        {/* Foreground sharp slabs layer - kept crisp and centered */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <motion.img
+            src="/hero-showroom.jpg"
+            alt="Premium luxury showrooms with polished Indian granite slabs"
+            className="w-full h-full max-h-[110vh] object-cover object-right-top sm:object-right lg:object-center"
+            style={{ transformOrigin: "center", translateY: y }}
+          />
+        </div>
+      </motion.div>
+
+      <div className="container-wide relative z-20">
         {/* Top Tagline Row (Centered above the heading block) */}
         <div className="flex items-center justify-center gap-4 mb-12 lg:mb-16">
           <span className="w-10 sm:w-16 h-px bg-gold" />
           <span className="flex items-center gap-2 text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold font-semibold text-center leading-tight">
-            <Globe2 className="size-4 text-gold inline animate-pulse" /> A company that connects the world's buyers with high-quality Indian granite.
+            <Globe2 className="size-4 text-gold inline animate-pulse" /> Premium Indian Granite for Global Projects
           </span>
           <span className="w-10 sm:w-16 h-px bg-gold" />
         </div>
 
         <div className="grid gap-12 lg:grid-cols-12 items-center">
           {/* Left Text Block */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
-            <h1 className="font-display text-onyx text-4xl sm:text-5xl lg:text-7xl leading-[1.08] tracking-tight font-normal">
+          <div className="lg:col-span-8 flex flex-col items-start text-left">
+            <h1 className="font-display text-bone text-4xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight font-normal">
               A company that connects
               <span className="block">the world's buyers with</span>
-              <span className="block text-onyx/90 font-medium">high-quality Indian granite.</span>
+              <span className="block text-bone/90 font-medium">high-quality Indian granite.</span>
             </h1>
-            
+
             <div className="w-14 h-0.5 bg-gold my-8" />
 
-            <p className="text-base sm:text-lg text-onyx/75 max-w-xl leading-relaxed">
+            <p className="text-base sm:text-lg text-bone/80 max-w-xl leading-relaxed">
               We source, inspect, and export premium Indian granite directly from trusted quarries to importers, distributors, and construction projects across Europe, Cyprus, UAE, and global markets.
             </p>
 
@@ -135,41 +161,29 @@ function Hero() {
                 href="https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%20am%20interested%20in%20requesting%20a%20commercial%20quote%20for%20Indian%20granite."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-ghost-dark rounded-full flex items-center gap-2 border border-onyx/20 hover:border-gold hover:text-gold transition-all duration-300"
+                className="btn-ghost-dark rounded-full flex items-center gap-2 border border-white/20 hover:border-gold hover:text-gold transition-all duration-300 text-bone"
               >
                 WhatsApp Us
               </a>
             </div>
 
             {/* Circular Trust Badges */}
-            <div className="mt-16 sm:mt-20 grid grid-cols-2 sm:grid-cols-4 gap-6 w-full max-w-2xl border-t border-onyx/10 pt-10">
+            <div className="mt-16 sm:mt-20 grid grid-cols-2 sm:grid-cols-4 gap-6 w-full max-w-2xl border-t border-white/10 pt-10">
               {[
-                { label: "Procure", icon: Search },
-                { label: "Inspect", icon: ClipboardCheck },
-                { label: "Package", icon: Boxes },
-                { label: "Ship Worldwide", icon: Ship },
+                { label: "Direct Quarry Sourcing", icon: Search },
+                { label: "Quality Inspection", icon: ClipboardCheck },
+                { label: "Export Documentation", icon: FileCheck },
+                { label: "Worldwide Shipping", icon: Ship },
               ].map((badge, idx) => (
                 <div key={idx} className="flex flex-col items-start text-left group/badge">
-                  <div className="flex size-14 items-center justify-center rounded-full border border-gold/60 text-gold bg-white shadow-sm transition-all duration-300 group-hover/badge:bg-gold group-hover/badge:text-white group-hover/badge:border-gold group-hover/badge:scale-105 mb-3">
+                  <div className="flex size-14 items-center justify-center rounded-full border border-gold/60 text-gold bg-onyx shadow-sm transition-all duration-300 group-hover/badge:bg-gold group-hover/badge:text-onyx group-hover/badge:border-gold group-hover/badge:scale-105 mb-3">
                     <badge.icon className="size-6" strokeWidth={1.3} />
                   </div>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-onyx/60 group-hover/badge:text-onyx transition-colors duration-300">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-bone/60 group-hover/badge:text-bone transition-colors duration-300">
                     {badge.label}
                   </span>
                 </div>
               ))}
-            </div>
-          </div>
-
-          {/* Right Slabs Visual */}
-          <div className="lg:col-span-5 relative flex justify-center">
-            <div className="relative w-full max-w-[450px] aspect-[4/3] sm:aspect-square lg:aspect-[3/4] overflow-hidden rounded-2xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.1)] hover:shadow-[0_35px_80px_-10px_rgba(0,0,0,0.18)] transition-all duration-750">
-              <img
-                src={slabsImg}
-                alt="Premium polished Indian granite slabs lean presentation"
-                className="w-full h-full object-cover object-center scale-102 hover:scale-105 transition-transform duration-[2000ms]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
         </div>
