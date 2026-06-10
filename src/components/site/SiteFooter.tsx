@@ -49,38 +49,44 @@ export function SiteFooter() {
           <div className="lg:col-span-2">
             <div className="text-[10px] uppercase tracking-[0.3em] text-gold mb-5">Products</div>
             <ul className="space-y-3 text-sm">
-              <li><Link to="/products" className="hover:text-gold transition">All Granite</Link></li>
-              <li><Link to="/products/$slug" params={{ slug: "black-granite" }} className="hover:text-gold transition">Black Granite</Link></li>
-              <li><Link to="/products/$slug" params={{ slug: "white-granite" }} className="hover:text-gold transition">White Granite</Link></li>
-              <li><Link to="/products/$slug" params={{ slug: "monument-granite" }} className="hover:text-gold transition">Monument Stone</Link></li>
+              <li><Link to="/products" className="hover:text-gold transition">All Products</Link></li>
+              <li><Link to="/products/$slug" params={{ slug: "absolute-black" }} className="hover:text-gold transition">Absolute Black</Link></li>
+              <li><Link to="/products/$slug" params={{ slug: "black-galaxy" }} className="hover:text-gold transition">Black Galaxy</Link></li>
+              <li><Link to="/products/$slug" params={{ slug: "steel-grey" }} className="hover:text-gold transition">Steel Grey</Link></li>
+              <li><Link to="/products/$slug" params={{ slug: "viscount-white" }} className="hover:text-gold transition">Viscount White</Link></li>
             </ul>
           </div>
 
           <div className="lg:col-span-4">
-            <div className="text-[10px] uppercase tracking-[0.3em] text-gold mb-5">Newsletter</div>
-            <p className="text-sm mb-4">
-              Quarterly updates on new varieties, market intelligence, and export trends.
+            <div className="text-[10px] uppercase tracking-[0.3em] text-gold mb-5">B2B Export Support</div>
+            <p className="text-sm mb-6 leading-relaxed">
+              Request our premium stone digital catalogue, inspection reports, or contact our coordinators directly.
             </p>
-            <form className="flex border-b border-white/20 focus-within:border-gold transition-colors duration-300 pb-1" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="email"
-                required
-                placeholder="your@company.com"
-                className="flex-1 bg-transparent px-0 py-3 text-sm placeholder:text-bone/30 text-bone focus:outline-none"
-              />
-              <button className="px-4 text-[10px] uppercase tracking-[0.22em] font-semibold text-gold hover:text-white transition-colors duration-300">
-                Subscribe
-              </button>
-            </form>
+            <div className="flex flex-col gap-3">
+              <Link
+                to="/contact"
+                className="btn-gold !py-2.5 !px-5 text-center rounded-full text-xs"
+              >
+                Request Catalogue
+              </Link>
+              <a
+                href="https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%20would%20like%20to%20request%20your%20granite%20catalogue%20and%20price%20sheet."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-center gap-2 border border-gold/40 hover:border-gold bg-transparent text-gold hover:bg-gold/10 px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-widest transition-all duration-300"
+              >
+                WhatsApp Us
+              </a>
+            </div>
           </div>
         </div>
 
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 text-xs text-bone/40">
           <div>© {new Date().getFullYear()} GraniteBridge Exports Pvt Ltd. All rights reserved.</div>
           <div className="flex gap-6">
-            <Link to="/" className="hover:text-gold transition">Privacy</Link>
-            <Link to="/" className="hover:text-gold transition">Terms</Link>
-            <Link to="/" className="hover:text-gold transition">Export Policy</Link>
+            <Link to="/" className="hover:text-gold transition">Privacy Policy</Link>
+            <Link to="/process" className="hover:text-gold transition">Quality Control</Link>
+            <Link to="/markets" className="hover:text-gold transition">Global Export Policy</Link>
           </div>
         </div>
       </div>

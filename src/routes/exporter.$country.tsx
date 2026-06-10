@@ -14,6 +14,7 @@ const COUNTRIES: Record<string, { name: string; port: string; intro: string; por
   "united-kingdom": { name: "United Kingdom", port: "Felixstowe", intro: "Post-Brexit customs paperwork done right, end to end. We export premium kitchen slabs, monument stone, and architectural cladding to UK importers and fabricators.", ports: "Felixstowe, Southampton, London Gateway" },
   greece: { name: "Greece", port: "Piraeus", intro: "Hospitality, marinas, and high-end residential demand across the Aegean. Direct shipping from Indian ports to Piraeus in 18–22 days.", ports: "Piraeus, Thessaloniki" },
   poland: { name: "Poland", port: "Gdańsk", intro: "Rapidly growing residential and infrastructure demand. We supply Polish importers and contractors with consistent, well-documented container loads.", ports: "Gdańsk, Gdynia" },
+  uae: { name: "UAE", port: "Jebel Ali (Dubai)", intro: "The United Arab Emirates is a premier hub for luxury construction and mega-projects. We ship high-grade Indian granite directly to Jebel Ali port, supporting commercial fabricators and developers across Dubai, Sharjah, and Abu Dhabi.", ports: "Jebel Ali (Dubai), Port Khalid (Sharjah), Khalifa Port (Abu Dhabi)" },
 };
 
 export const Route = createFileRoute("/exporter/$country")({

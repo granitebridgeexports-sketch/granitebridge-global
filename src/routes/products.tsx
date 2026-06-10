@@ -36,20 +36,37 @@ function ProductsPage() {
         <div className="container-wide grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {PRODUCTS.map((p, i) => (
             <Reveal key={p.slug} delay={i * 0.04}>
-              <Link to="/products/$slug" params={{ slug: p.slug }} className="group block bg-white border border-[#E5E2DD] p-6 hover:border-gold/40 hover:-translate-y-1 hover:shadow-lg transition-all duration-500 h-full">
-                <div className="aspect-[4/3] overflow-hidden relative">
-                  <img src={p.image} alt={p.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-onyx/5 group-hover:bg-transparent transition-colors duration-500" />
-                </div>
-                <div className="pt-6 flex items-start justify-between">
-                  <div>
-                    <div className="text-[10px] uppercase tracking-[0.28em] text-gold mb-2">{p.family} Granite</div>
-                    <h2 className="font-display text-2xl text-onyx group-hover:text-gold transition-colors duration-300">{p.name}</h2>
-                    <p className="text-sm text-onyx/55 mt-2 max-w-xs leading-relaxed">{p.tagline}</p>
+              <Link
+                to="/products/$slug"
+                params={{ slug: p.slug }}
+                className="group flex flex-col justify-between bg-white border border-[#E5E2DD] p-6 hover:border-gold/40 hover:-translate-y-1 hover:shadow-lg transition-all duration-500 h-full"
+              >
+                <div>
+                  <div className="aspect-[4/3] overflow-hidden relative mb-6">
+                    <img src={p.image} alt={p.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-onyx/5 group-hover:bg-transparent transition-colors duration-500" />
                   </div>
-                  <span className="flex size-9 items-center justify-center rounded-full border border-onyx/15 text-onyx/40 group-hover:border-gold group-hover:text-gold group-hover:translate-x-1 transition-all duration-300 mt-1">
-                    <ArrowRight className="size-4" />
-                  </span>
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <span className="text-[10px] uppercase tracking-[0.28em] text-gold font-semibold">{p.family} Granite</span>
+                      <span className="text-[10px] text-onyx/50">{p.origin.split(",")[1] || p.origin}</span>
+                    </div>
+                    <h2 className="font-display text-2xl text-onyx group-hover:text-gold transition-colors duration-300">{p.name}</h2>
+                    <p className="text-sm text-onyx/55 mt-2 leading-relaxed">{p.tagline}</p>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-[#E5E2DD] flex flex-col gap-2">
+                  <div className="flex justify-between text-[11px] text-onyx/50">
+                    <span>Thickness: {p.thickness.slice(0, 2).join(" / ")}</span>
+                    <span>Finishes: {p.finishes.slice(0, 2).join(", ")}</span>
+                  </div>
+                  <div className="flex items-center justify-between text-[10px] font-semibold uppercase tracking-wider text-gold mt-1">
+                    <span>View Specifications</span>
+                    <span className="flex items-center gap-1 group-hover:translate-x-1 transition-transform duration-300">
+                      Inquire Now <ArrowRight className="size-3" />
+                    </span>
+                  </div>
                 </div>
               </Link>
             </Reveal>

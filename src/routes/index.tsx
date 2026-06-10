@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   ArrowRight,
   ShieldCheck,
@@ -11,6 +11,16 @@ import {
   FileCheck,
   Headset,
   Handshake,
+  Search,
+  Compass,
+  Hammer,
+  ClipboardCheck,
+  Anchor,
+  MapPin,
+  CheckSquare,
+  FileText,
+  Clock,
+  ExternalLink,
 } from "lucide-react";
 
 import heroImg from "@/assets/hero-quarry.jpg";
@@ -113,17 +123,20 @@ function Hero() {
             <span className="block text-gold italic font-light">for global projects.</span>
           </h1>
           <p className="mt-8 max-w-2xl text-lg text-bone/70 leading-relaxed">
-            A company that connects the world's buyers with high-quality Indian granite.
-            We procure, inspect, package, and ship container loads to importers,
-            distributors, and developers across Europe and beyond.
+            A professional exporter of high-grade Indian granite. We procure, inspect, package, and ship container loads directly to importers, distributors, and developers across Europe, Cyprus, UAE, and worldwide.
           </p>
-          <div className="mt-10 flex flex-col sm:flex-row gap-4">
-            <Link to="/contact" className="btn-gold rounded-full">
-              Request a Quote <ArrowRight className="size-4" />
+          <div className="mt-10 flex flex-wrap gap-4">
+            <Link to="/contact" className="btn-gold rounded-full flex items-center gap-2">
+              Request Quote <ArrowRight className="size-4" />
             </Link>
-            <Link to="/products" className="btn-ghost-light rounded-full">
-              Explore Catalogue
-            </Link>
+            <a
+              href="https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%20am%20interested%20in%20requesting%20a%20commercial%20quote%20for%20Indian%20granite."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost-light rounded-full flex items-center gap-2 border border-white/20 hover:border-gold hover:text-gold transition-all duration-300"
+            >
+              WhatsApp Us
+            </a>
           </div>
         </motion.div>
       </div>
@@ -246,26 +259,39 @@ function Products() {
               <Link
                 to="/products/$slug"
                 params={{ slug: p.slug }}
-                className="group relative block bg-[#1A1A1A] border border-white/5 hover:border-gold/30 p-6 h-full overflow-hidden transition-all duration-500 shadow-xl hover:-translate-y-1"
+                className="group relative flex flex-col justify-between bg-[#1A1A1A] border border-white/5 hover:border-gold/30 p-6 h-full overflow-hidden transition-all duration-500 shadow-xl hover:-translate-y-1"
               >
-                <div className="aspect-[4/3] overflow-hidden relative">
-                  <img
-                    src={p.image}
-                    alt={p.name}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-[#0F0F0F]/10 group-hover:bg-transparent transition-colors duration-500" />
-                </div>
-                <div className="pt-6 flex items-start justify-between">
-                  <div>
-                    <div className="text-[10px] uppercase tracking-[0.28em] text-gold mb-2">{p.family} Granite</div>
-                    <h3 className="font-display text-2xl text-bone group-hover:text-gold transition-colors duration-300">{p.name}</h3>
-                    <p className="text-sm text-bone/50 mt-2 max-w-xs leading-relaxed">{p.tagline}</p>
+                <div>
+                  <div className="aspect-[4/3] overflow-hidden relative mb-6">
+                    <img
+                      src={p.image}
+                      alt={p.name}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-[#0F0F0F]/15 group-hover:bg-transparent transition-colors duration-500" />
                   </div>
-                  <span className="flex size-9 items-center justify-center rounded-full border border-white/10 text-bone/40 group-hover:border-gold group-hover:text-gold group-hover:translate-x-1 transition-all duration-300 mt-1">
-                    <ArrowRight className="size-4" />
-                  </span>
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <span className="text-[10px] uppercase tracking-[0.28em] text-gold">{p.family} Granite</span>
+                      <span className="text-[10px] text-bone/40">{p.origin.split(",")[1] || p.origin}</span>
+                    </div>
+                    <h3 className="font-display text-2xl text-bone group-hover:text-gold transition-colors duration-300">{p.name}</h3>
+                    <p className="text-sm text-bone/50 mt-2 leading-relaxed">{p.tagline}</p>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-white/5 flex flex-col gap-2">
+                  <div className="flex justify-between text-[11px] text-bone/40">
+                    <span>Thickness: {p.thickness.slice(0, 2).join(" / ")}</span>
+                    <span>Finishes: {p.finishes.slice(0, 2).join(", ")}</span>
+                  </div>
+                  <div className="flex items-center justify-between text-[10px] font-semibold uppercase tracking-wider text-gold mt-1">
+                    <span>View Specifications</span>
+                    <span className="flex items-center gap-1 group-hover:translate-x-1 transition-transform duration-300">
+                      Inquire Now <ArrowRight className="size-3" />
+                    </span>
+                  </div>
                 </div>
               </Link>
             </Reveal>
@@ -277,14 +303,36 @@ function Products() {
 }
 
 const WHY = [
-  { icon: ShieldCheck, t: "Quality Assurance", d: "Every shipment undergoes strict multi-stage inspection before container loading." },
-  { icon: Globe2, t: "Global Export Experience", d: "Professional handling of international orders to 10+ countries across Europe and the Middle East." },
-  { icon: Award, t: "Competitive Pricing", d: "Direct procurement from trusted Indian quarries removes intermediaries and protects your margin." },
-  { icon: FileCheck, t: "Export Documentation", d: "Complete paperwork — invoices, packing lists, certificates of origin, fumigation, MSDS." },
-  { icon: Ship, t: "Reliable Logistics", d: "End-to-end coordination of container loading, freight booking, and port operations." },
-  { icon: Headset, t: "Dedicated Support", d: "A single export coordinator owns your account from inquiry through final delivery." },
-  { icon: Boxes, t: "Custom Orders", d: "Tailored cut-to-size, finishes, packaging, and bespoke project specifications." },
-  { icon: Handshake, t: "Long-Term Partnerships", d: "Built for repeat container orders, framework supply contracts, and trusted relationships." },
+  {
+    icon: Award,
+    t: "Direct Quarry Sourcing",
+    d: "Direct partnerships with premier quarries in Karnataka, Andhra Pradesh, Tamil Nadu, and Rajasthan. We source select block-level materials, ensuring control over color consistency and competitive direct pricing.",
+  },
+  {
+    icon: ShieldCheck,
+    t: "3-Stage Quality Inspections",
+    d: "Rigorous inspections at three key stages: block selection, slab sizing and polishing uniformity, and a final pre-loading check. Every slab is verified for hairline cracks, thickness tolerance, and gloss levels.",
+  },
+  {
+    icon: Boxes,
+    t: "Seaworthy ISPM-15 Packaging",
+    d: "Heavy-duty wooden A-frame crates, heat-treated and stamped per international ISPM-15 regulations. Reinforced with steel straps, corner guards, and high-density rubber pads to eliminate transit movement.",
+  },
+  {
+    icon: FileText,
+    t: "Complete Export Documentation",
+    d: "Zero customs clearance delays. We prepare all international trade paperwork, including custom invoices, packing lists, Certificates of Origin, fumigation reports, and cargo insurance documentation.",
+  },
+  {
+    icon: ClipboardCheck,
+    t: "Supervised Container Loading",
+    d: "Every container is loaded under our direct supervision at port terminal gates. We verify container floor integrity, weight distribution, lashing security, and provide real-time photographic loading reports.",
+  },
+  {
+    icon: Headset,
+    t: "Dedicated Account Support",
+    d: "No call centers or generic broker emails. A dedicated trade coordinator manages your account, providing weekly production schedules, ocean freight bookings, and real-time transit tracking.",
+  },
 ];
 
 function WhyUs() {
@@ -301,15 +349,17 @@ function WhyUs() {
           </h2>
         </Reveal>
 
-        <div className="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {WHY.map((w, i) => (
             <Reveal key={w.t} delay={i * 0.04}>
-              <div className="bg-white border border-[#E5E2DD] hover:border-gold/40 p-8 lg:p-10 h-full transition-all duration-500 hover:-translate-y-1 hover:shadow-lg">
-                <div className="inline-flex size-12 items-center justify-center rounded-full bg-[#F7F5F2] text-gold mb-8 transition-transform duration-500 hover:rotate-6">
-                  <w.icon className="size-5" strokeWidth={1.4} />
+              <div className="bg-white border border-[#E5E2DD] hover:border-gold/40 p-8 lg:p-10 h-full transition-all duration-500 hover:-translate-y-1 hover:shadow-lg flex flex-col justify-between">
+                <div>
+                  <div className="inline-flex size-12 items-center justify-center rounded-full bg-[#F7F5F2] text-gold mb-8 transition-transform duration-500 hover:rotate-6">
+                    <w.icon className="size-5" strokeWidth={1.4} />
+                  </div>
+                  <h3 className="font-display text-xl text-onyx">{w.t}</h3>
+                  <p className="mt-3 text-sm text-onyx/60 leading-relaxed">{w.d}</p>
                 </div>
-                <h3 className="font-display text-xl text-onyx">{w.t}</h3>
-                <p className="mt-3 text-sm text-onyx/60 leading-relaxed">{w.d}</p>
               </div>
             </Reveal>
           ))}
@@ -320,15 +370,15 @@ function WhyUs() {
 }
 
 const STEPS = [
-  { n: "01", t: "Material Selection", d: "Inquiry intake. We match your specifications to the right Indian quarry and variety." },
-  { n: "02", t: "Procurement", d: "Direct purchase from our trusted quarry and factory partners — no intermediaries." },
-  { n: "03", t: "Processing", d: "Cutting, polishing, and finishing in our partner factories to your specifications." },
-  { n: "04", t: "Quality Inspection", d: "Surface, dimensions, finish, and tolerance verification by our QC team." },
-  { n: "05", t: "Packaging", d: "Export-grade wooden crates with fumigation, edge protection, and lashing." },
-  { n: "06", t: "Container Loading", d: "Loading supervision at Chennai and Krishnapatnam ports with photo documentation." },
-  { n: "07", t: "Export Documentation", d: "Bill of lading, certificate of origin, fumigation, MSDS, commercial invoices." },
-  { n: "08", t: "International Shipping", d: "Booking, tracking, and coordination with leading global freight forwarders." },
-  { n: "09", t: "Delivery", d: "Customs clearance support and final handover at your destination port." },
+  { n: "01", icon: Search, t: "Material Selection", d: "Inquiry intake. We match your specifications to the right Indian quarry and variety." },
+  { n: "02", icon: Handshake, t: "Procurement", d: "Direct purchase from our trusted quarry and factory partners — no intermediaries." },
+  { n: "03", icon: Hammer, t: "Processing", d: "Cutting, polishing, and finishing in our partner factories to your specifications." },
+  { n: "04", icon: ShieldCheck, t: "Quality Inspection", d: "Surface, dimensions, finish, and tolerance verification by our QC team." },
+  { n: "05", icon: Boxes, t: "Packaging", d: "Export-grade wooden crates with fumigation, edge protection, and lashing." },
+  { n: "06", icon: ClipboardCheck, t: "Container Loading", d: "Loading supervision at Chennai and Krishnapatnam ports with photo documentation." },
+  { n: "07", icon: FileText, t: "Export Documentation", d: "Bill of lading, certificate of origin, fumigation, MSDS, commercial invoices." },
+  { n: "08", icon: Ship, t: "International Shipping", d: "Booking, tracking, and coordination with leading global freight forwarders." },
+  { n: "09", icon: MapPin, t: "Delivery", d: "Customs clearance support and final handover at your destination port." },
 ];
 
 function Process() {
@@ -352,12 +402,17 @@ function Process() {
         <div className="mt-20 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {STEPS.map((s, i) => (
             <Reveal key={s.n} delay={i * 0.04}>
-              <div className="group relative border border-white/5 bg-[#1A1A1A]/35 backdrop-blur-sm p-8 hover:border-gold/40 hover:bg-[#1A1A1A]/60 transition-all duration-500 h-full shadow-lg">
-                <div className="font-display text-5xl text-gold/20 group-hover:text-gold transition-all duration-500">
-                  {s.n}
+              <div className="group relative border border-white/5 bg-[#1A1A1A]/35 backdrop-blur-sm p-8 hover:border-gold/40 hover:bg-[#1A1A1A]/60 transition-all duration-500 h-full shadow-lg flex flex-col justify-between">
+                <div>
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="font-display text-5xl text-gold/20 group-hover:text-gold transition-all duration-500">
+                      {s.n}
+                    </div>
+                    <s.icon className="size-6 text-gold/40 group-hover:text-gold group-hover:scale-110 transition-all duration-500" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="font-display text-2xl text-bone group-hover:text-gold transition-colors duration-300">{s.t}</h3>
+                  <p className="mt-3 text-sm text-bone/60 leading-relaxed">{s.d}</p>
                 </div>
-                <h3 className="font-display text-2xl mt-4 text-bone group-hover:text-gold transition-colors duration-300">{s.t}</h3>
-                <p className="mt-3 text-sm text-bone/60 leading-relaxed">{s.d}</p>
               </div>
             </Reveal>
           ))}
@@ -367,47 +422,190 @@ function Process() {
   );
 }
 
-const COUNTRIES = [
-  "Germany","Spain","Italy","France","Netherlands","Belgium",
-  "Cyprus","United Kingdom","Greece","Poland","UAE","Saudi Arabia",
+const PORTS = [
+  { name: "UAE", port: "Port of Jebel Ali (Dubai)", x: 580, y: 260, days: 12, region: "Middle East", transit: "Direct Ocean Freight" },
+  { name: "Cyprus", port: "Port of Limassol", x: 460, y: 220, days: 22, region: "Eastern Mediterranean", transit: "Feeder Connection" },
+  { name: "Italy", port: "Port of Genoa", x: 390, y: 180, days: 20, region: "Mediterranean", transit: "Direct Ocean Freight" },
+  { name: "Spain", port: "Port of Valencia", x: 330, y: 195, days: 24, region: "Western Mediterranean", transit: "Direct Ocean Freight" },
+  { name: "France", port: "Port of Marseille", x: 370, y: 175, days: 22, region: "Western Mediterranean", transit: "Transshipment" },
+  { name: "Belgium", port: "Port of Antwerp", x: 375, y: 140, days: 30, region: "North Europe", transit: "Direct Ocean Freight" },
+  { name: "Netherlands", port: "Port of Rotterdam", x: 385, y: 135, days: 29, region: "North Europe", transit: "Direct Ocean Freight" },
+  { name: "Germany", port: "Port of Hamburg", x: 405, y: 130, days: 28, region: "North Europe", transit: "Direct Ocean Freight" },
 ];
 
 function Markets() {
+  const [hoveredPort, setHoveredPort] = useState<typeof PORTS[0] | null>(null);
+
   return (
-    <section className="py-28 lg:py-40 bg-bone">
-      <div className="container-wide grid gap-16 lg:grid-cols-12 items-center">
-        <Reveal className="lg:col-span-5">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="hairline" />
-            <span className="eyebrow">Countries We Serve</span>
-          </div>
-          <h2 className="font-display text-4xl lg:text-6xl text-onyx">
-            Trusted by importers across Europe & the Middle East.
-          </h2>
-          <p className="mt-6 text-onyx/65 leading-relaxed max-w-md">
-            Our containers ship from Chennai, Krishnapatnam, and Tuticorin to leading
-            European ports — Hamburg, Antwerp, Valencia, Genoa, Piraeus, and Felixstowe.
-          </p>
-          <Link to="/contact" className="btn-ghost-dark rounded-full mt-10 inline-flex">
-            Discuss your market
-          </Link>
-        </Reveal>
-        <Reveal delay={0.15} className="lg:col-span-7">
-          <div className="relative aspect-[5/4] bg-onyx text-bone overflow-hidden border border-white/10 shadow-2xl">
-            <img src={shippingImg} alt="Container port at night" className="absolute inset-0 h-full w-full object-cover opacity-50" />
-            <div className="absolute inset-0 bg-gradient-to-tr from-onyx via-onyx/60 to-transparent" />
-            <div className="absolute inset-0 p-10 flex flex-col justify-end">
-              <div className="grid grid-cols-2 gap-x-6 gap-y-4">
-                {COUNTRIES.map((c) => (
-                  <div key={c} className="flex items-center gap-3 text-sm">
-                    <span className="size-1.5 rounded-full bg-gold" />
-                    {c}
+    <section className="py-28 lg:py-40 bg-onyx text-bone relative overflow-hidden border-t border-white/5">
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute inset-0 bg-[radial-gradient(#C9A66B_1px,transparent_1px)] [background-size:24px_24px]" />
+      </div>
+
+      <div className="container-wide relative z-10">
+        <div className="grid gap-16 lg:grid-cols-12 items-center">
+          <Reveal className="lg:col-span-4">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="hairline" />
+              <span className="eyebrow">Export Markets</span>
+            </div>
+            <h2 className="font-display text-4xl lg:text-6xl mb-6">
+              Global logistics, predictable transit times.
+            </h2>
+            <p className="text-bone/70 leading-relaxed">
+              We ship container loads from Chennai, Krishnapatnam, and Tuticorin ports directly to key global trading hubs. Hover over any destination port to check standard B2B sea transit timelines.
+            </p>
+
+            <div className="mt-8 p-6 bg-[#1A1A1A] border border-white/5 rounded-2xl min-h-[160px] flex flex-col justify-center">
+              {hoveredPort ? (
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-gold font-semibold">{hoveredPort.region}</span>
+                    <span className="text-[10px] text-bone/40 flex items-center gap-1">
+                      <Clock className="size-3" /> {hoveredPort.days} Days Transit
+                    </span>
                   </div>
-                ))}
+                  <h4 className="font-display text-2xl text-bone mb-1">{hoveredPort.name}</h4>
+                  <p className="text-sm text-gold/80 font-medium mb-2">{hoveredPort.port}</p>
+                  <p className="text-xs text-bone/50">{hoveredPort.transit} route from Indian East Coast ports.</p>
+                </div>
+              ) : (
+                <div className="text-center text-bone/40 text-sm py-4">
+                  <Globe2 className="size-8 text-gold/30 mx-auto mb-3 animate-pulse" strokeWidth={1} />
+                  Hover over the shipping destination ports on the map to view transit details.
+                </div>
+              )}
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-2">
+              {PORTS.map((p) => (
+                <button
+                  key={p.name}
+                  onMouseEnter={() => setHoveredPort(p)}
+                  onMouseLeave={() => setHoveredPort(null)}
+                  className={`text-[10px] uppercase tracking-[0.2em] px-3.5 py-2 rounded-full border transition-all duration-300 ${
+                    hoveredPort?.name === p.name
+                      ? "bg-gold border-gold text-onyx font-semibold"
+                      : "border-white/10 hover:border-gold/50 text-bone/70"
+                  }`}
+                >
+                  {p.name}
+                </button>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.15} className="lg:col-span-8">
+            <div className="relative aspect-[16/9] bg-[#0A0A0A] border border-white/5 rounded-3xl overflow-hidden shadow-2xl p-4">
+              <svg viewBox="250 80 550 280" className="w-full h-full select-none">
+                <style>{`
+                  @keyframes pulseGlow {
+                    0% { r: 4px; opacity: 0.8; }
+                    50% { r: 12px; opacity: 0.2; }
+                    100% { r: 4px; opacity: 0.8; }
+                  }
+                  .pulse-ring {
+                    transform-origin: center;
+                    animation: pulseGlow 2.5s infinite ease-in-out;
+                  }
+                `}</style>
+
+                {/* Grid Pattern in SVG background */}
+                <defs>
+                  <pattern id="map-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <circle cx="2" cy="2" r="0.75" fill="rgba(255,255,255,0.06)" />
+                  </pattern>
+                </defs>
+                <rect width="1000" height="500" fill="url(#map-grid)" />
+
+                {/* Ocean Shipping Lanes */}
+                {PORTS.map((p) => {
+                  // Quad curves from India (700, 310) to ports
+                  const dx = 700 - p.x;
+                  const dy = 310 - p.y;
+                  const ctrlX = 700 - dx * 0.5 - dy * 0.1;
+                  const ctrlY = 310 - dy * 0.5 - dx * 0.05;
+                  const isHovered = hoveredPort?.name === p.name;
+                  return (
+                    <g key={p.name}>
+                      <path
+                        d={`M 700 310 Q ${ctrlX} ${ctrlY} ${p.x} ${p.y}`}
+                        fill="none"
+                        stroke={isHovered ? "#C9A66B" : "rgba(201, 166, 107, 0.15)"}
+                        strokeWidth={isHovered ? 2 : 1}
+                        strokeDasharray={isHovered ? "5, 3" : "4, 6"}
+                        className="transition-all duration-350"
+                      />
+                      {/* Interactive hover trigger area */}
+                      <path
+                        d={`M 700 310 Q ${ctrlX} ${ctrlY} ${p.x} ${p.y}`}
+                        fill="none"
+                        stroke="transparent"
+                        strokeWidth={12}
+                        className="cursor-pointer"
+                        onMouseEnter={() => setHoveredPort(p)}
+                        onMouseLeave={() => setHoveredPort(null)}
+                      />
+                    </g>
+                  );
+                })}
+
+                {/* India Port (Origin Node) */}
+                <g transform="translate(700, 310)">
+                  <circle cx="0" cy="0" r="10" fill="rgba(201,166,107,0.15)" />
+                  <circle cx="0" cy="0" r="4" fill="#C9A66B" />
+                  <text x="10" y="4" fill="#C9A66B" className="text-[9px] uppercase tracking-[0.2em] font-bold">Origin (IN)</text>
+                </g>
+
+                {/* Destination Port Nodes */}
+                {PORTS.map((p) => {
+                  const isHovered = hoveredPort?.name === p.name;
+                  return (
+                    <g
+                      key={p.name}
+                      transform={`translate(${p.x}, ${p.y})`}
+                      className="cursor-pointer"
+                      onMouseEnter={() => setHoveredPort(p)}
+                      onMouseLeave={() => setHoveredPort(null)}
+                    >
+                      {/* Pulse Ring */}
+                      <circle
+                        cx="0"
+                        cy="0"
+                        r="8"
+                        className="pulse-ring"
+                        fill={isHovered ? "#C9A66B" : "rgba(201,166,107,0.4)"}
+                      />
+                      {/* Core Dot */}
+                      <circle
+                        cx="0"
+                        cy="0"
+                        r={isHovered ? 4.5 : 3.5}
+                        fill={isHovered ? "#FFFFFF" : "#C9A66B"}
+                        className="transition-all duration-300"
+                      />
+                      {/* Port Label */}
+                      <text
+                        x={p.name === "Cyprus" ? -45 : 8}
+                        y={p.name === "UAE" ? -8 : 4}
+                        fill={isHovered ? "#FFFFFF" : "rgba(247, 245, 242, 0.45)"}
+                        className={`text-[8px] font-semibold tracking-wider transition-colors duration-300 ${isHovered ? "font-bold text-[9px]" : ""}`}
+                      >
+                        {p.name}
+                      </text>
+                    </g>
+                  );
+                })}
+              </svg>
+
+              {/* Ocean Overlay Details */}
+              <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md border border-white/5 rounded px-3.5 py-2 text-[10px] text-bone/50 tracking-wider flex items-center gap-2">
+                <span className="size-2 rounded-full bg-gold inline-block animate-pulse" />
+                Indian Port Terminals Direct Connection
               </div>
             </div>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
       </div>
     </section>
   );

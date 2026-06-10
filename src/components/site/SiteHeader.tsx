@@ -30,7 +30,7 @@ export function SiteHeader() {
           : "top-0 bg-transparent"
       }`}
     >
-      <div className={`container-wide flex items-center justify-between transition-all duration-500 ${scrolled ? "h-16 px-6 lg:px-8" : "h-24"}`}>
+      <div className={`container-wide flex items-center justify-between transition-all duration-500 ${scrolled ? "h-16 px-6 lg:px-8" : "h-20"}`}>
         <Link to="/" className="group flex items-center gap-3">
           <span className="flex h-9 w-9 items-center justify-center border border-gold text-gold font-display text-lg tracking-widest transition-transform duration-500 group-hover:rotate-180">
             G

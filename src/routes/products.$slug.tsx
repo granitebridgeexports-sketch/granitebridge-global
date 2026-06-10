@@ -53,7 +53,14 @@ function ProductDetail() {
             <p className="mt-6 text-onyx/70 leading-relaxed">{p.description}</p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Link to="/contact" className="btn-gold rounded-full">Request Quote</Link>
-              <Link to="/contact" className="btn-ghost-dark rounded-full">Request Sample</Link>
+              <a
+                href={`https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%20am%20interested%20in%20requesting%20a%20commercial%20quote%20for%20${encodeURIComponent(p.name)}%20granite.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost-dark rounded-full flex items-center gap-2 border border-onyx/20 hover:border-gold hover:text-gold transition-all duration-300 !py-3 !px-6 text-xs uppercase tracking-widest font-semibold"
+              >
+                WhatsApp Us
+              </a>
             </div>
           </Reveal>
         </div>

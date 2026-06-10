@@ -13,6 +13,7 @@ const MARKETS = [
   { c: "United Kingdom", slug: "united-kingdom", port: "Felixstowe · Southampton", note: "Premium kitchens, restoration, and commercial cladding." },
   { c: "Greece", slug: "greece", port: "Piraeus", note: "Resort, marina, and residential projects across the Aegean." },
   { c: "Poland", slug: "poland", port: "Gdańsk", note: "Growing residential and infrastructure demand." },
+  { c: "UAE", slug: "uae", port: "Jebel Ali (Dubai) · Khalifa Port", note: "Middle East hub for commercial skyscrapers, hospitality construction, and luxury villa builds." },
 ];
 
 export const Route = createFileRoute("/markets")({
@@ -21,7 +22,7 @@ export const Route = createFileRoute("/markets")({
       { title: "Global Markets — Granite Export to Europe & Middle East | GraniteBridge" },
       { name: "description", content: "GraniteBridge exports premium Indian granite to Germany, Spain, Italy, France, Netherlands, Belgium, Cyprus, UK, Greece, Poland, and the Middle East." },
       { property: "og:title", content: "Markets We Serve | GraniteBridge" },
-      { property: "og:description", content: "Ten core markets across Europe and the Middle East." },
+      { property: "og:description", content: "Leading international markets across Europe and the Middle East." },
       { property: "og:url", content: "/markets" },
     ],
     links: [{ rel: "canonical", href: "/markets" }],
@@ -38,7 +39,7 @@ function MarketsPage() {
         <div className="container-wide relative">
           <div className="flex items-center gap-3 mb-6"><span className="hairline" /><span className="eyebrow">Markets We Serve</span></div>
           <h1 className="font-display text-5xl lg:text-7xl max-w-4xl leading-[1]">
-            Containers shipped to <span className="italic text-gold font-light">ten core markets.</span>
+            Containers shipped to <span className="italic text-gold font-light">leading international markets.</span>
           </h1>
         </div>
       </section>

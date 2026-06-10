@@ -10,6 +10,9 @@ export default defineConfig({
     server: { entry: "server" },
   },
   vite: {
+    build: {
+      sourcemap: false,
+    },
     plugins: [
       tsconfigPaths(),
       tailwindcss(),
