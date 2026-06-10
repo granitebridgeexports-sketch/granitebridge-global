@@ -93,41 +93,8 @@ function HomePage() {
 }
 
 function Hero() {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const { scrollYProgress } = useScroll({ target: ref });
-  const y = useTransform(scrollYProgress, [0, 1], [0, -60]);
-
   return (
-    <section
-      ref={ref}
-      className="relative min-h-[90svh] lg:h-screen lg:min-h-[700px] w-full overflow-hidden flex items-center bg-[#0B0B0B] pt-24 lg:pt-0 pb-16 lg:pb-0"
-    >
-      {/* Background: Single showroom image with custom luxury gradient overlay */}
-      <motion.div style={{ y }} className="absolute inset-0 pointer-events-none z-0">
-        <motion.img
-          src="/hero-showroom.jpg"
-          alt="Premium luxury granite showroom with polished Indian stone slabs"
-          className="w-full h-full object-cover object-right lg:object-[80%_center]"
-          style={{ transformOrigin: "center" }}
-        />
-        {/* Desktop left-to-right gradient overlay for text readability */}
-        <div
-          className="absolute inset-0 hidden lg:block"
-          style={{
-            background:
-              "linear-gradient(90deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 100%)",
-          }}
-        />
-        {/* Mobile/Tablet vertical gradient overlay */}
-        <div
-          className="absolute inset-0 lg:hidden"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(11,11,11,0.85) 0%, rgba(11,11,11,0.6) 50%, rgba(11,11,11,0.85) 100%)",
-          }}
-        />
-      </motion.div>
-
+    <section className="relative min-h-[90svh] lg:h-screen lg:min-h-[700px] w-full overflow-hidden flex items-center bg-[#0B0B0B] pt-24 lg:pt-0 pb-16 lg:pb-0">
       {/* Content: Two-column layout with constrained width & 100px padding on desktop */}
       <div className="mx-auto w-full max-w-[1400px] px-6 lg:px-[100px] relative z-10">
         <div className="grid lg:grid-cols-[45%_55%] gap-12 lg:gap-16 items-center w-full">
@@ -199,8 +166,14 @@ function Hero() {
             </div>
           </div>
 
-          {/* Right Side: Empty to expose the granite showroom background */}
-          <div className="hidden lg:block h-full min-h-[400px] pointer-events-none" />
+          {/* Right Side: Image container (55%) */}
+          <div className="relative w-full h-[350px] sm:h-[450px] lg:h-[600px] overflow-hidden rounded-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-10">
+            <img
+              src="/hero-showroom.jpg"
+              alt="Premium luxury granite showroom with polished Indian stone slabs"
+              className="w-full h-full object-cover object-center"
+            />
+          </div>
         </div>
       </div>
     </section>
