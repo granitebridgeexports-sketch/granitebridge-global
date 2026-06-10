@@ -124,32 +124,33 @@ function Hero() {
       <div className="mx-auto w-[92%] md:w-[90%] lg:w-full lg:max-w-[1400px] px-0 lg:px-[100px] relative z-10">
         <div className="max-w-[650px] flex flex-col items-center lg:items-start text-center lg:text-left">
           {/* Tagline */}
-          <div className="flex items-center justify-center lg:justify-start gap-3 w-full">
+          <div className="flex items-center justify-center gap-3 w-full">
             <span className="h-px w-6 bg-[#D4AF6A] shrink-0" />
-            <span className="text-[12px] font-semibold tracking-[3px] lg:tracking-[4px] text-[#D4AF6A] uppercase text-center lg:text-left leading-[1.6]">
-              TRUSTED INDIAN GRANITE EXPORT PARTNER
+            <span className="text-[12px] font-semibold tracking-[3px] lg:tracking-[4px] text-[#D4AF6A] uppercase text-center leading-[1.6]">
+              Bridging India's Finest Granite with Global Markets
             </span>
             <span className="h-px w-6 bg-[#D4AF6A] shrink-0" />
           </div>
 
           {/* Heading */}
           <h1
-            className="font-display text-white text-[2.4rem] md:text-[3rem] lg:text-[clamp(3rem,4vw,4.5rem)] font-medium leading-[1.1] tracking-tight mt-5"
+            className="font-display text-white text-[2rem] md:text-[2.8rem] lg:text-[clamp(2.4rem,3.8vw,4rem)] font-medium leading-[1.2] tracking-tight mt-5"
             style={{
               fontFamily: "Playfair Display, Cormorant Garamond, serif",
               textShadow: "0 2px 20px rgba(0,0,0,0.8)",
             }}
           >
-            Premium Indian Granite
+            “A company that connects
             <br className="hidden md:inline" />
-            for Global Markets
+            the world’s buyers with
+            <br className="hidden md:inline" />
+            high-quality Indian granite.”
           </h1>
 
           {/* Description */}
           <p className="text-[16px] leading-[1.8] text-white/92 mt-6 max-w-full">
-            A company that connects the world's buyers with high-quality Indian granite. We source,
-            inspect and export premium granite directly from trusted Indian quarries to importers,
-            distributors and construction projects worldwide.
+            We source, inspect and export premium granite directly from trusted Indian quarries to
+            importers, distributors and construction projects worldwide.
           </p>
 
           {/* Buttons */}
@@ -172,20 +173,19 @@ function Hero() {
 
           {/* Trust Badges */}
           <div className="w-full pt-8 border-t border-white/10 mt-8">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-4 justify-items-center lg:justify-items-start">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 justify-items-center lg:justify-items-start w-full">
               {[
-                "Direct Quarry Sourcing",
-                "Quality Inspection",
-                "Export Documentation",
-                "Worldwide Shipping",
+                { label: "Direct Quarry Sourcing", icon: Search },
+                { label: "Quality Inspection", icon: ClipboardCheck },
+                { label: "Export Documentation", icon: FileCheck },
+                { label: "Worldwide Shipping", icon: Ship },
               ].map((badge, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-center gap-2 whitespace-nowrap w-[170px] lg:w-auto justify-start"
-                >
-                  <span className="text-[#D4AF6A] font-bold text-sm">✓</span>
-                  <span className="text-white/80 text-[11px] md:text-xs font-semibold uppercase tracking-wider">
-                    {badge}
+                <div key={idx} className="flex flex-col items-center lg:items-start group/badge">
+                  <div className="flex size-12 lg:size-14 items-center justify-center rounded-full border border-[#D4AF6A]/60 text-[#D4AF6A] bg-transparent transition-all duration-300 group-hover/badge:bg-[#D4AF6A] group-hover/badge:text-[#111111] group-hover/badge:border-[#D4AF6A] group-hover/badge:scale-105 mb-3">
+                    <badge.icon className="size-5 lg:size-6" strokeWidth={1.3} />
+                  </div>
+                  <span className="text-[10px] lg:text-[11px] font-semibold uppercase tracking-[0.15em] text-white/70 group-hover/badge:text-white transition-colors duration-300 text-center lg:text-left">
+                    {badge.label}
                   </span>
                 </div>
               ))}
