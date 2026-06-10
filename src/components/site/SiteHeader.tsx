@@ -36,10 +36,10 @@ export function SiteHeader() {
             G
           </span>
           <span className="flex flex-col leading-tight">
-            <span className="font-display text-lg text-bone tracking-wide">
+            <span className={`font-display text-lg tracking-wide transition-colors duration-500 ${scrolled ? "text-bone" : "text-onyx"}`}>
               GraniteBridge
             </span>
-            <span className="text-[9px] uppercase tracking-[0.32em] text-gold/80">
+            <span className={`text-[9px] uppercase tracking-[0.32em] transition-colors duration-500 ${scrolled ? "text-gold/80" : "text-gold"}`}>
               Exports Pvt Ltd
             </span>
           </span>
@@ -50,7 +50,7 @@ export function SiteHeader() {
             <Link
               key={n.to}
               to={n.to}
-              className="text-[11px] uppercase tracking-[0.22em] text-bone/70 hover:text-gold transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-px after:bg-gold after:transition-all after:duration-300 hover:after:w-full"
+              className={`text-[11px] uppercase tracking-[0.22em] transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-px after:bg-gold after:transition-all after:duration-300 hover:after:w-full ${scrolled ? "text-bone/70 hover:text-gold" : "text-onyx/70 hover:text-gold"}`}
               activeProps={{ className: "text-gold after:w-full!" }}
               activeOptions={{ exact: n.to === "/" }}
             >
@@ -67,7 +67,7 @@ export function SiteHeader() {
 
         <button
           onClick={() => setOpen((o) => !o)}
-          className="lg:hidden text-bone p-2 hover:text-gold transition-colors"
+          className={`lg:hidden p-2 hover:text-gold transition-colors ${scrolled ? "text-bone" : "text-onyx"}`}
           aria-label="Toggle menu"
         >
           {open ? <X className="size-6" /> : <Menu className="size-6" />}
