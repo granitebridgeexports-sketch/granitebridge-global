@@ -24,10 +24,10 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`fixed inset-x-0 z-50 transition-all duration-500 ${
+      className={`fixed inset-x-0 z-50 transition-all duration-500 bg-[rgba(15,15,15,0.85)] backdrop-blur-[12px] ${
         scrolled
-          ? "top-4 mx-auto max-w-[95%] xl:max-w-[1280px] rounded-full border border-white/10 bg-[#0F0F0F]/80 backdrop-blur-lg shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
-          : "top-0 bg-transparent"
+          ? "top-4 mx-auto max-w-[95%] xl:max-w-[1280px] rounded-full border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
+          : "top-0 border-b border-white/5"
       }`}
     >
       <div
@@ -38,14 +38,8 @@ export function SiteHeader() {
             G
           </span>
           <span className="flex flex-col leading-tight">
-            <span
-              className={`font-display text-lg tracking-wide transition-colors duration-500 ${scrolled ? "text-bone" : "text-onyx"}`}
-            >
-              GraniteBridge
-            </span>
-            <span
-              className={`text-[9px] uppercase tracking-[0.32em] transition-colors duration-500 ${scrolled ? "text-gold/80" : "text-gold"}`}
-            >
+            <span className="font-display text-lg tracking-wide text-bone">GraniteBridge</span>
+            <span className="text-[9px] uppercase tracking-[0.32em] text-gold">
               Exports Pvt Ltd
             </span>
           </span>
@@ -56,7 +50,7 @@ export function SiteHeader() {
             <Link
               key={n.to}
               to={n.to}
-              className={`text-[11px] uppercase tracking-[0.22em] transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-px after:bg-gold after:transition-all after:duration-300 hover:after:w-full ${scrolled ? "text-bone/70 hover:text-gold" : "text-onyx/70 hover:text-gold"}`}
+              className="text-[11px] uppercase tracking-[0.22em] transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-px after:bg-gold after:transition-all after:duration-300 hover:after:w-full text-bone/70 hover:text-gold"
               activeProps={{ className: "text-gold after:w-full!" }}
               activeOptions={{ exact: n.to === "/" }}
             >
@@ -73,7 +67,7 @@ export function SiteHeader() {
 
         <button
           onClick={() => setOpen((o) => !o)}
-          className={`lg:hidden p-2 hover:text-gold transition-colors ${scrolled ? "text-bone" : "text-onyx"}`}
+          className="lg:hidden p-2 hover:text-gold transition-colors text-bone"
           aria-label="Toggle menu"
         >
           {open ? <X className="size-6" /> : <Menu className="size-6" />}
