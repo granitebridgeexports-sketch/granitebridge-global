@@ -95,91 +95,84 @@ function HomePage() {
 function Hero() {
   return (
     <section className="relative min-h-screen w-full overflow-hidden flex items-center bg-[#050505] pt-[120px] pb-16 lg:pb-20">
-      {/* Content: Flex-col below 1024px, Grid on desktop */}
+      {/* Background Image Container */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <img
+          src="/hero-showroom.jpg"
+          alt="Premium luxury granite showroom with polished Indian stone slabs"
+          className="w-full h-full object-cover object-[center_35%] lg:object-[80%_35%]"
+        />
+        {/* Desktop left-to-right gradient overlay */}
+        <div
+          className="absolute inset-0 hidden lg:block"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.72) 35%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0.15) 100%)",
+          }}
+        />
+        {/* Mobile vertical gradient overlay */}
+        <div
+          className="absolute inset-0 lg:hidden"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.70) 100%)",
+          }}
+        />
+      </div>
+
+      {/* Content Container */}
       <div className="mx-auto w-[92%] md:w-[90%] lg:w-full lg:max-w-[1400px] px-0 lg:px-[100px] relative z-10">
-        <div className="flex flex-col lg:grid lg:grid-cols-[45%_55%] gap-12 lg:gap-[80px] items-center w-full">
-          {/* Left Column contents: Tagline, Heading, Description, Buttons */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left w-full order-1">
-            {/* Tagline */}
-            <div className="flex items-center justify-center lg:justify-start gap-3 w-full">
-              <span className="h-px w-6 bg-[#D4AF6A] shrink-0" />
-              <span className="text-[12px] font-semibold tracking-[3px] lg:tracking-[4px] text-[#D4AF6A] uppercase text-center lg:text-left leading-[1.6] max-w-[280px] sm:max-w-none">
-                TRUSTED INDIAN GRANITE EXPORT PARTNER
-              </span>
-              <span className="h-px w-6 bg-[#D4AF6A] shrink-0" />
-            </div>
+        <div className="max-w-[650px] flex flex-col items-center lg:items-start text-center lg:text-left">
+          {/* Tagline */}
+          <div className="flex items-center justify-center lg:justify-start gap-3 w-full">
+            <span className="h-px w-6 bg-[#D4AF6A] shrink-0" />
+            <span className="text-[12px] font-semibold tracking-[3px] lg:tracking-[4px] text-[#D4AF6A] uppercase text-center lg:text-left leading-[1.6]">
+              TRUSTED INDIAN GRANITE EXPORT PARTNER
+            </span>
+            <span className="h-px w-6 bg-[#D4AF6A] shrink-0" />
+          </div>
 
-            {/* Heading */}
-            <h1
-              className="font-display text-white text-[2.4rem] md:text-[3rem] lg:text-[clamp(3rem,4vw,4.5rem)] font-medium leading-[1.1] tracking-tight max-w-full lg:max-w-[600px] mt-5"
-              style={{ fontFamily: "Playfair Display, Cormorant Garamond, serif" }}
+          {/* Heading */}
+          <h1
+            className="font-display text-white text-[2.4rem] md:text-[3rem] lg:text-[clamp(3rem,4vw,4.5rem)] font-medium leading-[1.1] tracking-tight mt-5"
+            style={{
+              fontFamily: "Playfair Display, Cormorant Garamond, serif",
+              textShadow: "0 2px 20px rgba(0,0,0,0.8)",
+            }}
+          >
+            Premium Indian Granite
+            <br className="hidden md:inline" />
+            for Global Markets
+          </h1>
+
+          {/* Description */}
+          <p className="text-[16px] leading-[1.8] text-white/92 mt-6 max-w-full">
+            A company that connects the world's buyers with high-quality Indian granite. We source,
+            inspect and export premium granite directly from trusted Indian quarries to importers,
+            distributors and construction projects worldwide.
+          </p>
+
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 w-full max-w-[340px] lg:max-w-none mx-auto lg:mx-0 mt-8">
+            <Link
+              to="/contact"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#D4AF6A] text-[#111111] rounded-full font-semibold transition-all duration-300 hover:bg-[#E0BB76] hover:-translate-y-[2px] shadow-lg hover:shadow-xl active:translate-y-0 text-xs uppercase tracking-widest"
             >
-              A company that connects
-              <br className="hidden md:inline" />
-              the world's buyers with
-              <br className="hidden md:inline" />
-              high-quality Indian granite.
-            </h1>
-
-            {/* Description */}
-            <p className="text-[16px] leading-[1.8] text-white/85 max-w-full lg:max-w-[550px] mt-6">
-              We source, inspect, and export premium Indian granite directly from trusted quarries
-              to importers, distributors, and construction projects across Europe, Cyprus, UAE, and
-              global markets.
-            </p>
-
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 w-full max-w-[340px] lg:max-w-none mx-auto lg:mx-0 mt-8">
-              <Link
-                to="/contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#D4AF6A] text-[#111111] rounded-full font-semibold transition-all duration-300 hover:bg-[#E0BB76] hover:-translate-y-[2px] shadow-lg hover:shadow-xl active:translate-y-0 text-xs uppercase tracking-widest"
-              >
-                REQUEST QUOTE <ArrowRight className="size-4" />
-              </Link>
-              <a
-                href="https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%20am%20interested%20in%20requesting%20a%20commercial%20quote%20for%20Indian%20granite."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-transparent border border-[rgba(212,175,106,0.5)] text-white rounded-full font-semibold transition-all duration-300 hover:border-[#D4AF6A] hover:text-[#D4AF6A] hover:-translate-y-[2px] text-xs uppercase tracking-widest"
-              >
-                WHATSAPP US
-              </a>
-            </div>
-
-            {/* Trust Badges - Desktop Only */}
-            <div className="hidden lg:block w-full pt-8 border-t border-white/10 mt-8">
-              <div className="grid grid-cols-4 gap-x-6 gap-y-4">
-                {[
-                  "Direct Quarry Sourcing",
-                  "Quality Inspection",
-                  "Export Documentation",
-                  "Worldwide Shipping",
-                ].map((badge, idx) => (
-                  <div key={idx} className="flex items-center gap-2 whitespace-nowrap">
-                    <span className="text-[#D4AF6A] font-bold text-sm">✓</span>
-                    <span className="text-white/80 text-[11px] md:text-xs font-semibold uppercase tracking-wider">
-                      {badge}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
+              Request Quote <ArrowRight className="size-4" />
+            </Link>
+            <a
+              href="https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%20am%20interested%20in%20requesting%20a%20commercial%20quote%20for%20Indian%20granite."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-transparent border border-[rgba(212,175,106,0.5)] text-white rounded-full font-semibold transition-all duration-300 hover:border-[#D4AF6A] hover:text-[#D4AF6A] hover:-translate-y-[2px] text-xs uppercase tracking-widest"
+            >
+              WhatsApp Us
+            </a>
           </div>
 
-          {/* Right Column: Image container (55%) */}
-          <div className="w-full md:w-[90%] lg:w-full lg:max-w-[650px] mx-auto lg:mx-0 mt-10 lg:mt-0 transform translate-y-0 md:translate-y-[-20px] lg:translate-y-[-40px] transition-transform duration-300 order-2 lg:order-none">
-            <div className="relative w-full aspect-[4/3] lg:aspect-[1.1] max-h-[500px] overflow-hidden rounded-[20px] border border-[rgba(212,175,106,0.15)] shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
-              <img
-                src="/hero-showroom.jpg"
-                alt="Premium luxury granite showroom with polished Indian stone slabs"
-                className="w-full h-full object-cover object-center"
-              />
-            </div>
-          </div>
-
-          {/* Trust Badges - Mobile/Tablet Only */}
-          <div className="block lg:hidden w-full order-3 mt-10 border-t border-white/10 pt-8">
-            <div className="grid grid-cols-2 gap-x-6 gap-y-4 justify-items-center">
+          {/* Trust Badges */}
+          <div className="w-full pt-8 border-t border-white/10 mt-8">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-4 justify-items-center lg:justify-items-start">
               {[
                 "Direct Quarry Sourcing",
                 "Quality Inspection",
@@ -188,7 +181,7 @@ function Hero() {
               ].map((badge, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center gap-2 whitespace-nowrap w-[170px] justify-start"
+                  className="flex items-center gap-2 whitespace-nowrap w-[170px] lg:w-auto justify-start"
                 >
                   <span className="text-[#D4AF6A] font-bold text-sm">✓</span>
                   <span className="text-white/80 text-[11px] md:text-xs font-semibold uppercase tracking-wider">
