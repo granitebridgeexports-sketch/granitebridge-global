@@ -76,7 +76,7 @@ export function QuoteForm({ dark = false }: { dark?: boolean }) {
         />
       </div>
       <div className="md:col-span-2 flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-2">
-        <button type="submit" disabled={loading} className="btn-gold">
+        <button type="submit" disabled={loading} className="btn-gold rounded-full">
           {loading ? "Sending…" : "Get a Quotation in 24 Hours"}
         </button>
         <span className={`text-xs ${dark ? "text-bone/40" : "text-onyx/50"}`}>

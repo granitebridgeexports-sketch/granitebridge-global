@@ -24,15 +24,15 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+      className={`fixed inset-x-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-[#0f0f0f]/85 backdrop-blur-md border-b border-white/5"
-          : "bg-transparent"
+          ? "top-4 mx-auto max-w-[95%] xl:max-w-[1280px] rounded-full border border-white/10 bg-[#0F0F0F]/80 backdrop-blur-lg shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
+          : "top-0 bg-transparent"
       }`}
     >
-      <div className="container-wide flex h-20 items-center justify-between">
+      <div className={`container-wide flex items-center justify-between transition-all duration-500 ${scrolled ? "h-16 px-6 lg:px-8" : "h-24"}`}>
         <Link to="/" className="group flex items-center gap-3">
-          <span className="flex h-9 w-9 items-center justify-center border border-gold text-gold font-display text-lg tracking-widest">
+          <span className="flex h-9 w-9 items-center justify-center border border-gold text-gold font-display text-lg tracking-widest transition-transform duration-500 group-hover:rotate-180">
             G
           </span>
           <span className="flex flex-col leading-tight">
@@ -50,8 +50,8 @@ export function SiteHeader() {
             <Link
               key={n.to}
               to={n.to}
-              className="text-[11px] uppercase tracking-[0.22em] text-bone/70 hover:text-gold transition-colors duration-300"
-              activeProps={{ className: "text-gold" }}
+              className="text-[11px] uppercase tracking-[0.22em] text-bone/70 hover:text-gold transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-px after:bg-gold after:transition-all after:duration-300 hover:after:w-full"
+              activeProps={{ className: "text-gold after:w-full!" }}
               activeOptions={{ exact: n.to === "/" }}
             >
               {n.label}
@@ -60,14 +60,14 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden lg:block">
-          <Link to="/contact" className="btn-gold !py-3 !px-5 !text-[10px]">
+          <Link to="/contact" className="btn-gold !py-2.5 !px-5 !text-[10px] rounded-full">
             Request Quote
           </Link>
         </div>
 
         <button
           onClick={() => setOpen((o) => !o)}
-          className="lg:hidden text-bone p-2"
+          className="lg:hidden text-bone p-2 hover:text-gold transition-colors"
           aria-label="Toggle menu"
         >
           {open ? <X className="size-6" /> : <Menu className="size-6" />}
@@ -75,20 +75,20 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-white/5 bg-[#0f0f0f]/95 backdrop-blur-md">
-          <nav className="container-wide flex flex-col py-6 gap-1">
+        <div className="absolute top-[calc(100%+0.5rem)] inset-x-0 mx-auto w-[95%] rounded-3xl border border-white/10 bg-[#0F0F0F]/95 backdrop-blur-lg p-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)] lg:hidden">
+          <nav className="flex flex-col gap-1">
             {nav.map((n) => (
               <Link
                 key={n.to}
                 to={n.to}
                 onClick={() => setOpen(false)}
-                className="py-3 text-sm uppercase tracking-[0.22em] text-bone/80"
+                className="py-3 text-sm uppercase tracking-[0.22em] text-bone/80 hover:text-gold transition-colors"
                 activeProps={{ className: "text-gold" }}
               >
                 {n.label}
               </Link>
             ))}
-            <Link to="/contact" onClick={() => setOpen(false)} className="btn-gold mt-4">
+            <Link to="/contact" onClick={() => setOpen(false)} className="btn-gold mt-4 rounded-full text-center">
               Request Quote
             </Link>
           </nav>

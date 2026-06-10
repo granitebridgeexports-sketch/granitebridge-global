@@ -16,7 +16,7 @@ export function FloatingActions() {
       {show && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="size-11 rounded-full bg-onyx text-bone flex items-center justify-center shadow-lg hover:bg-charcoal transition"
+          className="size-11 rounded-full bg-onyx text-bone border border-gold/30 flex items-center justify-center shadow-lg hover:bg-gold hover:text-onyx transition-all duration-500 hover:-translate-y-1"
           aria-label="Back to top"
         >
           <ArrowUp className="size-4" />
@@ -24,7 +24,7 @@ export function FloatingActions() {
       )}
       <Link
         to="/contact"
-        className="hidden md:inline-flex btn-gold !py-3 !px-5 !text-[10px] shadow-xl"
+        className="hidden md:inline-flex btn-gold !py-3 !px-5 !text-[10px] shadow-xl rounded-full"
       >
         Request Quote
       </Link>
@@ -32,7 +32,7 @@ export function FloatingActions() {
         href="https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%27m%20interested%20in%20your%20granite%20products."
         target="_blank"
         rel="noopener"
-        className="size-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-2xl hover:scale-105 transition"
+        className="size-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-2xl hover:scale-110 hover:shadow-[0_10px_20px_rgba(37,211,102,0.3)] transition-all duration-500"
         aria-label="WhatsApp"
       >
         <svg

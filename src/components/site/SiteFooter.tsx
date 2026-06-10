@@ -3,7 +3,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-[#0a0a0a] text-bone/70">
+    <footer className="bg-[#0F0F0F] text-bone/70 border-t border-white/5">
       <div className="container-wide py-20">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
@@ -50,9 +50,9 @@ export function SiteFooter() {
             <div className="text-[10px] uppercase tracking-[0.3em] text-gold mb-5">Products</div>
             <ul className="space-y-3 text-sm">
               <li><Link to="/products" className="hover:text-gold transition">All Granite</Link></li>
-              <li><Link to="/products/black-granite" className="hover:text-gold transition">Black Granite</Link></li>
-              <li><Link to="/products/white-granite" className="hover:text-gold transition">White Granite</Link></li>
-              <li><Link to="/products/monument-granite" className="hover:text-gold transition">Monument Stone</Link></li>
+              <li><Link to="/products/$slug" params={{ slug: "black-granite" }} className="hover:text-gold transition">Black Granite</Link></li>
+              <li><Link to="/products/$slug" params={{ slug: "white-granite" }} className="hover:text-gold transition">White Granite</Link></li>
+              <li><Link to="/products/$slug" params={{ slug: "monument-granite" }} className="hover:text-gold transition">Monument Stone</Link></li>
             </ul>
           </div>
 
@@ -61,14 +61,14 @@ export function SiteFooter() {
             <p className="text-sm mb-4">
               Quarterly updates on new varieties, market intelligence, and export trends.
             </p>
-            <form className="flex border border-white/10" onSubmit={(e) => e.preventDefault()}>
+            <form className="flex border-b border-white/20 focus-within:border-gold transition-colors duration-300 pb-1" onSubmit={(e) => e.preventDefault()}>
               <input
                 type="email"
                 required
                 placeholder="your@company.com"
-                className="flex-1 bg-transparent px-4 py-3 text-sm placeholder:text-bone/40 focus:outline-none"
+                className="flex-1 bg-transparent px-0 py-3 text-sm placeholder:text-bone/30 text-bone focus:outline-none"
               />
-              <button className="bg-gold px-5 text-[10px] uppercase tracking-[0.22em] font-semibold text-onyx hover:bg-gold-soft transition">
+              <button className="px-4 text-[10px] uppercase tracking-[0.22em] font-semibold text-gold hover:text-white transition-colors duration-300">
                 Subscribe
               </button>
             </form>
