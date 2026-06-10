@@ -6,7 +6,6 @@ import {
   ShieldCheck,
   Ship,
   Award,
-  Globe2,
   Boxes,
   FileCheck,
   Headset,
@@ -96,90 +95,84 @@ function Hero() {
   const ref = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({ target: ref });
   const y = useTransform(scrollYProgress, [0, 1], [0, -60]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.06]);
 
   return (
-    <section ref={ref} className="relative min-h-[90svh] lg:min-h-screen w-full overflow-hidden pt-36 pb-24 lg:py-48 flex items-center bg-onyx">
-      {/* Background: blurred far layer + sharp slab layer (same image) */}
+    <section
+      ref={ref}
+      className="relative min-h-[90svh] lg:min-h-screen w-full overflow-hidden flex items-center justify-center bg-onyx"
+    >
+      {/* Background: Single optimized image with left-side gradient overlay */}
       <motion.div style={{ y }} className="absolute inset-0 pointer-events-none">
-        {/* Far background - subtle blur and darker for depth */}
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.img
-            src="/hero-showroom.jpg"
-            alt="Granite showroom background (blurred)"
-            className="w-full h-full object-cover object-[70%] sm:object-right lg:object-center"
-            style={{ transformOrigin: "center", scale }}
-            aria-hidden
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-          />
-          <div className="absolute inset-0 bg-black" style={{ opacity: 0.55 }} />
-          <div className="absolute inset-0 blur-[6px] -scale-y-0" />
-        </div>
-
-        {/* Foreground sharp slabs layer - kept crisp and centered */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <motion.img
-            src="/hero-showroom.jpg"
-            alt="Premium luxury showrooms with polished Indian granite slabs"
-            className="w-full h-full max-h-[110vh] object-cover object-right-top sm:object-right lg:object-center"
-            style={{ transformOrigin: "center", translateY: y }}
-          />
-        </div>
+        <motion.img
+          src="/hero-showroom.jpg"
+          alt="Premium luxury granite showroom with polished Indian stone slabs"
+          className="w-full h-full object-cover object-right-top sm:object-right lg:object-center"
+          style={{ transformOrigin: "center" }}
+        />
+        {/* Left-to-right gradient overlay for text readability */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.45) 35%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 100%)",
+          }}
+        />
       </motion.div>
 
-      <div className="container-wide relative z-20">
-        {/* Top Tagline Row (Centered above the heading block) */}
-        <div className="flex items-center justify-center gap-4 mb-12 lg:mb-16">
-          <span className="w-10 sm:w-16 h-px bg-gold" />
-          <span className="flex items-center gap-2 text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold font-semibold text-center leading-tight">
-            <Globe2 className="size-4 text-gold inline animate-pulse" /> Premium Indian Granite for Global Projects
-          </span>
-          <span className="w-10 sm:w-16 h-px bg-gold" />
-        </div>
+      {/* Content: Two-column layout with constrained width */}
+      <div className="container-wide relative z-20 w-full">
+        {/* Tagline */}
+        <div className="flex flex-col items-start lg:items-start gap-12 lg:gap-16 lg:max-w-[600px]">
+          {/* Premium tagline */}
+          <div className="flex items-center gap-3">
+            <span className="h-px w-6 bg-gold" />
+            <span className="text-[14px] uppercase tracking-[0.25em] text-gold font-semibold leading-tight">
+              Premium Indian Granite for Global Projects
+            </span>
+          </div>
 
-        <div className="grid gap-12 lg:grid-cols-12 items-center">
-          {/* Left Text Block */}
-          <div className="lg:col-span-8 flex flex-col items-start text-left">
-            <h1 className="font-display text-bone text-4xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight font-normal">
-              A company that connects
-              <span className="block">the world's buyers with</span>
-              <span className="block text-bone/90 font-medium">high-quality Indian granite.</span>
-            </h1>
+          {/* Main heading with luxury typography */}
+          <h1 className="font-display text-white text-[clamp(3rem,5vw,5rem)] leading-[1.05] tracking-tight font-medium max-w-[12ch]">
+            A company that connects the world's buyers with high-quality Indian granite.
+          </h1>
 
-            <div className="w-14 h-0.5 bg-gold my-8" />
+          {/* Description paragraph */}
+          <p className="text-[1.2rem] leading-[1.8] text-white/88 max-w-[650px]">
+            We source, inspect, and export premium Indian granite directly from trusted quarries to importers, distributors, and construction projects across Europe, Cyprus, UAE, and global markets.
+          </p>
 
-            <p className="text-base sm:text-lg text-bone/80 max-w-xl leading-relaxed">
-              We source, inspect, and export premium Indian granite directly from trusted quarries to importers, distributors, and construction projects across Europe, Cyprus, UAE, and global markets.
-            </p>
+          {/* Call-to-action buttons */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-[#D4AF6A] text-[#111111] rounded-full font-medium transition-all duration-300 hover:bg-[#E0BB76] hover:-translate-y-[2px] shadow-lg hover:shadow-xl active:shadow-md"
+            >
+              Request Quote <ArrowRight className="size-4" />
+            </Link>
+            <a
+              href="https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%20am%20interested%20in%20requesting%20a%20commercial%20quote%20for%20Indian%20granite."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-transparent border border-[rgba(212,175,106,0.5)] text-white rounded-full font-medium transition-all duration-300 hover:border-[#D4AF6A] hover:text-[#D4AF6A]"
+            >
+              WhatsApp Us
+            </a>
+          </div>
 
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link to="/contact" className="btn-gold rounded-full shadow-lg">
-                Request Quote <ArrowRight className="size-4" />
-              </Link>
-              <a
-                href="https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%20am%20interested%20in%20requesting%20a%20commercial%20quote%20for%20Indian%20granite."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-ghost-dark rounded-full flex items-center gap-2 border border-white/20 hover:border-gold hover:text-gold transition-all duration-300 text-bone"
-              >
-                WhatsApp Us
-              </a>
-            </div>
-
-            {/* Circular Trust Badges */}
-            <div className="mt-16 sm:mt-20 grid grid-cols-2 sm:grid-cols-4 gap-6 w-full max-w-2xl border-t border-white/10 pt-10">
+          {/* Trust badges in horizontal row */}
+          <div className="w-full pt-8 lg:pt-12 border-t border-white/10">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 lg:gap-8">
               {[
                 { label: "Direct Quarry Sourcing", icon: Search },
                 { label: "Quality Inspection", icon: ClipboardCheck },
                 { label: "Export Documentation", icon: FileCheck },
                 { label: "Worldwide Shipping", icon: Ship },
               ].map((badge, idx) => (
-                <div key={idx} className="flex flex-col items-start text-left group/badge">
-                  <div className="flex size-14 items-center justify-center rounded-full border border-gold/60 text-gold bg-onyx shadow-sm transition-all duration-300 group-hover/badge:bg-gold group-hover/badge:text-onyx group-hover/badge:border-gold group-hover/badge:scale-105 mb-3">
-                    <badge.icon className="size-6" strokeWidth={1.3} />
+                <div key={idx} className="flex flex-col items-start group/badge">
+                  <div className="flex size-12 lg:size-14 items-center justify-center rounded-full border border-[#D4AF6A]/60 text-[#D4AF6A] bg-transparent transition-all duration-300 group-hover/badge:bg-[#D4AF6A] group-hover/badge:text-[#111111] group-hover/badge:border-[#D4AF6A] group-hover/badge:scale-105 mb-3">
+                    <badge.icon className="size-5 lg:size-6" strokeWidth={1.3} />
                   </div>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-bone/60 group-hover/badge:text-bone transition-colors duration-300">
+                  <span className="text-[10px] lg:text-[11px] font-semibold uppercase tracking-[0.15em] text-white/70 group-hover/badge:text-white transition-colors duration-300">
                     {badge.label}
                   </span>
                 </div>
