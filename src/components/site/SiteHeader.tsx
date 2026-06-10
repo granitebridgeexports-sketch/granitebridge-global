@@ -23,23 +23,15 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header
-      className={`fixed inset-x-0 z-50 transition-all duration-500 bg-[rgba(15,15,15,0.85)] backdrop-blur-[12px] ${
-        scrolled
-          ? "top-4 mx-auto max-w-[95%] xl:max-w-[1280px] rounded-full border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
-          : "top-0 border-b border-white/5"
-      }`}
-    >
-      <div
-        className={`container-wide flex items-center justify-between transition-all duration-500 ${scrolled ? "h-16 px-6 lg:px-8" : "h-20"}`}
-      >
+    <header className="fixed inset-x-0 top-0 z-50 transition-all duration-300 bg-black/45 backdrop-blur-[12px] border-b border-white/5 h-[80px] flex items-center">
+      <div className="mx-auto w-full max-w-[1400px] px-6 lg:px-[100px] flex items-center justify-between">
         <Link to="/" className="group flex items-center gap-3">
-          <span className="flex h-9 w-9 items-center justify-center border border-gold text-gold font-display text-lg tracking-widest transition-transform duration-500 group-hover:rotate-180">
+          <span className="flex h-9 w-9 items-center justify-center border border-[#D4AF6A] text-[#D4AF6A] font-display text-lg tracking-widest transition-transform duration-500 group-hover:rotate-180">
             G
           </span>
           <span className="flex flex-col leading-tight">
-            <span className="font-display text-lg tracking-wide text-bone">GraniteBridge</span>
-            <span className="text-[9px] uppercase tracking-[0.32em] text-gold">
+            <span className="font-display text-lg tracking-wide text-white">GraniteBridge</span>
+            <span className="text-[9px] uppercase tracking-[0.32em] text-[#D4AF6A]">
               Exports Pvt Ltd
             </span>
           </span>
@@ -50,8 +42,8 @@ export function SiteHeader() {
             <Link
               key={n.to}
               to={n.to}
-              className="text-[11px] uppercase tracking-[0.22em] transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-px after:bg-gold after:transition-all after:duration-300 hover:after:w-full text-bone/70 hover:text-gold"
-              activeProps={{ className: "text-gold after:w-full!" }}
+              className="text-[11px] uppercase tracking-[0.22em] transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-px after:bg-[#D4AF6A] after:transition-all after:duration-300 hover:after:w-full text-white/70 hover:text-[#D4AF6A]"
+              activeProps={{ className: "text-[#D4AF6A] after:w-full!" }}
               activeOptions={{ exact: n.to === "/" }}
             >
               {n.label}
@@ -60,14 +52,17 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden lg:block">
-          <Link to="/contact" className="btn-gold !py-2.5 !px-5 !text-[10px] rounded-full">
+          <Link
+            to="/contact"
+            className="btn-gold !bg-[#D4AF6A] hover:!bg-[#E0BB76] !text-[#111111] !py-2.5 !px-5 !text-[10px] rounded-full"
+          >
             Request Quote
           </Link>
         </div>
 
         <button
           onClick={() => setOpen((o) => !o)}
-          className="lg:hidden p-2 hover:text-gold transition-colors text-bone"
+          className="lg:hidden p-2 hover:text-[#D4AF6A] transition-colors text-white"
           aria-label="Toggle menu"
         >
           {open ? <X className="size-6" /> : <Menu className="size-6" />}
@@ -82,8 +77,8 @@ export function SiteHeader() {
                 key={n.to}
                 to={n.to}
                 onClick={() => setOpen(false)}
-                className="py-3 text-sm uppercase tracking-[0.22em] text-bone/80 hover:text-gold transition-colors"
-                activeProps={{ className: "text-gold" }}
+                className="py-3 text-sm uppercase tracking-[0.22em] text-white/80 hover:text-[#D4AF6A] transition-colors"
+                activeProps={{ className: "text-[#D4AF6A]" }}
               >
                 {n.label}
               </Link>

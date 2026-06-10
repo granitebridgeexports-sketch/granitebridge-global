@@ -100,14 +100,14 @@ function Hero() {
   return (
     <section
       ref={ref}
-      className="relative min-h-[90svh] lg:min-h-screen w-full overflow-hidden flex items-center bg-[#0B0B0B] pt-32 pb-16 lg:pt-0 lg:pb-0"
+      className="relative min-h-[90svh] lg:h-screen lg:min-h-[700px] w-full overflow-hidden flex items-center bg-[#0B0B0B] pt-24 lg:pt-0 pb-16 lg:pb-0"
     >
-      {/* Background: Single optimized image with custom gradient overlays */}
+      {/* Background: Single showroom image with custom luxury gradient overlay */}
       <motion.div style={{ y }} className="absolute inset-0 pointer-events-none z-0">
         <motion.img
           src="/hero-showroom.jpg"
           alt="Premium luxury granite showroom with polished Indian stone slabs"
-          className="w-full h-full object-cover object-right lg:object-[65%_center]"
+          className="w-full h-full object-cover object-right lg:object-[80%_center]"
           style={{ transformOrigin: "center" }}
         />
         {/* Desktop left-to-right gradient overlay for text readability */}
@@ -115,7 +115,7 @@ function Hero() {
           className="absolute inset-0 hidden lg:block"
           style={{
             background:
-              "linear-gradient(90deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.45) 35%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 100%)",
+              "linear-gradient(90deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 100%)",
           }}
         />
         {/* Mobile/Tablet vertical gradient overlay */}
@@ -128,29 +128,34 @@ function Hero() {
         />
       </motion.div>
 
-      {/* Content: Two-column layout with constrained width */}
-      <div className="container-wide relative z-10 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
-          {/* Left Side: Content */}
+      {/* Content: Two-column layout with constrained width & 100px padding on desktop */}
+      <div className="mx-auto w-full max-w-[1400px] px-6 lg:px-[100px] relative z-10">
+        <div className="grid lg:grid-cols-[45%_55%] gap-12 lg:gap-16 items-center w-full">
+          {/* Left Side: Content (45%) */}
           <div className="flex flex-col items-center text-center md:items-center md:text-center lg:items-start lg:text-left gap-8 max-w-[600px] mx-auto lg:mx-0">
             {/* Tagline */}
             <div className="flex items-center gap-3">
               <span className="h-px w-6 bg-[#D4AF6A]" />
-              <span className="text-[14px] font-semibold tracking-[4px] text-[#D4AF6A] uppercase">
-                Premium Indian Granite for Global Projects
+              <span className="text-[11px] font-semibold tracking-[4px] text-[#D4AF6A] uppercase whitespace-nowrap">
+                TRUSTED INDIAN GRANITE EXPORT PARTNER
               </span>
+              <span className="h-px w-6 bg-[#D4AF6A]" />
             </div>
 
             {/* Heading */}
             <h1
-              className="font-display text-white text-[2.5rem] md:text-[3.5rem] lg:text-[clamp(3rem,5vw,5rem)] font-medium leading-[1.05] tracking-tight max-w-[12ch]"
+              className="font-display text-white text-[2.2rem] md:text-[3.2rem] lg:text-[clamp(3rem,4vw,4.5rem)] font-medium leading-[1.05] tracking-tight max-w-[600px]"
               style={{ fontFamily: "Playfair Display, Cormorant Garamond, serif" }}
             >
-              A company that connects the world's buyers with high-quality Indian granite.
+              A company that connects
+              <br className="hidden md:inline" />
+              the world's buyers with
+              <br className="hidden md:inline" />
+              high-quality Indian granite.
             </h1>
 
             {/* Description */}
-            <p className="text-[1.2rem] leading-[1.8] text-white/88 max-w-[650px]">
+            <p className="text-[18px] leading-[1.8] text-white/85 max-w-[550px]">
               We source, inspect, and export premium Indian granite directly from trusted quarries
               to importers, distributors, and construction projects across Europe, Cyprus, UAE, and
               global markets.
@@ -160,30 +165,30 @@ function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#D4AF6A] text-[#111111] rounded-full font-semibold transition-all duration-300 hover:bg-[#E0BB76] hover:-translate-y-[2px] shadow-lg hover:shadow-xl active:translate-y-0"
+                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#D4AF6A] text-[#111111] rounded-full font-semibold transition-all duration-300 hover:bg-[#E0BB76] hover:-translate-y-[2px] shadow-lg hover:shadow-xl active:translate-y-0 text-xs uppercase tracking-widest"
               >
-                Request Quote <ArrowRight className="size-4" />
+                REQUEST QUOTE <ArrowRight className="size-4" />
               </Link>
               <a
                 href="https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%20am%20interested%20in%20requesting%20a%20commercial%20quote%20for%20Indian%20granite."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-transparent border border-[rgba(212,175,106,0.5)] text-white rounded-full font-semibold transition-all duration-300 hover:border-[#D4AF6A] hover:text-[#D4AF6A] hover:-translate-y-[2px]"
+                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-transparent border border-[rgba(212,175,106,0.5)] text-white rounded-full font-semibold transition-all duration-300 hover:border-[#D4AF6A] hover:text-[#D4AF6A] hover:-translate-y-[2px] text-xs uppercase tracking-widest"
               >
-                WhatsApp Us
+                WHATSAPP US
               </a>
             </div>
 
             {/* Trust Badges */}
             <div className="w-full pt-8 border-t border-white/10 mt-4">
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-4">
+              <div className="flex flex-wrap lg:flex-nowrap items-center justify-center lg:justify-start gap-x-6 gap-y-4">
                 {[
                   "Direct Quarry Sourcing",
                   "Quality Inspection",
                   "Export Documentation",
                   "Worldwide Shipping",
                 ].map((badge, idx) => (
-                  <div key={idx} className="flex items-center gap-2">
+                  <div key={idx} className="flex items-center gap-2 whitespace-nowrap">
                     <span className="text-[#D4AF6A] font-bold text-sm">✓</span>
                     <span className="text-white/80 text-[11px] md:text-xs font-semibold uppercase tracking-wider">
                       {badge}
