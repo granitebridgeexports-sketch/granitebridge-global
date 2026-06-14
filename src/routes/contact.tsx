@@ -74,12 +74,6 @@ function ContactPage() {
             <ContactRow icon={MapPin} label="Headquarters" items={[{ value: "Khammam, Telangana, India" }]} />
           </div>
 
-          <div className="mt-14 pt-8 border-t border-white/10">
-            <div className="text-[10px] uppercase tracking-[0.28em] text-gold mb-3">
-              Loading Ports
-            </div>
-            <p className="text-sm text-bone/60">Chennai · Krishnapatnam · Tuticorin</p>
-          </div>
         </Reveal>
 
         <Reveal delay={0.1} className="lg:col-span-7 lg:pt-4">
