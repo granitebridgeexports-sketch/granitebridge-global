@@ -985,6 +985,37 @@ function FAQ() {
 }
 
 function ContactCTA() {
+  const contactDetails = (
+    <div className="mt-12 space-y-4 text-sm">
+      <div>
+        <span className="text-bone/40 text-xs uppercase tracking-[0.22em]">Email</span>
+        <div className="mt-1">granitebridgeexports@gmail.com</div>
+      </div>
+      <div>
+        <span className="text-bone/40 text-xs uppercase tracking-[0.22em]">Phone / WhatsApp</span>
+        <div className="mt-1.5 space-y-1 text-bone">
+          <a href="tel:+919392753192" className="block hover:text-gold transition-colors">
+            +91 93927 53192
+          </a>
+          <a href="tel:+919492442269" className="block hover:text-gold transition-colors">
+            +91 94924 42269
+          </a>
+        </div>
+      </div>
+      <div>
+        <span className="text-bone/40 text-xs uppercase tracking-[0.22em]">Directors</span>
+        <div className="mt-1.5 space-y-1 text-bone">
+          <div>RAYALA SAI SRUJAN</div>
+          <div>KANDHIMALLA SAI KARTHIK</div>
+        </div>
+      </div>
+      <div>
+        <span className="text-bone/40 text-xs uppercase tracking-[0.22em]">Headquarters</span>
+        <div className="mt-1">Khammam · Telangana · India</div>
+      </div>
+    </div>
+  );
+
   return (
     <section id="contact" className="bg-onyx text-bone py-28 lg:py-40 relative overflow-hidden">
       <div className="absolute inset-0 opacity-20">
@@ -1005,40 +1036,12 @@ function ContactCTA() {
               Tell us about your project, destination port, and requirements. A dedicated export
               coordinator will respond — direct, no call centers.
             </p>
-            <div className="mt-12 space-y-4 text-sm">
-              <div>
-                <span className="text-bone/40 text-xs uppercase tracking-[0.22em]">Email</span>
-                <div className="mt-1">granitebridgeexports@gmail.com</div>
-              </div>
-              <div>
-                <span className="text-bone/40 text-xs uppercase tracking-[0.22em]">
-                  Phone / WhatsApp
-                </span>
-                <div className="mt-1.5 space-y-1 text-bone">
-                  <a href="tel:+919392753192" className="block hover:text-gold transition-colors">+91 93927 53192</a>
-                  <a href="tel:+919492442269" className="block hover:text-gold transition-colors">+91 94924 42269</a>
-                </div>
-              </div>
-              <div>
-                <span className="text-bone/40 text-xs uppercase tracking-[0.22em]">
-                  Directors
-                </span>
-                <div className="mt-1.5 space-y-1 text-bone">
-                  <div>RAYALA SAI SRUJAN</div>
-                  <div>KANDHIMALLA SAI KARTHIK</div>
-                </div>
-              </div>
-              <div>
-                <span className="text-bone/40 text-xs uppercase tracking-[0.22em]">
-                  Headquarters
-                </span>
-                <div className="mt-1">Khammam · Telangana · India</div>
-              </div>
-            </div>
+            <div className="hidden lg:block">{contactDetails}</div>
           </Reveal>
         </div>
         <Reveal delay={0.15} className="lg:col-span-7">
           <QuoteForm dark />
+          <div className="block lg:hidden mt-12">{contactDetails}</div>
         </Reveal>
       </div>
     </section>

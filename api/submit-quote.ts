@@ -33,8 +33,11 @@ export default async function handler(req: Request): Promise<Response> {
     // If Apps Script returned an error status, propagate it
     if (!scriptRes.ok) {
       return new Response(
-        JSON.stringify({ status: "error", message: `Apps Script HTTP ${scriptRes.status}: ${scriptBody}` }),
-        { status: 502, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        JSON.stringify({
+          status: "error",
+          message: `Apps Script HTTP ${scriptRes.status}: ${scriptBody}`,
+        }),
+        { status: 502, headers: { ...corsHeaders, "Content-Type": "application/json" } },
       );
     }
 
@@ -42,10 +45,10 @@ export default async function handler(req: Request): Promise<Response> {
     try {
       const parsed = JSON.parse(scriptBody);
       if (parsed.status === "error") {
-        return new Response(
-          JSON.stringify({ status: "error", message: parsed.message }),
-          { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-        );
+        return new Response(JSON.stringify({ status: "error", message: parsed.message }), {
+          status: 500,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
       }
     } catch {
       // scriptBody wasn't JSON — that's fine (Apps Script can return redirect HTML)

@@ -22,6 +22,53 @@ export const Route = createFileRoute("/contact")({
 });
 
 function ContactPage() {
+  const contactInfo = (
+    <>
+      <ContactRow
+        icon={Mail}
+        label="Email"
+        items={[
+          {
+            value: "granitebridgeexports@gmail.com",
+            href: "mailto:granitebridgeexports@gmail.com",
+          },
+        ]}
+      />
+      <ContactRow
+        icon={Phone}
+        label="Phone"
+        items={[
+          { value: "+91 93927 53192", href: "tel:+919392753192" },
+          { value: "+91 94924 42269", href: "tel:+919492442269" },
+        ]}
+      />
+      <ContactRow
+        icon={MessageCircle}
+        label="WhatsApp"
+        items={[
+          {
+            value: "+91 93927 53192",
+            href: "https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%27m%20interested%20in%20your%20granite%20products.",
+          },
+          {
+            value: "+91 94924 42269",
+            href: "https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%27m%20interested%20in%20your%20granite%20products.",
+          },
+        ]}
+      />
+      <ContactRow
+        icon={Users}
+        label="Directors"
+        items={[{ value: "RAYALA SAI SRUJAN" }, { value: "KANDHIMALLA SAI KARTHIK" }]}
+      />
+      <ContactRow
+        icon={MapPin}
+        label="Headquarters"
+        items={[{ value: "Khammam, Telangana, India" }]}
+      />
+    </>
+  );
+
   return (
     <section className="pt-32 pb-28 bg-onyx text-bone min-h-screen">
       <div className="container-wide grid gap-16 lg:grid-cols-12">
@@ -38,54 +85,12 @@ function ContactPage() {
             coordinator will respond directly — no automated replies, no call centers.
           </p>
 
-          <div className="mt-14 space-y-6">
-            <ContactRow
-              icon={Mail}
-              label="Email"
-              items={[
-                {
-                  value: "granitebridgeexports@gmail.com",
-                  href: "mailto:granitebridgeexports@gmail.com",
-                },
-              ]}
-            />
-            <ContactRow
-              icon={Phone}
-              label="Phone"
-              items={[
-                { value: "+91 93927 53192", href: "tel:+919392753192" },
-                { value: "+91 94924 42269", href: "tel:+919492442269" },
-              ]}
-            />
-            <ContactRow
-              icon={MessageCircle}
-              label="WhatsApp"
-              items={[
-                {
-                  value: "+91 93927 53192",
-                  href: "https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%27m%20interested%20in%20your%20granite%20products.",
-                },
-                {
-                  value: "+91 94924 42269",
-                  href: "https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%27m%20interested%20in%20your%20granite%20products.",
-                },
-              ]}
-            />
-            <ContactRow
-              icon={Users}
-              label="Directors"
-              items={[
-                { value: "RAYALA SAI SRUJAN" },
-                { value: "KANDHIMALLA SAI KARTHIK" },
-              ]}
-            />
-            <ContactRow icon={MapPin} label="Headquarters" items={[{ value: "Khammam, Telangana, India" }]} />
-          </div>
-
+          <div className="mt-14 space-y-6 hidden lg:block">{contactInfo}</div>
         </Reveal>
 
         <Reveal delay={0.1} className="lg:col-span-7 lg:pt-4">
           <QuoteForm dark />
+          <div className="mt-14 space-y-6 lg:hidden">{contactInfo}</div>
         </Reveal>
       </div>
     </section>
@@ -113,7 +118,9 @@ function ContactRow({
                 key={idx}
                 href={item.href}
                 className="block text-base text-bone hover:text-gold transition-colors"
-                {...(item.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                {...(item.href.startsWith("http")
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
               >
                 {item.value}
               </a>
@@ -121,7 +128,7 @@ function ContactRow({
               <div key={idx} className="text-base text-bone">
                 {item.value}
               </div>
-            )
+            ),
           )}
         </div>
       </div>
