@@ -1,12 +1,6 @@
 import { useState } from "react";
 import { toast } from "sonner";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Paste your Google Apps Script Web App URL here after deploying the script.
-// See the setup guide in apps_script_setup.md for full instructions.
-// ─────────────────────────────────────────────────────────────────────────────
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxojJ4SUimFVEJGWgQhugj6Pr6mYU_xpnuEGlQKEg-aGT6zE96tuXWWGdTj1UCKOqbF0Q/exec";
-
 const COUNTRIES = [
   "Germany",
   "Spain",
@@ -62,17 +56,15 @@ export function QuoteForm({ dark = false }: { dark?: boolean }) {
     };
 
     try {
-      await fetch(SCRIPT_URL, {
+      // POST to our Vercel API proxy — avoids all browser CORS restrictions
+      const res = await fetch("/api/submit-quote", {
         method: "POST",
-        mode: "no-cors",
-        // Must use text/plain — it's the only content-type that works as a
-        // "simple" CORS request without a preflight, so the body actually
-        // reaches Google Apps Script. The script still parses it as JSON.
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
-      // no-cors means we can't read the response body, so we treat reaching here as success
+      if (!res.ok) throw new Error(await res.text());
+
       form.reset();
       toast.success("Inquiry received!", {
         description: "Our export team will respond within 24 hours.",
