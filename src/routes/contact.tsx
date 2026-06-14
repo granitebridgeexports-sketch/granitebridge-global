@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { QuoteForm } from "@/components/site/QuoteForm";
 import { Reveal } from "@/components/site/Reveal";
-import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
+import { Mail, Phone, MapPin, MessageCircle, Users } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -69,6 +69,14 @@ function ContactPage() {
                   value: "+91 94924 42269",
                   href: "https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%27m%20interested%20in%20your%20granite%20products.",
                 },
+              ]}
+            />
+            <ContactRow
+              icon={Users}
+              label="Directors"
+              items={[
+                { value: "RAYALA SAI SRUJAN" },
+                { value: "KANDHIMALLA SAI KARTHIK" },
               ]}
             />
             <ContactRow icon={MapPin} label="Headquarters" items={[{ value: "Khammam, Telangana, India" }]} />

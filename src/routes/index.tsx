@@ -1021,6 +1021,15 @@ function ContactCTA() {
               </div>
               <div>
                 <span className="text-bone/40 text-xs uppercase tracking-[0.22em]">
+                  Directors
+                </span>
+                <div className="mt-1.5 space-y-1 text-bone">
+                  <div>RAYALA SAI SRUJAN</div>
+                  <div>KANDHIMALLA SAI KARTHIK</div>
+                </div>
+              </div>
+              <div>
+                <span className="text-bone/40 text-xs uppercase tracking-[0.22em]">
                   Headquarters
                 </span>
                 <div className="mt-1">Khammam · Telangana · India</div>
