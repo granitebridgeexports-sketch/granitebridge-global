@@ -29,12 +29,20 @@ export function SiteFooter() {
               >
                 <Mail className="size-4 text-gold" /> granitebridgeexports@gmail.com
               </a>
-              <a
-                href="tel:+919392753192"
-                className="flex items-center gap-3 hover:text-gold transition-colors"
-              >
-                <Phone className="size-4 text-gold" /> +91 93927 53192
-              </a>
+              <div className="flex flex-col gap-2">
+                <a
+                  href="tel:+919392753192"
+                  className="flex items-center gap-3 hover:text-gold transition-colors"
+                >
+                  <Phone className="size-4 text-gold" /> +91 93927 53192
+                </a>
+                <a
+                  href="tel:+919492442269"
+                  className="flex items-center gap-3 hover:text-gold transition-colors pl-7"
+                >
+                  +91 94924 42269
+                </a>
+              </div>
               <div className="flex items-start gap-3">
                 <MapPin className="size-4 text-gold mt-0.5" />
                 <span>Khammam · Telangana · India</span>

@@ -42,22 +42,36 @@ function ContactPage() {
             <ContactRow
               icon={Mail}
               label="Email"
-              value="granitebridgeexports@gmail.com"
-              href="mailto:granitebridgeexports@gmail.com"
+              items={[
+                {
+                  value: "granitebridgeexports@gmail.com",
+                  href: "mailto:granitebridgeexports@gmail.com",
+                },
+              ]}
             />
             <ContactRow
               icon={Phone}
               label="Phone"
-              value="+91 93927 53192"
-              href="tel:+919392753192"
+              items={[
+                { value: "+91 93927 53192", href: "tel:+919392753192" },
+                { value: "+91 94924 42269", href: "tel:+919492442269" },
+              ]}
             />
             <ContactRow
               icon={MessageCircle}
               label="WhatsApp"
-              value="+91 93927 53192"
-              href="https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%27m%20interested%20in%20your%20granite%20products."
+              items={[
+                {
+                  value: "+91 93927 53192",
+                  href: "https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%27m%20interested%20in%20your%20granite%20products.",
+                },
+                {
+                  value: "+91 94924 42269",
+                  href: "https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%27m%20interested%20in%20your%20granite%20products.",
+                },
+              ]}
             />
-            <ContactRow icon={MapPin} label="Headquarters" value="Khammam, Telangana, India" />
+            <ContactRow icon={MapPin} label="Headquarters" items={[{ value: "Khammam, Telangana, India" }]} />
           </div>
 
           <div className="mt-14 pt-8 border-t border-white/10">
@@ -79,28 +93,36 @@ function ContactPage() {
 function ContactRow({
   icon: Icon,
   label,
-  value,
-  href,
+  items,
 }: {
   icon: typeof Mail;
   label: string;
-  value: string;
-  href?: string;
+  items: { value: string; href?: string }[];
 }) {
-  const inner = (
+  return (
     <div className="flex items-start gap-4">
       <Icon className="size-5 text-gold mt-1" strokeWidth={1.4} />
       <div>
         <div className="text-[10px] uppercase tracking-[0.28em] text-bone/40">{label}</div>
-        <div className="text-base mt-1 text-bone">{value}</div>
+        <div className="space-y-1.5 mt-1">
+          {items.map((item, idx) =>
+            item.href ? (
+              <a
+                key={idx}
+                href={item.href}
+                className="block text-base text-bone hover:text-gold transition-colors"
+                {...(item.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              >
+                {item.value}
+              </a>
+            ) : (
+              <div key={idx} className="text-base text-bone">
+                {item.value}
+              </div>
+            )
+          )}
+        </div>
       </div>
     </div>
-  );
-  return href ? (
-    <a href={href} className="block hover:opacity-80 transition">
-      {inner}
-    </a>
-  ) : (
-    inner
   );
 }

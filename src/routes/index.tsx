@@ -1014,7 +1014,10 @@ function ContactCTA() {
                 <span className="text-bone/40 text-xs uppercase tracking-[0.22em]">
                   Phone / WhatsApp
                 </span>
-                <div className="mt-1">+91 93927 53192</div>
+                <div className="mt-1.5 space-y-1 text-bone">
+                  <a href="tel:+919392753192" className="block hover:text-gold transition-colors">+91 93927 53192</a>
+                  <a href="tel:+919492442269" className="block hover:text-gold transition-colors">+91 94924 42269</a>
+                </div>
               </div>
               <div>
                 <span className="text-bone/40 text-xs uppercase tracking-[0.22em]">
