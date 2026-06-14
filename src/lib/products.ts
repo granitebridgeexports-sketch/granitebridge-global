@@ -14,6 +14,7 @@ export type Product = {
   origin: string;
   image: string;
   tagline: string;
+  bestFor: string[];
   description: string;
   finishes: string[];
   thickness: string[];
@@ -28,8 +29,9 @@ export const PRODUCTS: Product[] = [
     origin: "Chamarajanagar, Karnataka",
     image: absoluteBlack,
     tagline: "The gold standard of uniform, dense jet-black granite.",
+    bestFor: ["Luxury Villas", "Premium Countertops", "Commercial Projects"],
     description:
-      "A deep, uniform jet-black granite prized for its high density and exceptional ability to take a mirror polish. Universally specified for premium monuments, kitchen countertops, and luxury interior floor surfaces.",
+      "Preferred by luxury villa owners and premium commercial developments for elegant jet-black countertops, flooring, and statement interiors.",
     finishes: ["Polished", "Honed", "Leathered", "Lapatro"],
     thickness: ["18mm", "20mm", "30mm", "Custom Blocks"],
     applications: ["Countertops", "Wall Cladding", "Monuments", "Luxury Flooring"],
@@ -41,8 +43,9 @@ export const PRODUCTS: Product[] = [
     origin: "Chimakurthy, Andhra Pradesh",
     image: blackGalaxy,
     tagline: "Stunning dark stone glittering with golden broncite sparkles.",
+    bestFor: ["Luxury Kitchens", "Hotels", "Premium Residences"],
     description:
-      "A world-famous granite featuring a pitch-black background embedded with shimmering golden and copper metallic flecks (broncite crystals). Its starry-night appearance is highly prized for luxury kitchens, hotels, and feature walls.",
+      "A favorite among homeowners, architects, and hotel developers for its sparkling golden appearance and premium kitchen applications.",
     finishes: ["Polished", "Honed", "Leathered"],
     thickness: ["18mm", "20mm", "30mm"],
     applications: ["Kitchen Slabs", "Vanity Tops", "Feature Walls", "Premium Tiling"],
@@ -54,8 +57,9 @@ export const PRODUCTS: Product[] = [
     origin: "Ongole, Andhra Pradesh",
     image: steelGrey,
     tagline: "Consistent, durable, and highly versatile architectural stone.",
+    bestFor: ["Modern Homes", "Kitchen Countertops", "Commercial Interiors"],
     description:
-      "A highly durable granite with a uniform, fine-grained texture showing light-grey and silver flecks on a dark-grey background. Extremely popular for high-traffic commercial flooring, façades, and modern architectural projects.",
+      "Popular for contemporary spaces due to its durability, low maintenance, and clean modern aesthetic.",
     finishes: ["Polished", "Honed", "Flamed", "Bush-Hammered"],
     thickness: ["18mm", "20mm", "30mm", "Custom Slabs"],
     applications: ["Commercial Flooring", "Exterior Façades", "Steps & Risers", "Paving"],
@@ -67,8 +71,9 @@ export const PRODUCTS: Product[] = [
     origin: "Karimnagar, Telangana",
     image: tanBrown,
     tagline: "Deep brown and black base with rich chocolate quartz crystals.",
+    bestFor: ["Family Homes", "Flooring", "Kitchen Countertops"],
     description:
-      "A rich, robust brown granite featuring large, dense crystals in shades of chocolate, caramel, and reddish-tan against a dark background. Globally recognized for its structural strength and classic, elegant appearance in commercial cladding.",
+      "Widely selected for residential projects thanks to its warm earthy tones, durability, and timeless appeal.",
     finishes: ["Polished", "Honed", "Leathered", "Flamed"],
     thickness: ["18mm", "20mm", "30mm"],
     applications: ["Exterior Cladding", "Kitchen Countertops", "Public Flooring", "Staircases"],
@@ -80,8 +85,9 @@ export const PRODUCTS: Product[] = [
     origin: "Madanapalle, Andhra Pradesh",
     image: viscountWhite,
     tagline: "Dynamic, flowing waves of light and dark grey veins.",
+    bestFor: ["Designer Kitchens", "Luxury Interiors", "Feature Surfaces"],
     description:
-      "An outstanding light-coloured granite displaying expressive waves of white, light grey, and dramatic charcoal-black veins. Known for its marble-like luxury appearance combined with the durability of premium granite.",
+      "Chosen by architects and interior designers for its flowing patterns and sophisticated visual impact.",
     finishes: ["Polished", "Honed", "Leathered"],
     thickness: ["18mm", "20mm", "30mm"],
     applications: ["Bathroom Vanities", "Kitchen Islands", "Feature Walls", "Bookmatched Panels"],
@@ -93,8 +99,9 @@ export const PRODUCTS: Product[] = [
     origin: "Melur, Tamil Nadu",
     image: kashmirWhite,
     tagline: "Elegant creamy-white base with delicate burgundy garnets.",
+    bestFor: ["Bright Interiors", "Premium Homes", "Modern Kitchens"],
     description:
-      "A highly sought-after soft white and grey granite accented with small, distinctive burgundy garnet crystals. Its clean, bright aesthetic makes it a popular specification for modern residential interiors and luxury hotels across Europe.",
+      "Loved by homeowners seeking a clean, spacious, and elegant appearance that complements any design style.",
     finishes: ["Polished", "Honed", "Brushed"],
     thickness: ["18mm", "20mm", "30mm"],
     applications: ["Interior Wall Cladding", "Kitchen Tops", "Flooring", "Vanity Slabs"],
@@ -106,8 +113,9 @@ export const PRODUCTS: Product[] = [
     origin: "Kanakapura, Karnataka",
     image: redMulticolor,
     tagline: "Bold crimson waves swirling with black and orange bands.",
+    bestFor: ["Feature Walls", "Reception Areas", "Luxury Commercial Spaces"],
     description:
-      "A striking, highly durable granite with a dramatic crimson red base swept with bold, flowing bands of black, orange, and dark grey. Widely exported to European and Asian markets for monuments and feature architectural installations.",
+      "Ideal for projects that require bold visual impact and a distinctive premium look.",
     finishes: ["Polished", "Honed", "Flamed"],
     thickness: ["20mm", "30mm", "50mm", "Custom Blocks"],
     applications: [
@@ -124,8 +132,9 @@ export const PRODUCTS: Product[] = [
     origin: "Jalore, Rajasthan",
     image: colonialWhite,
     tagline: "Creamy cotton-white base with soft grey and brown specks.",
+    bestFor: ["Kitchen Islands", "Contemporary Homes", "Residential Projects"],
     description:
-      "An elegant cotton-white and creamy granite with light-grey patches and dark brown-black mineral flecks scattered evenly. Perfect for brightening up interior spaces and kitchen designs, providing a premium clean look.",
+      "A versatile granite favored for its soft premium appearance and ability to blend with modern interiors.",
     finishes: ["Polished", "Honed", "Leathered"],
     thickness: ["18mm", "20mm", "30mm"],
     applications: ["Kitchen Countertops", "Wall Panel Cladding", "Flooring", "Bath Decks"],

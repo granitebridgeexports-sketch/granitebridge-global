@@ -75,7 +75,21 @@ function ProductsPage() {
                     <h2 className="font-display text-2xl text-onyx group-hover:text-gold transition-colors duration-300">
                       {p.name}
                     </h2>
-                    <p className="text-sm text-onyx/55 mt-2 leading-relaxed">{p.tagline}</p>
+                    {/* Best For */}
+                    <div className="flex items-center gap-1.5 flex-wrap mt-2.5">
+                      <span className="text-[9px] uppercase tracking-[0.22em] text-gold font-semibold shrink-0">
+                        Best For
+                      </span>
+                      {p.bestFor.map((label) => (
+                        <span
+                          key={label}
+                          className="text-[9px] uppercase tracking-[0.16em] text-onyx/50 border border-onyx/15 px-2 py-0.5 rounded-full"
+                        >
+                          {label}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="text-sm text-onyx/55 mt-3 leading-relaxed">{p.description}</p>
                   </div>
                 </div>
 

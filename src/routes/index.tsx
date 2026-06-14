@@ -332,7 +332,21 @@ function Products() {
                     <h3 className="font-display text-2xl text-bone group-hover:text-gold transition-colors duration-300">
                       {p.name}
                     </h3>
-                    <p className="text-sm text-bone/50 mt-2 leading-relaxed">{p.tagline}</p>
+                    {/* Best For */}
+                    <div className="flex items-center gap-1.5 flex-wrap mt-2.5">
+                      <span className="text-[9px] uppercase tracking-[0.22em] text-gold/70 font-semibold shrink-0">
+                        Best For
+                      </span>
+                      {p.bestFor.map((label) => (
+                        <span
+                          key={label}
+                          className="text-[9px] uppercase tracking-[0.16em] text-bone/50 border border-white/10 px-2 py-0.5 rounded-full"
+                        >
+                          {label}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="text-sm text-bone/50 mt-3 leading-relaxed">{p.description}</p>
                   </div>
                 </div>
 
