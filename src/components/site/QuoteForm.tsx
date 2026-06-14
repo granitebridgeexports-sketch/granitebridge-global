@@ -76,8 +76,11 @@ export function QuoteForm({ dark = false }: { dark?: boolean }) {
     try {
       await fetch(SCRIPT_URL, {
         method: "POST",
-        mode: "no-cors", // Apps Script requires no-cors for cross-origin POST
-        headers: { "Content-Type": "application/json" },
+        mode: "no-cors",
+        // Must use text/plain — it's the only content-type that works as a
+        // "simple" CORS request without a preflight, so the body actually
+        // reaches Google Apps Script. The script still parses it as JSON.
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify(payload),
       });
 
