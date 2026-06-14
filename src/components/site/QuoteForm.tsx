@@ -5,7 +5,7 @@ import { toast } from "sonner";
 // Paste your Google Apps Script Web App URL here after deploying the script.
 // See the setup guide in apps_script_setup.md for full instructions.
 // ─────────────────────────────────────────────────────────────────────────────
-const SCRIPT_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxojJ4SUimFVEJGWgQhugj6Pr6mYU_xpnuEGlQKEg-aGT6zE96tuXWWGdTj1UCKOqbF0Q/exec";
 
 const COUNTRIES = [
   "Germany",
