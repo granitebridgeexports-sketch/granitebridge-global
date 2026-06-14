@@ -61,18 +61,6 @@ export function QuoteForm({ dark = false }: { dark?: boolean }) {
       submissionTime,
     };
 
-    // If the URL hasn't been configured yet, simulate locally so the site works.
-    if (!SCRIPT_URL || SCRIPT_URL === "PASTE_YOUR_WEB_APP_URL_HERE") {
-      setTimeout(() => {
-        setLoading(false);
-        form.reset();
-        toast.success("Inquiry received", {
-          description: "Our export team will respond within 24 hours.",
-        });
-      }, 900);
-      return;
-    }
-
     try {
       await fetch(SCRIPT_URL, {
         method: "POST",
