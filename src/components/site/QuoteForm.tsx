@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { toast } from "sonner";
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Paste your Google Apps Script Web App URL here after deploying the script.
+// See the setup guide in apps_script_setup.md for full instructions.
+// ─────────────────────────────────────────────────────────────────────────────
+const SCRIPT_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
+
 const COUNTRIES = [
   "Germany",
   "Spain",
@@ -21,16 +27,72 @@ const COUNTRIES = [
 export function QuoteForm({ dark = false }: { dark?: boolean }) {
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      (e.target as HTMLFormElement).reset();
-      toast.success("Inquiry received", {
+
+    const form = e.target as HTMLFormElement;
+    const fd = new FormData(form);
+
+    const now = new Date();
+    const submissionDate = now.toLocaleDateString("en-IN", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+    const submissionTime = now.toLocaleTimeString("en-IN", {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true,
+    });
+
+    const payload = {
+      fullName: fd.get("name") as string,
+      company: fd.get("company") as string,
+      country: fd.get("country") as string,
+      port: fd.get("port") as string,
+      email: fd.get("email") as string,
+      phone: fd.get("phone") as string,
+      product: fd.get("product") as string,
+      qty: fd.get("qty") as string,
+      message: fd.get("message") as string,
+      submissionDate,
+      submissionTime,
+    };
+
+    // If the URL hasn't been configured yet, simulate locally so the site works.
+    if (!SCRIPT_URL || SCRIPT_URL === "PASTE_YOUR_WEB_APP_URL_HERE") {
+      setTimeout(() => {
+        setLoading(false);
+        form.reset();
+        toast.success("Inquiry received", {
+          description: "Our export team will respond within 24 hours.",
+        });
+      }, 900);
+      return;
+    }
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors", // Apps Script requires no-cors for cross-origin POST
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      // no-cors means we can't read the response body, so we treat reaching here as success
+      form.reset();
+      toast.success("Inquiry received!", {
         description: "Our export team will respond within 24 hours.",
       });
-    }, 900);
+    } catch {
+      toast.error("Submission failed", {
+        description: "Please email us directly at granitebridgeexports@gmail.com",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const base = dark
