@@ -126,7 +126,7 @@ function Hero() {
           {/* Tagline */}
           <div className="flex items-center justify-center gap-3 w-full">
             <span className="h-px w-6 bg-[#D4AF6A] shrink-0" />
-            <span className="text-[12px] font-semibold tracking-[3px] lg:tracking-[4px] text-[#D4AF6A] uppercase text-center leading-[1.6]">
+            <span className="text-[10px] md:text-[12px] font-semibold tracking-[2px] md:tracking-[3px] lg:tracking-[4px] text-[#D4AF6A] uppercase text-center leading-[1.6]">
               Bridging India's Finest Granite with Global Markets
             </span>
             <span className="h-px w-6 bg-[#D4AF6A] shrink-0" />
@@ -134,21 +134,21 @@ function Hero() {
 
           {/* Heading */}
           <h1
-            className="font-display text-white text-[2rem] md:text-[2.8rem] lg:text-[clamp(2.4rem,3.8vw,4rem)] font-medium leading-[1.2] tracking-tight mt-5"
+            className="font-display text-white text-[1.65rem] md:text-[2.8rem] lg:text-[clamp(2.4rem,3.8vw,4rem)] font-medium leading-[1.35] md:leading-[1.2] tracking-tight mt-5 max-w-[320px] md:max-w-none mx-auto lg:mx-0"
             style={{
               fontFamily: "Playfair Display, Cormorant Garamond, serif",
               textShadow: "0 2px 20px rgba(0,0,0,0.8)",
             }}
           >
             “A company that connects
-            <br className="hidden md:inline" />
+            <br />
             the world’s buyers with
-            <br className="hidden md:inline" />
+            <br />
             high-quality Indian granite.”
           </h1>
 
           {/* Description */}
-          <p className="text-[16px] leading-[1.8] text-white/92 mt-6 max-w-full">
+          <p className="text-[14px] md:text-[16px] leading-[1.8] text-white/92 mt-6 max-w-[320px] md:max-w-full mx-auto lg:mx-0">
             We source, inspect and export premium granite directly from trusted Indian quarries to
             importers, distributors and construction projects worldwide.
           </p>
