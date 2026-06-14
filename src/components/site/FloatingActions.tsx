@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, Phone } from "lucide-react";
 
 export function FloatingActions() {
   const [show, setShow] = useState(false);
@@ -22,12 +21,13 @@ export function FloatingActions() {
           <ArrowUp className="size-4" />
         </button>
       )}
-      <Link
-        to="/contact"
-        className="hidden md:inline-flex btn-gold !py-3 !px-5 !text-[10px] shadow-xl rounded-full"
+      <a
+        href="tel:+919492442269"
+        className="size-14 rounded-full bg-[#0070f3] text-white flex items-center justify-center shadow-2xl hover:scale-110 hover:shadow-[0_10px_20px_rgba(0,112,243,0.3)] transition-all duration-500"
+        aria-label="Call Us"
       >
-        Request Quote
-      </Link>
+        <Phone className="size-6" />
+      </a>
       <a
         href="https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%27m%20interested%20in%20your%20granite%20products."
         target="_blank"
