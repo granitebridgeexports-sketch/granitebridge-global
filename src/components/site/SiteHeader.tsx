@@ -30,17 +30,16 @@ export function SiteHeader() {
         <Link to="/" className="group flex items-center gap-3">
           {/* Circular emblem — trimmed transparent PNG, no box/border/shadow */}
           <img
-            src="/logo.png"
+            src="/logo.svg"
             alt="GraniteBridge Exports logo"
             className="
-              h-12 w-12 flex-shrink-0
+              w-12 h-auto flex-shrink-0
               object-contain object-center
               transition-transform duration-500 group-hover:scale-105
-              sm:h-[78px] sm:w-[78px]
+              sm:w-[78px] sm:h-auto
             "
             style={{
               filter: "drop-shadow(0 0 6px rgba(212,175,55,0.25))",
-              imageRendering: "crisp-edges",
             }}
           />
           {/* Brand text — visible on screens ≥ 400px */}
