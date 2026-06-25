@@ -1,8 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logoWeb from "@/assets/logo.png";
-import logoHires from "@/assets/logo-source-hires.png";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -33,10 +31,8 @@ export function SiteHeader() {
         <Link to="/" className="group flex items-center gap-3">
           {/* Circular emblem — trimmed transparent PNG, no box/border/shadow */}
           <img
-            src={logoWeb}
-            srcSet={`${logoHires} 2x`}
-            alt=""
-            aria-hidden="true"
+            src="/logo.png"
+            alt="GraniteBridge Exports logo"
             className="
               h-12 w-12 flex-shrink-0
               object-contain object-center

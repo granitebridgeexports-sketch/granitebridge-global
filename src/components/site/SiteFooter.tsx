@@ -1,7 +1,5 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin } from "lucide-react";
-import logoWeb from "@/assets/logo.png";
-import logoHires from "@/assets/logo-source-hires.png";
 
 export function SiteFooter() {
   return (
@@ -11,8 +9,7 @@ export function SiteFooter() {
           <div className="lg:col-span-4">
             <div className="flex items-center gap-3">
               <img
-                src={logoWeb}
-                srcSet={`${logoHires} 2x`}
+                src="/logo.png"
                 alt="GraniteBridge Exports Private Limited"
                 className="h-12 w-12 sm:h-[72px] sm:w-[72px] object-contain flex-shrink-0"
                 style={{ filter: "drop-shadow(0 0 8px rgba(212,175,55,0.3))" }}
