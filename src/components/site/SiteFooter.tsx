@@ -9,10 +9,10 @@ export function SiteFooter() {
           <div className="lg:col-span-4">
             <div className="flex items-center gap-3">
               <img
-                src="/logo.svg"
+                src="/logo.png"
                 alt="GraniteBridge Exports Private Limited"
-                className="w-12 h-auto sm:w-[72px] sm:h-auto object-contain flex-shrink-0"
-                style={{ filter: "drop-shadow(0 0 8px rgba(212,175,55,0.3))" }}
+                className="h-auto object-contain flex-shrink-0"
+                style={{ width: "130px", filter: "drop-shadow(0 0 8px rgba(212,175,55,0.3))" }}
               />
               <div>
                 <div className="font-display text-xl text-bone font-bold">GraniteBridgeExports</div>
