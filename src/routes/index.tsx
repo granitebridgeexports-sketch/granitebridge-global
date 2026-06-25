@@ -112,67 +112,70 @@ function Hero() {
               "linear-gradient(180deg, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.28) 40%, rgba(0,0,0,0.22) 60%, rgba(0,0,0,0.50) 100%)",
           }}
         />
-        {/* Soft radial highlight behind content for extra text contrast without heavy overlay */}
+        {/* Left-weighted overlay — darker on left for text readability, lighter on right for image */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0,0,0,0.25) 0%, transparent 70%)",
+              "linear-gradient(90deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.45) 40%, rgba(0,0,0,0.20) 70%, rgba(0,0,0,0.10) 100%)",
           }}
         />
       </div>
 
-      {/* Content — centered, compact footprint to let image breathe */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6 pt-[80px]">
-        {/* Tagline */}
-        <div className="flex items-center justify-center gap-3">
-          <span className="h-px w-8 bg-[#D4AF6A] shrink-0" />
-          <span className="text-[10px] md:text-[12px] font-semibold tracking-[3px] md:tracking-[4px] text-[#D4AF6A] uppercase leading-[1.6]">
-            Premium Indian Granite Exporters
-          </span>
-          <span className="h-px w-8 bg-[#D4AF6A] shrink-0" />
-        </div>
+      {/* Content — left-aligned, occupying left ~45% of hero */}
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-[100px] pt-[80px]">
+        <div className="max-w-[650px] flex flex-col items-start text-left">
+          {/* Tagline */}
+          <div className="flex items-center gap-3">
+            <span className="h-px w-8 bg-[#C9A45C] shrink-0" />
+            <span className="text-[10px] md:text-[11px] font-semibold tracking-[6px] md:tracking-[7px] text-[#C9A45C] uppercase leading-[1.6]">
+              Bridging India's Finest Granite with Global Markets
+            </span>
+            <span className="h-px w-8 bg-[#C9A45C] shrink-0" />
+          </div>
 
-        {/* Heading */}
-        <h1
-          className="font-display text-white text-[1.75rem] md:text-[2.8rem] lg:text-[clamp(2.6rem,4vw,4.2rem)] font-medium leading-[1.3] md:leading-[1.18] tracking-tight mt-6 max-w-[340px] md:max-w-[580px]"
-          style={{
-            fontFamily: "Playfair Display, Cormorant Garamond, serif",
-            textShadow: "0 2px 30px rgba(0,0,0,0.7), 0 1px 3px rgba(0,0,0,0.5)",
-          }}
-        >
-          "A company that connects
-          <br className="hidden md:inline" />
-          {" "}the world's buyers with
-          <br className="hidden md:inline" />
-          {" "}high-quality Indian granite."
-        </h1>
-
-        {/* Description */}
-        <p
-          className="text-[14px] md:text-[16px] leading-[1.8] text-white/90 mt-6 max-w-[320px] md:max-w-[500px]"
-          style={{ textShadow: "0 1px 8px rgba(0,0,0,0.5)" }}
-        >
-          We source, inspect and export premium granite directly from trusted Indian quarries to
-          importers, distributors and construction projects worldwide.
-        </p>
-
-        {/* Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 mt-10">
-          <Link
-            to="/contact"
-            className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-[#D4AF6A] text-[#111111] rounded-full font-semibold transition-all duration-300 hover:bg-[#E0BB76] hover:-translate-y-[2px] shadow-lg hover:shadow-xl active:translate-y-0 text-xs uppercase tracking-widest"
+          {/* Heading */}
+          <h1
+            className="text-white text-[2.4rem] md:text-[3.5rem] lg:text-[5rem] font-bold leading-[1.08] mt-7 max-w-[600px] lg:max-w-[650px]"
+            style={{
+              fontFamily: "Cormorant Garamond, Playfair Display, Libre Baskerville, serif",
+              letterSpacing: "-1px",
+              textShadow: "0 2px 30px rgba(0,0,0,0.7), 0 1px 3px rgba(0,0,0,0.5)",
+            }}
           >
-            Request Quote <ArrowRight className="size-4" />
-          </Link>
-          <a
-            href="https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%20am%20interested%20in%20requesting%20a%20commercial%20quote%20for%20Indian%20granite."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-white/10 backdrop-blur-sm border border-white/30 text-white rounded-full font-semibold transition-all duration-300 hover:bg-white/20 hover:border-white/50 hover:-translate-y-[2px] text-xs uppercase tracking-widest"
+            &ldquo;A company that connects the world&rsquo;s buyers with high-quality Indian granite.&rdquo;
+          </h1>
+
+          {/* Description */}
+          <p
+            className="text-[16px] md:text-[20px] lg:text-[22px] leading-[1.7] text-white/90 mt-7 max-w-[600px] lg:max-w-[650px]"
+            style={{
+              fontFamily: "Inter, Manrope, sans-serif",
+              fontWeight: 400,
+              textShadow: "0 1px 8px rgba(0,0,0,0.5)",
+            }}
           >
-            WhatsApp Us
-          </a>
+            We source, inspect and export premium granite directly from trusted Indian quarries to
+            importers, distributors and construction projects worldwide.
+          </p>
+
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 mt-10">
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-[#D4AF6A] text-[#111111] rounded-full font-semibold transition-all duration-300 hover:bg-[#E0BB76] hover:-translate-y-[2px] shadow-lg hover:shadow-xl active:translate-y-0 text-xs uppercase tracking-widest"
+            >
+              Request Quote <ArrowRight className="size-4" />
+            </Link>
+            <a
+              href="https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%20am%20interested%20in%20requesting%20a%20commercial%20quote%20for%20Indian%20granite."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-white/10 backdrop-blur-sm border border-white/30 text-white rounded-full font-semibold transition-all duration-300 hover:bg-white/20 hover:border-white/50 hover:-translate-y-[2px] text-xs uppercase tracking-widest"
+            >
+              WhatsApp Us
+            </a>
+          </div>
         </div>
       </div>
 

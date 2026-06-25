@@ -30,7 +30,7 @@ export function SiteHeader() {
         <Link to="/" className="group flex items-center gap-3">
           {/* Circular emblem — trimmed transparent PNG, no box/border/shadow */}
           <img
-            src="/logo.svg"
+            src="/logo.png"
             alt="GraniteBridge Exports logo"
             className="
               w-12 h-auto flex-shrink-0
