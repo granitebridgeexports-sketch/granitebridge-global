@@ -94,105 +94,95 @@ function HomePage() {
 
 function Hero() {
   return (
-    <section className="relative min-h-screen w-full overflow-hidden flex items-center bg-[#050505] pt-[120px] pb-16 lg:pb-20">
-      {/* Background Image Container */}
+    <section className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[#050505]">
+      {/* Background Image — full-bleed, centered for maximum showroom visibility */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <img
           src="/hero-showroom.jpg"
           alt="Premium luxury granite showroom with polished Indian stone slabs"
-          className="w-full h-full object-cover object-[center_35%] lg:object-[80%_35%]"
+          className="w-full h-full object-cover object-center"
+          fetchPriority="high"
+          decoding="async"
         />
-        {/* Desktop left-to-right gradient overlay */}
+        {/* Subtle vignette overlay — dark at top/bottom for text readability, light in center to showcase image */}
         <div
-          className="absolute inset-0 hidden lg:block"
+          className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(90deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.72) 35%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0.15) 100%)",
+              "linear-gradient(180deg, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.28) 40%, rgba(0,0,0,0.22) 60%, rgba(0,0,0,0.50) 100%)",
           }}
         />
-        {/* Mobile vertical gradient overlay */}
+        {/* Soft radial highlight behind content for extra text contrast without heavy overlay */}
         <div
-          className="absolute inset-0 lg:hidden"
+          className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.70) 100%)",
+              "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0,0,0,0.25) 0%, transparent 70%)",
           }}
         />
       </div>
 
-      {/* Content Container */}
-      <div className="mx-auto w-[92%] md:w-[90%] lg:w-full lg:max-w-[1400px] px-0 lg:px-[100px] relative z-10">
-        <div className="max-w-[650px] flex flex-col items-center lg:items-start text-center lg:text-left">
-          {/* Tagline */}
-          <div className="flex items-center justify-center gap-3 w-full">
-            <span className="h-px w-6 bg-[#D4AF6A] shrink-0" />
-            <span className="text-[10px] md:text-[12px] font-semibold tracking-[2px] md:tracking-[3px] lg:tracking-[4px] text-[#D4AF6A] uppercase text-center leading-[1.6]">
-              Bridging India's Finest Granite with Global Markets
-            </span>
-            <span className="h-px w-6 bg-[#D4AF6A] shrink-0" />
-          </div>
+      {/* Content — centered, compact footprint to let image breathe */}
+      <div className="relative z-10 flex flex-col items-center text-center px-6 pt-[80px]">
+        {/* Tagline */}
+        <div className="flex items-center justify-center gap-3">
+          <span className="h-px w-8 bg-[#D4AF6A] shrink-0" />
+          <span className="text-[10px] md:text-[12px] font-semibold tracking-[3px] md:tracking-[4px] text-[#D4AF6A] uppercase leading-[1.6]">
+            Premium Indian Granite Exporters
+          </span>
+          <span className="h-px w-8 bg-[#D4AF6A] shrink-0" />
+        </div>
 
-          {/* Heading */}
-          <h1
-            className="font-display text-white text-[1.65rem] md:text-[2.8rem] lg:text-[clamp(2.4rem,3.8vw,4rem)] font-medium leading-[1.35] md:leading-[1.2] tracking-tight mt-5 max-w-[320px] md:max-w-none mx-auto lg:mx-0"
-            style={{
-              fontFamily: "Playfair Display, Cormorant Garamond, serif",
-              textShadow: "0 2px 20px rgba(0,0,0,0.8)",
-            }}
+        {/* Heading */}
+        <h1
+          className="font-display text-white text-[1.75rem] md:text-[2.8rem] lg:text-[clamp(2.6rem,4vw,4.2rem)] font-medium leading-[1.3] md:leading-[1.18] tracking-tight mt-6 max-w-[340px] md:max-w-[580px]"
+          style={{
+            fontFamily: "Playfair Display, Cormorant Garamond, serif",
+            textShadow: "0 2px 30px rgba(0,0,0,0.7), 0 1px 3px rgba(0,0,0,0.5)",
+          }}
+        >
+          "A company that connects
+          <br className="hidden md:inline" />
+          {" "}the world's buyers with
+          <br className="hidden md:inline" />
+          {" "}high-quality Indian granite."
+        </h1>
+
+        {/* Description */}
+        <p
+          className="text-[14px] md:text-[16px] leading-[1.8] text-white/90 mt-6 max-w-[320px] md:max-w-[500px]"
+          style={{ textShadow: "0 1px 8px rgba(0,0,0,0.5)" }}
+        >
+          We source, inspect and export premium granite directly from trusted Indian quarries to
+          importers, distributors and construction projects worldwide.
+        </p>
+
+        {/* Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 mt-10">
+          <Link
+            to="/contact"
+            className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-[#D4AF6A] text-[#111111] rounded-full font-semibold transition-all duration-300 hover:bg-[#E0BB76] hover:-translate-y-[2px] shadow-lg hover:shadow-xl active:translate-y-0 text-xs uppercase tracking-widest"
           >
-            “A company that connects
-            <br />
-            the world’s buyers with
-            <br />
-            high-quality Indian granite.”
-          </h1>
-
-          {/* Description */}
-          <p className="text-[14px] md:text-[16px] leading-[1.8] text-white/92 mt-6 max-w-[320px] md:max-w-full mx-auto lg:mx-0">
-            We source, inspect and export premium granite directly from trusted Indian quarries to
-            importers, distributors and construction projects worldwide.
-          </p>
-
-          {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 w-full max-w-[340px] lg:max-w-none mx-auto lg:mx-0 mt-8">
-            <Link
-              to="/contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#D4AF6A] text-[#111111] rounded-full font-semibold transition-all duration-300 hover:bg-[#E0BB76] hover:-translate-y-[2px] shadow-lg hover:shadow-xl active:translate-y-0 text-xs uppercase tracking-widest"
-            >
-              Request Quote <ArrowRight className="size-4" />
-            </Link>
-            <a
-              href="https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%20am%20interested%20in%20requesting%20a%20commercial%20quote%20for%20Indian%20granite."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-transparent border border-[rgba(212,175,106,0.5)] text-white rounded-full font-semibold transition-all duration-300 hover:border-[#D4AF6A] hover:text-[#D4AF6A] hover:-translate-y-[2px] text-xs uppercase tracking-widest"
-            >
-              WhatsApp Us
-            </a>
-          </div>
-
-          {/* Trust Badges */}
-          <div className="w-full pt-8 border-t border-white/10 mt-8">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 justify-items-center lg:justify-items-start w-full">
-              {[
-                { label: "Direct Quarry Sourcing", icon: Search },
-                { label: "Quality Inspection", icon: ClipboardCheck },
-                { label: "Export Documentation", icon: FileCheck },
-                { label: "Worldwide Shipping", icon: Ship },
-              ].map((badge, idx) => (
-                <div key={idx} className="flex flex-col items-center lg:items-start group/badge">
-                  <div className="flex size-12 lg:size-14 items-center justify-center rounded-full border border-[#D4AF6A]/60 text-[#D4AF6A] bg-transparent transition-all duration-300 group-hover/badge:bg-[#D4AF6A] group-hover/badge:text-[#111111] group-hover/badge:border-[#D4AF6A] group-hover/badge:scale-105 mb-3">
-                    <badge.icon className="size-5 lg:size-6" strokeWidth={1.3} />
-                  </div>
-                  <span className="text-[10px] lg:text-[11px] font-semibold uppercase tracking-[0.15em] text-white/70 group-hover/badge:text-white transition-colors duration-300 text-center lg:text-left">
-                    {badge.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
+            Request Quote <ArrowRight className="size-4" />
+          </Link>
+          <a
+            href="https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%20am%20interested%20in%20requesting%20a%20commercial%20quote%20for%20Indian%20granite."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-white/10 backdrop-blur-sm border border-white/30 text-white rounded-full font-semibold transition-all duration-300 hover:bg-white/20 hover:border-white/50 hover:-translate-y-[2px] text-xs uppercase tracking-widest"
+          >
+            WhatsApp Us
+          </a>
         </div>
       </div>
+
+      {/* Bottom gradient — smooth transition into marquee section */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none z-10"
+        style={{
+          background: "linear-gradient(to bottom, transparent, rgba(15,15,15,0.9))",
+        }}
+      />
     </section>
   );
 }
