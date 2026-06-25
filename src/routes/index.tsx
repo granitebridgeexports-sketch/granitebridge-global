@@ -133,13 +133,13 @@ function Hero() {
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 md:px-12 lg:px-[100px] pt-[80px] lg:pt-[40px]">
         <div className="w-[90%] md:w-auto max-w-[650px] lg:max-w-[680px] mx-auto lg:mx-0 flex flex-col items-center lg:items-start text-center lg:text-left">
           {/* Tagline */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 lg:w-max lg:self-center">
             <span className="h-px w-6 md:w-8 bg-[#C9A45C] shrink-0" />
             <span
-              className="font-semibold text-[#C9A45C] uppercase leading-[1.6]"
+              className="font-semibold text-[#C9A45C] uppercase leading-[1.6] lg:whitespace-nowrap"
               style={{
-                fontSize: "clamp(11px, 2.5vw, 14px)",
-                letterSpacing: "clamp(4px, 1.5vw, 7px)",
+                fontSize: "clamp(11px, 2.5vw, 13px)",
+                letterSpacing: "clamp(4px, 1.2vw, 6px)",
               }}
             >
               Bridging India's Finest Granite with Global Markets
