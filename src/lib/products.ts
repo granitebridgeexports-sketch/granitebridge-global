@@ -1,11 +1,11 @@
-import absoluteBlack from "@/assets/absolute_black_slab.png";
-import blackGalaxy from "@/assets/black_galaxy_slab.png";
-import steelGrey from "@/assets/steel_grey_slab.png";
-import tanBrown from "@/assets/tan_brown_slab.png";
-import viscountWhite from "@/assets/viscount_white_slab.png";
-import kashmirWhite from "@/assets/kashmir_white_slab.png";
-import redMulticolor from "@/assets/red_multicolor_slab.png";
-import colonialWhite from "@/assets/colonial_white_slab.png";
+import absoluteBlack from "@/assets/absolute_black_slab.jpg";
+import blackGalaxy from "@/assets/black_galaxy_slab.jpg";
+import steelGrey from "@/assets/steel_grey_slab.jpg";
+import tanBrown from "@/assets/tan_brown_slab.jpg";
+import viscountWhite from "@/assets/viscount_white_slab.jpg";
+import kashmirWhite from "@/assets/kashmir_white_slab.jpg";
+import redMulticolor from "@/assets/red_multicolor_slab.jpg";
+import colonialWhite from "@/assets/colonial_white_slab.jpg";
 
 export type Product = {
   slug: string;

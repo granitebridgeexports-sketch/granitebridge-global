@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import logoImg from "@/assets/logo.png";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -26,16 +27,13 @@ export function SiteHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 transition-all duration-300 bg-black/45 backdrop-blur-[12px] border-b border-white/5 h-[80px] flex items-center">
       <div className="mx-auto w-full max-w-[1400px] px-6 lg:px-[100px] flex items-center justify-between">
-        <Link to="/" className="group flex items-center gap-3">
-          <span className="flex h-9 w-9 items-center justify-center border border-[#D4AF6A] text-[#D4AF6A] font-display text-lg tracking-widest transition-transform duration-500 group-hover:rotate-180">
-            G
-          </span>
-          <span className="flex flex-col leading-tight">
-            <span className="font-display text-lg tracking-wide text-white">GraniteBridge</span>
-            <span className="text-[9px] uppercase tracking-[0.32em] text-[#D4AF6A]">
-              Exports Pvt Ltd
-            </span>
-          </span>
+        <Link to="/" className="group flex items-center gap-2">
+          <img
+            src={logoImg}
+            alt="GraniteBridge Exports Private Limited"
+            className="h-[62px] w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+            style={{ maxWidth: "200px" }}
+          />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-10">
