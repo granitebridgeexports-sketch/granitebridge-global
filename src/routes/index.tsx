@@ -94,7 +94,7 @@ function HomePage() {
 
 function Hero() {
   return (
-    <section className="relative h-[85vh] md:h-screen w-full overflow-hidden flex items-center bg-[#050505]">
+    <section className="relative h-[85vh] md:h-screen lg:h-screen lg:min-h-screen w-full overflow-hidden lg:overflow-visible flex items-center bg-[#050505]">
       {/* Background Image — full-bleed, centered for maximum showroom visibility */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <img
@@ -130,8 +130,8 @@ function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 md:px-12 lg:px-[100px] pt-[80px]">
-        <div className="w-[90%] md:w-auto max-w-[650px] mx-auto lg:mx-0 flex flex-col items-center lg:items-start text-center lg:text-left">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 md:px-12 lg:px-[100px] pt-[80px] lg:pt-[40px]">
+        <div className="w-[90%] md:w-auto max-w-[650px] lg:max-w-[680px] mx-auto lg:mx-0 flex flex-col items-center lg:items-start text-center lg:text-left">
           {/* Tagline */}
           <div className="flex items-center gap-3">
             <span className="h-px w-6 md:w-8 bg-[#C9A45C] shrink-0" />
@@ -149,10 +149,9 @@ function Hero() {
 
           {/* Heading */}
           <h1
-            className="text-white font-bold mt-6 md:mt-7 w-full"
+            className="text-white font-bold mt-6 md:mt-7 lg:mt-[22px] w-full text-[clamp(2.625rem,6vw,5rem)] lg:text-[clamp(4rem,5vw,4.5rem)]"
             style={{
               fontFamily: "Cormorant Garamond, Playfair Display, Libre Baskerville, serif",
-              fontSize: "clamp(2.625rem, 6vw, 5rem)",
               lineHeight: 1.08,
               letterSpacing: "-1px",
               textShadow: "0 2px 30px rgba(0,0,0,0.7), 0 1px 3px rgba(0,0,0,0.5)",
@@ -163,7 +162,7 @@ function Hero() {
 
           {/* Description */}
           <p
-            className="text-white/90 mt-6 md:mt-7 w-full"
+            className="text-white/90 mt-6 md:mt-7 lg:mt-[22px] w-full lg:max-w-[580px]"
             style={{
               fontFamily: "Inter, Manrope, sans-serif",
               fontSize: "clamp(15px, 2.8vw, 22px)",
@@ -177,7 +176,7 @@ function Hero() {
           </p>
 
           {/* Buttons — full-width stacked on mobile, inline on desktop */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-4 mt-8 md:mt-10 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-4 mt-8 md:mt-10 lg:mt-[22px] w-full sm:w-auto">
             <Link
               to="/contact"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 h-[54px] sm:h-auto sm:py-4 bg-[#D4AF6A] text-[#111111] rounded-full font-semibold transition-all duration-300 hover:bg-[#E0BB76] hover:-translate-y-[2px] shadow-lg hover:shadow-xl active:translate-y-0 text-xs uppercase tracking-widest"

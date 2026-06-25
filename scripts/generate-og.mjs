@@ -6,7 +6,7 @@ import { stat } from "fs/promises";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.join(__dirname, "..");
 
-const logoPath = path.join(projectRoot, "public", "logo.svg");
+const logoPath = path.join(projectRoot, "public", "logo.png");
 const heroPath = path.join(projectRoot, "public", "hero-showroom.jpg");
 const outPath = path.join(projectRoot, "public", "og-image.jpg");
 
@@ -30,7 +30,7 @@ async function generate() {
         .png()
         .toBuffer();
     } catch (e) {
-      console.log("  ⚠️ logo.svg not found, skipping overlay");
+      console.log("  ⚠️ logo.png not found, skipping overlay");
       logoBuffer = null;
     }
 
