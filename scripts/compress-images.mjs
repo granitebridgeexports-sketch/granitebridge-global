@@ -64,21 +64,49 @@ for (const name of jpgFiles) {
   }
 }
 
-// Compress logo.png — keep PNG (transparency) but shrink to 400px
-console.log('\n📦 Compressing logo...\n');
+// Generate a web-optimized `logo.png` from the high-resolution source if available
+console.log('\n📦 Generating web-friendly logo from hires source...\n');
 try {
-  const logoPath = path.join(assetsDir, 'logo.png');
-  const tmpLogo = logoPath + '.tmp.png';
-  const before = (await stat(logoPath)).size;
-  await sharp(logoPath)
-    .resize({ width: 400, withoutEnlargement: true })
-    .png({ compressionLevel: 9, effort: 10 })
-    .toFile(tmpLogo);
-  const after = (await stat(tmpLogo)).size;
-  await unlink(logoPath);
-  const { rename } = await import('fs/promises');
-  await rename(tmpLogo, logoPath);
-  console.log(`  ✅ logo.png (${kb(before)}) → (${kb(after)}) | saved ${kb(before - after)}`);
+  const srcHires = path.join(assetsDir, 'logo-source-hires.png');
+  const outLogo = path.join(assetsDir, 'logo.png');
+  const tmpLogo = outLogo + '.tmp.png';
+
+  // If the hires master exists, make a 400px PNG for web use while preserving the master
+  try {
+    // Prefer a pre-created transparent PNG so the web logo keeps transparency.
+    const transparentSrc = path.join(assetsDir, 'logo-transparent.png');
+    let usedSrc = srcHires;
+    try {
+      await stat(transparentSrc);
+      usedSrc = transparentSrc;
+    } catch {}
+
+    const before = (await stat(usedSrc)).size;
+    await sharp(usedSrc)
+      .resize({ width: 400, withoutEnlargement: true })
+      .png({ compressionLevel: 9, effort: 10 })
+      .toFile(tmpLogo);
+    const after = (await stat(tmpLogo)).size;
+    // Replace any existing web logo.png with the generated one
+    try { await unlink(outLogo); } catch {}
+    const { rename } = await import('fs/promises');
+    await rename(tmpLogo, outLogo);
+    console.log(`  ✅ logo.png (from hires ${kb(before)}) → (${kb(after)}) | saved ${kb(before - after)}`);
+  } catch (e) {
+    // Fallback: if no hires source, try compressing an existing logo.png in-place
+    const existing = path.join(assetsDir, 'logo.png');
+    const tmp = existing + '.tmp.png';
+    const before = (await stat(existing)).size;
+    await sharp(existing)
+      .resize({ width: 400, withoutEnlargement: true })
+      .png({ compressionLevel: 9, effort: 10 })
+      .toFile(tmp);
+    const after = (await stat(tmp)).size;
+    await unlink(existing);
+    const { rename } = await import('fs/promises');
+    await rename(tmp, existing);
+    console.log(`  ✅ logo.png (${kb(before)}) → (${kb(after)}) | saved ${kb(before - after)}`);
+  }
 } catch (e) {
   console.log(`  ❌ logo.png: ${e.message}`);
 }

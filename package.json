@@ -4,14 +4,17 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "dev": "cross-env SKIP_NITRO=1 NODE_OPTIONS=--max-old-space-size=4096 vite dev",
+    "dev": "bun vite dev",
+    "dev:watch": "cross-env SKIP_NITRO=1 NODE_OPTIONS=--max-old-space-size=4096 vite build --watch --mode development",
+    "dev:preview": "vite preview --port 8080",
     "dev:spa": "cross-env VITE_SPA_MODE=true vite dev --mode development",
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "compress-images": "node scripts/compress-images.mjs"
+    "compress-images": "node scripts/compress-images.mjs",
+    "remove-bg": "node scripts/remove-bg.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -75,6 +78,7 @@
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^5.0.4",
+    "concurrently": "^10.0.3",
     "cross-env": "^10.1.0",
     "eslint": "^9.32.0",
     "eslint-config-prettier": "^10.1.1",

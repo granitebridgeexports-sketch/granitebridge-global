@@ -10,7 +10,10 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.join(__dirname, '..');
 
-const inputPath  = path.join(projectRoot, 'src', 'assets', 'logo.png');
+// Use the high-resolution source as the canonical input. This preserves the
+// original hires file while the script produces a trimmed transparent PNG
+// and a small favicon for the public folder.
+const inputPath  = path.join(projectRoot, 'src', 'assets', 'logo-source-hires.png');
 const outputPath = path.join(projectRoot, 'src', 'assets', 'logo-transparent.png');
 const faviconOut = path.join(projectRoot, 'public', 'favicon.png');
 
@@ -52,8 +55,9 @@ async function removeWhiteBackground(input, output) {
 }
 
 async function makeSmallFavicon(input, output) {
+  // Crop to center and produce a square favicon focused on the emblem
   await sharp(input)
-    .resize(256, 256, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
+    .resize(256, 256, { fit: 'cover', position: 'centre' })
     .png({ compressionLevel: 9 })
     .toFile(output);
   console.log(`✅ Saved favicon: ${output}`);

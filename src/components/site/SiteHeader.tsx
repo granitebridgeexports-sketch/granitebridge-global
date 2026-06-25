@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logoImg from "@/assets/logo-transparent.png";
+import logoWeb from "@/assets/logo.png";
+import logoHires from "@/assets/logo-source-hires.png";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -32,11 +33,12 @@ export function SiteHeader() {
         <Link to="/" className="group flex items-center gap-3">
           {/* Circular emblem — trimmed transparent PNG, no box/border/shadow */}
           <img
-            src={logoImg}
+            src={logoWeb}
+            srcSet={`${logoHires} 2x`}
             alt=""
             aria-hidden="true"
             className="
-              h-[78px] w-[78px] flex-shrink-0
+              h-12 w-12 flex-shrink-0
               object-contain object-center
               transition-transform duration-500 group-hover:scale-105
               sm:h-[78px] sm:w-[78px]
