@@ -3,12 +3,13 @@ import { nitro } from "nitro/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import tailwindcss from "@tailwindcss/vite";
 
-const isDev = process.env.NODE_ENV !== "production";
+// SKIP_NITRO=1 is set by the dev script so Nitro's Vercel SSR bundle
+// compilation is bypassed in development (it consumes 4GB+ RAM → OOM crash).
+const skipNitro = process.env.SKIP_NITRO === "1";
 
 export default defineConfig({
   tanstackStart: {
-    // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
+    // Redirect TanStack Start's bundled server entry to src/server.ts
     server: { entry: "server" },
   },
   vite: {
@@ -18,15 +19,8 @@ export default defineConfig({
     plugins: [
       tsconfigPaths(),
       tailwindcss(),
-      // Only run Nitro during production builds — in dev it compiles the full
-      // Vercel SSR bundle which consumes 4GB+ RAM and causes OOM crashes.
-      ...(!isDev
-        ? [
-            nitro({
-              preset: "vercel",
-            }),
-          ]
-        : []),
+      // Only run Nitro during production builds
+      ...(!skipNitro ? [nitro({ preset: "vercel" })] : []),
     ],
   },
 });

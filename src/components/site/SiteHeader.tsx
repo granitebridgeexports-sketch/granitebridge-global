@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logoImg from "@/assets/logo.png";
+import logoImg from "@/assets/logo-transparent.png";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -27,13 +27,34 @@ export function SiteHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 transition-all duration-300 bg-black/45 backdrop-blur-[12px] border-b border-white/5 h-[80px] flex items-center">
       <div className="mx-auto w-full max-w-[1400px] px-6 lg:px-[100px] flex items-center justify-between">
-        <Link to="/" className="group flex items-center gap-2">
+
+        {/* Brand logo — New Ridge style: emblem + name + tagline */}
+        <Link to="/" className="group flex items-center gap-3">
+          {/* Circular emblem — trimmed transparent PNG, no box/border/shadow */}
           <img
             src={logoImg}
-            alt="GraniteBridge Exports Private Limited"
-            className="h-[62px] w-auto object-contain transition-transform duration-500 group-hover:scale-105"
-            style={{ maxWidth: "200px" }}
+            alt=""
+            aria-hidden="true"
+            className="
+              h-[78px] w-[78px] flex-shrink-0
+              object-contain object-center
+              transition-transform duration-500 group-hover:scale-105
+              sm:h-[78px] sm:w-[78px]
+            "
+            style={{
+              filter: "drop-shadow(0 0 6px rgba(212,175,55,0.25))",
+              imageRendering: "crisp-edges",
+            }}
           />
+          {/* Brand text — visible on screens ≥ 400px */}
+          <span className="hidden xs:flex flex-col leading-tight">
+            <span className="font-display text-[17px] tracking-wide text-white font-bold">
+              GraniteBridgeExports
+            </span>
+            <span className="text-[9px] uppercase tracking-[0.38em] text-[#D4AF6A] mt-0.5">
+              Private Limited
+            </span>
+          </span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-10">

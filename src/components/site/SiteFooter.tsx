@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin } from "lucide-react";
-import logoImg from "@/assets/logo.png";
+import logoImg from "@/assets/logo-transparent.png";
 
 export function SiteFooter() {
   return (
@@ -12,9 +12,15 @@ export function SiteFooter() {
               <img
                 src={logoImg}
                 alt="GraniteBridge Exports Private Limited"
-                className="h-[80px] w-auto object-contain"
-                style={{ maxWidth: "220px" }}
+                className="h-[72px] w-[72px] object-contain flex-shrink-0"
+                style={{ filter: "drop-shadow(0 0 8px rgba(212,175,55,0.3))" }}
               />
+              <div>
+                <div className="font-display text-xl text-bone font-bold">GraniteBridgeExports</div>
+                <div className="text-[9px] uppercase tracking-[0.38em] text-gold/80 mt-0.5">
+                  Private Limited
+                </div>
+              </div>
             </div>
             <p className="mt-6 text-sm leading-relaxed max-w-sm">
               A professional Indian granite export company connecting the world's buyers with
