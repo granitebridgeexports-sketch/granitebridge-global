@@ -24,16 +24,15 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 transition-all duration-300 bg-black/45 backdrop-blur-[12px] border-b border-white/5 h-[80px] flex items-center">
-      <div className="mx-auto w-full max-w-[1400px] px-6 lg:px-[100px] flex items-center justify-between">
-        {/* Brand logo — New Ridge style: emblem + name + tagline */}
-        <Link to="/" className="group flex items-center gap-3">
-          {/* Circular emblem — trimmed transparent PNG, no box/border/shadow */}
+    <header className="fixed inset-x-0 top-0 z-50 transition-all duration-300 bg-black/45 backdrop-blur-[12px] border-b border-white/5 h-[68px] md:h-[80px] flex items-center">
+      <div className="mx-auto w-full max-w-[1400px] px-5 md:px-6 lg:px-[100px] flex items-center justify-between">
+        {/* Brand logo */}
+        <Link to="/" className="group flex items-center gap-2.5 md:gap-3">
           <img
             src="/logo.png"
             alt="GraniteBridge Exports logo"
             className="
-              w-12 h-auto flex-shrink-0
+              w-16 h-auto flex-shrink-0
               object-contain object-center
               transition-transform duration-500 group-hover:scale-105
               sm:w-[78px] sm:h-auto
@@ -44,10 +43,10 @@ export function SiteHeader() {
           />
           {/* Brand text — visible on screens ≥ 400px */}
           <span className="hidden xs:flex flex-col leading-tight">
-            <span className="font-display text-[17px] tracking-wide text-white font-bold">
+            <span className="font-display text-[15px] sm:text-[17px] tracking-wide text-white font-bold">
               GraniteBridgeExports
             </span>
-            <span className="text-[9px] uppercase tracking-[0.38em] text-[#D4AF6A] mt-0.5">
+            <span className="text-[8px] sm:text-[9px] uppercase tracking-[0.38em] text-[#D4AF6A] mt-0.5">
               Private Limited
             </span>
           </span>
@@ -78,7 +77,7 @@ export function SiteHeader() {
 
         <button
           onClick={() => setOpen((o) => !o)}
-          className="lg:hidden p-2 hover:text-[#D4AF6A] transition-colors text-white"
+          className="lg:hidden flex items-center justify-center size-12 hover:text-[#D4AF6A] transition-colors text-white -mr-2"
           aria-label="Toggle menu"
         >
           {open ? <X className="size-6" /> : <Menu className="size-6" />}

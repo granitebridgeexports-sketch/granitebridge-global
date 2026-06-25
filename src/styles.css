@@ -148,12 +148,20 @@
     border-color: var(--color-border);
   }
 
+  html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    word-break: break-word;
   }
 
   h1,
@@ -163,6 +171,13 @@
     font-family: var(--font-display);
     font-weight: 400;
     letter-spacing: -0.01em;
+    overflow-wrap: break-word;
+  }
+
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
   }
 
   summary::-webkit-details-marker {
@@ -179,7 +194,10 @@
   width: 100%;
   max-width: 1400px;
   margin-inline: auto;
-  padding-inline: 1.5rem;
+  padding-inline: 1.25rem;
+  @media (min-width: 768px) {
+    padding-inline: 1.5rem;
+  }
   @media (min-width: 1024px) {
     padding-inline: 3rem;
   }

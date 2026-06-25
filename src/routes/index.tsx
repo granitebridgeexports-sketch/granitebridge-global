@@ -94,7 +94,7 @@ function HomePage() {
 
 function Hero() {
   return (
-    <section className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[#050505]">
+    <section className="relative h-[85vh] md:h-screen w-full overflow-hidden flex items-center bg-[#050505]">
       {/* Background Image — full-bleed, centered for maximum showroom visibility */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <img
@@ -104,17 +104,24 @@ function Hero() {
           fetchPriority="high"
           decoding="async"
         />
-        {/* Subtle vignette overlay — dark at top/bottom for text readability, light in center to showcase image */}
+        {/* Mobile overlay — uniform 65% for readability */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 lg:hidden"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.60) 50%, rgba(0,0,0,0.70) 100%)",
+          }}
+        />
+        {/* Desktop overlays — vignette + left-weighted */}
+        <div
+          className="absolute inset-0 hidden lg:block"
           style={{
             background:
               "linear-gradient(180deg, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.28) 40%, rgba(0,0,0,0.22) 60%, rgba(0,0,0,0.50) 100%)",
           }}
         />
-        {/* Left-weighted overlay — darker on left for text readability, lighter on right for image */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 hidden lg:block"
           style={{
             background:
               "linear-gradient(90deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.45) 40%, rgba(0,0,0,0.20) 70%, rgba(0,0,0,0.10) 100%)",
@@ -122,23 +129,31 @@ function Hero() {
         />
       </div>
 
-      {/* Content — left-aligned, occupying left ~45% of hero */}
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-[100px] pt-[80px]">
-        <div className="max-w-[650px] flex flex-col items-start text-left">
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 md:px-12 lg:px-[100px] pt-[80px]">
+        <div className="w-[90%] md:w-auto max-w-[650px] mx-auto lg:mx-0 flex flex-col items-center lg:items-start text-center lg:text-left">
           {/* Tagline */}
           <div className="flex items-center gap-3">
-            <span className="h-px w-8 bg-[#C9A45C] shrink-0" />
-            <span className="text-[10px] md:text-[11px] font-semibold tracking-[6px] md:tracking-[7px] text-[#C9A45C] uppercase leading-[1.6]">
+            <span className="h-px w-6 md:w-8 bg-[#C9A45C] shrink-0" />
+            <span
+              className="font-semibold text-[#C9A45C] uppercase leading-[1.6]"
+              style={{
+                fontSize: "clamp(11px, 2.5vw, 14px)",
+                letterSpacing: "clamp(4px, 1.5vw, 7px)",
+              }}
+            >
               Bridging India's Finest Granite with Global Markets
             </span>
-            <span className="h-px w-8 bg-[#C9A45C] shrink-0" />
+            <span className="h-px w-6 md:w-8 bg-[#C9A45C] shrink-0" />
           </div>
 
           {/* Heading */}
           <h1
-            className="text-white text-[2.4rem] md:text-[3.5rem] lg:text-[5rem] font-bold leading-[1.08] mt-7 max-w-[600px] lg:max-w-[650px]"
+            className="text-white font-bold mt-6 md:mt-7 w-full"
             style={{
               fontFamily: "Cormorant Garamond, Playfair Display, Libre Baskerville, serif",
+              fontSize: "clamp(2.625rem, 6vw, 5rem)",
+              lineHeight: 1.08,
               letterSpacing: "-1px",
               textShadow: "0 2px 30px rgba(0,0,0,0.7), 0 1px 3px rgba(0,0,0,0.5)",
             }}
@@ -148,9 +163,11 @@ function Hero() {
 
           {/* Description */}
           <p
-            className="text-[16px] md:text-[20px] lg:text-[22px] leading-[1.7] text-white/90 mt-7 max-w-[600px] lg:max-w-[650px]"
+            className="text-white/90 mt-6 md:mt-7 w-full"
             style={{
               fontFamily: "Inter, Manrope, sans-serif",
+              fontSize: "clamp(15px, 2.8vw, 22px)",
+              lineHeight: 1.7,
               fontWeight: 400,
               textShadow: "0 1px 8px rgba(0,0,0,0.5)",
             }}
@@ -159,11 +176,11 @@ function Hero() {
             importers, distributors and construction projects worldwide.
           </p>
 
-          {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mt-10">
+          {/* Buttons — full-width stacked on mobile, inline on desktop */}
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-4 mt-8 md:mt-10 w-full sm:w-auto">
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-[#D4AF6A] text-[#111111] rounded-full font-semibold transition-all duration-300 hover:bg-[#E0BB76] hover:-translate-y-[2px] shadow-lg hover:shadow-xl active:translate-y-0 text-xs uppercase tracking-widest"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 h-[54px] sm:h-auto sm:py-4 bg-[#D4AF6A] text-[#111111] rounded-full font-semibold transition-all duration-300 hover:bg-[#E0BB76] hover:-translate-y-[2px] shadow-lg hover:shadow-xl active:translate-y-0 text-xs uppercase tracking-widest"
             >
               Request Quote <ArrowRight className="size-4" />
             </Link>
@@ -171,7 +188,7 @@ function Hero() {
               href="https://wa.me/919392753192?text=Hello%20GraniteBridge%20Exports%2C%20I%20am%20interested%20in%20requesting%20a%20commercial%20quote%20for%20Indian%20granite."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-white/10 backdrop-blur-sm border border-white/30 text-white rounded-full font-semibold transition-all duration-300 hover:bg-white/20 hover:border-white/50 hover:-translate-y-[2px] text-xs uppercase tracking-widest"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 h-[54px] sm:h-auto sm:py-4 bg-white/10 backdrop-blur-sm border border-white/30 text-white rounded-full font-semibold transition-all duration-300 hover:bg-white/20 hover:border-white/50 hover:-translate-y-[2px] text-xs uppercase tracking-widest"
             >
               WhatsApp Us
             </a>
