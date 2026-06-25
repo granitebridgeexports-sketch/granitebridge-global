@@ -119,16 +119,11 @@ function StatCounter({
   const count = useCountUp(value, isVisible);
   return (
     <div className="text-center px-4">
-      <div
-        className="font-display text-5xl lg:text-6xl"
-        style={{ color: "#D4AF37" }}
-      >
+      <div className="font-display text-5xl lg:text-6xl" style={{ color: "#D4AF37" }}>
         {count}
         {suffix}
       </div>
-      <div className="mt-3 text-[11px] uppercase tracking-[0.28em] text-white/50">
-        {label}
-      </div>
+      <div className="mt-3 text-[11px] uppercase tracking-[0.28em] text-white/50">{label}</div>
     </div>
   );
 }
@@ -156,10 +151,7 @@ function FeedbackPage() {
   return (
     <>
       {/* ─── Hero ──────────────────────────────────────────────────────── */}
-      <section
-        className="relative pt-40 pb-28 overflow-hidden"
-        style={{ background: "#0A0A0A" }}
-      >
+      <section className="relative pt-40 pb-28 overflow-hidden" style={{ background: "#0A0A0A" }}>
         {/* Decorative radial glow */}
         <div
           className="absolute inset-0 pointer-events-none"
@@ -189,10 +181,7 @@ function FeedbackPage() {
               style={{ color: "#F7F5F2" }}
             >
               Trusted by Builders,{" "}
-              <span
-                className="italic font-light"
-                style={{ color: "#D4AF37" }}
-              >
+              <span className="italic font-light" style={{ color: "#D4AF37" }}>
                 Architects & Homeowners
               </span>{" "}
               Worldwide
@@ -203,18 +192,15 @@ function FeedbackPage() {
               className="mt-8 text-base lg:text-lg leading-relaxed max-w-2xl mx-auto"
               style={{ color: "rgba(247,245,242,0.6)" }}
             >
-              See what our customers say about the quality, finish, packaging,
-              and professionalism of GraniteBridge Exports Pvt Ltd.
+              See what our customers say about the quality, finish, packaging, and professionalism
+              of GraniteBridge Exports Pvt Ltd.
             </p>
           </Reveal>
         </div>
       </section>
 
       {/* ─── Testimonials Grid ─────────────────────────────────────────── */}
-      <section
-        className="py-24"
-        style={{ background: "#0F0F0F" }}
-      >
+      <section className="py-24" style={{ background: "#0F0F0F" }}>
         <div className="container-wide">
           <div
             className="grid gap-6"
@@ -232,10 +218,7 @@ function FeedbackPage() {
       </section>
 
       {/* ─── Statistics ────────────────────────────────────────────────── */}
-      <section
-        className="py-24 relative overflow-hidden"
-        style={{ background: "#0A0A0A" }}
-      >
+      <section className="py-24 relative overflow-hidden" style={{ background: "#0A0A0A" }}>
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -252,15 +235,9 @@ function FeedbackPage() {
             </div>
           </Reveal>
 
-          <div
-            ref={statsRef}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-6"
-          >
+          <div ref={statsRef} className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-6">
             {STATS.map((s, i) => (
-              <div
-                key={s.label}
-                className="flex flex-col items-center relative"
-              >
+              <div key={s.label} className="flex flex-col items-center relative">
                 {i < STATS.length - 1 && (
                   <div
                     className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 h-12 w-px"
@@ -280,16 +257,12 @@ function FeedbackPage() {
       </section>
 
       {/* ─── CTA ───────────────────────────────────────────────────────── */}
-      <section
-        className="py-28 relative overflow-hidden"
-        style={{ background: "#0F0F0F" }}
-      >
+      <section className="py-28 relative overflow-hidden" style={{ background: "#0F0F0F" }}>
         {/* Gold border top */}
         <div
           className="absolute top-0 inset-x-0 h-px"
           style={{
-            background:
-              "linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent)",
+            background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent)",
           }}
         />
         <div
@@ -311,10 +284,7 @@ function FeedbackPage() {
               style={{ color: "#F7F5F2" }}
             >
               Ready to Start Your{" "}
-              <span
-                className="italic font-light"
-                style={{ color: "#D4AF37" }}
-              >
+              <span className="italic font-light" style={{ color: "#D4AF37" }}>
                 Project?
               </span>
             </h2>
@@ -322,8 +292,8 @@ function FeedbackPage() {
               className="mt-6 text-base leading-relaxed max-w-xl mx-auto"
               style={{ color: "rgba(247,245,242,0.6)" }}
             >
-              Join hundreds of satisfied customers and source premium granite
-              directly from GraniteBridge Exports Pvt Ltd.
+              Join hundreds of satisfied customers and source premium granite directly from
+              GraniteBridge Exports Pvt Ltd.
             </p>
             <div className="mt-12">
               <Link to="/contact" className="btn-gold">
@@ -336,8 +306,7 @@ function FeedbackPage() {
         <div
           className="absolute bottom-0 inset-x-0 h-px"
           style={{
-            background:
-              "linear-gradient(90deg, transparent, rgba(212,175,55,0.3), transparent)",
+            background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.3), transparent)",
           }}
         />
       </section>
@@ -369,7 +338,8 @@ function TestimonialCard({
       onMouseEnter={(e) => {
         const el = e.currentTarget;
         el.style.transform = "translateY(-8px)";
-        el.style.boxShadow = "0 20px 40px -10px rgba(212,175,55,0.2), 0 8px 16px -8px rgba(0,0,0,0.6)";
+        el.style.boxShadow =
+          "0 20px 40px -10px rgba(212,175,55,0.2), 0 8px 16px -8px rgba(0,0,0,0.6)";
         el.style.borderColor = "rgba(212,175,55,0.35)";
       }}
       onMouseLeave={(e) => {
@@ -383,8 +353,7 @@ function TestimonialCard({
       <div
         className="absolute top-0 left-8 right-8 h-px"
         style={{
-          background:
-            "linear-gradient(90deg, transparent, rgba(212,175,55,0.6), transparent)",
+          background: "linear-gradient(90deg, transparent, rgba(212,175,55,0.6), transparent)",
           transition: "opacity 0.3s ease",
         }}
       />
@@ -427,10 +396,7 @@ function TestimonialCard({
           {initials}
         </div>
         <div>
-          <div
-            className="text-sm font-semibold"
-            style={{ color: "#F7F5F2" }}
-          >
+          <div className="text-sm font-semibold" style={{ color: "#F7F5F2" }}>
             {name}
           </div>
           <div

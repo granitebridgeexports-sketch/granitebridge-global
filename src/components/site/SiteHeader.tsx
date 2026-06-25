@@ -26,7 +26,6 @@ export function SiteHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 transition-all duration-300 bg-black/45 backdrop-blur-[12px] border-b border-white/5 h-[80px] flex items-center">
       <div className="mx-auto w-full max-w-[1400px] px-6 lg:px-[100px] flex items-center justify-between">
-
         {/* Brand logo — New Ridge style: emblem + name + tagline */}
         <Link to="/" className="group flex items-center gap-3">
           {/* Circular emblem — trimmed transparent PNG, no box/border/shadow */}

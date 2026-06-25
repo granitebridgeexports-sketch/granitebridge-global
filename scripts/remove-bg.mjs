@@ -3,19 +3,19 @@
  * alpha channel technique, then trims transparent edges.
  * Saves result to src/assets/logo-transparent.png
  */
-import sharp from 'sharp';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import sharp from "sharp";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const projectRoot = path.join(__dirname, '..');
+const projectRoot = path.join(__dirname, "..");
 
 // Use the high-resolution source as the canonical input. This preserves the
 // original hires file while the script produces a trimmed transparent PNG
 // and a small favicon for the public folder.
-const inputPath  = path.join(projectRoot, 'src', 'assets', 'logo-source-hires.png');
-const outputPath = path.join(projectRoot, 'src', 'assets', 'logo-transparent.png');
-const faviconOut = path.join(projectRoot, 'public', 'favicon.png');
+const inputPath = path.join(projectRoot, "src", "assets", "logo-source-hires.png");
+const outputPath = path.join(projectRoot, "src", "assets", "logo-transparent.png");
+const faviconOut = path.join(projectRoot, "public", "favicon.png");
 
 async function removeWhiteBackground(input, output) {
   // Read original image
@@ -45,10 +45,10 @@ async function removeWhiteBackground(input, output) {
   }
 
   await sharp(Buffer.from(pixels.buffer), {
-    raw: { width, height, channels }
+    raw: { width, height, channels },
   })
     .png({ compressionLevel: 9 })
-    .trim({ threshold: 10 })  // crop transparent edges
+    .trim({ threshold: 10 }) // crop transparent edges
     .toFile(output);
 
   console.log(`✅ Saved transparent logo: ${output}`);
@@ -57,18 +57,18 @@ async function removeWhiteBackground(input, output) {
 async function makeSmallFavicon(input, output) {
   // Crop to center and produce a square favicon focused on the emblem
   await sharp(input)
-    .resize(256, 256, { fit: 'cover', position: 'centre' })
+    .resize(256, 256, { fit: "cover", position: "centre" })
     .png({ compressionLevel: 9 })
     .toFile(output);
   console.log(`✅ Saved favicon: ${output}`);
 }
 
 (async () => {
-  console.log('🔄 Removing white background from logo...');
+  console.log("🔄 Removing white background from logo...");
   await removeWhiteBackground(inputPath, outputPath);
   await makeSmallFavicon(outputPath, faviconOut);
 
-  const { stat } = await import('fs/promises');
+  const { stat } = await import("fs/promises");
   const s = await stat(outputPath);
   console.log(`   Size: ${Math.round(s.size / 1024)}KB`);
 })();

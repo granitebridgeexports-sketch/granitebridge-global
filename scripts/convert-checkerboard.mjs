@@ -1,14 +1,14 @@
-import sharp from 'sharp';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { stat } from 'fs/promises';
+import sharp from "sharp";
+import path from "path";
+import { fileURLToPath } from "url";
+import { stat } from "fs/promises";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const projectRoot = path.join(__dirname, '..');
+const projectRoot = path.join(__dirname, "..");
 
-const inputPath = path.join(projectRoot, 'src', 'assets', 'logo-source-hires.png');
-const outputPath = path.join(projectRoot, 'src', 'assets', 'logo-transparent.png');
-const faviconOut = path.join(projectRoot, 'public', 'favicon.png');
+const inputPath = path.join(projectRoot, "src", "assets", "logo-source-hires.png");
+const outputPath = path.join(projectRoot, "src", "assets", "logo-transparent.png");
+const faviconOut = path.join(projectRoot, "public", "favicon.png");
 
 function dist3(a, b) {
   const dr = a[0] - b[0];
@@ -35,9 +35,15 @@ function kmeans(pixels, k = 4, iters = 20) {
       let bestd = Infinity;
       for (let c = 0; c < k; c++) {
         const d = dist3(pixels[i], cents[c]);
-        if (d < bestd) { bestd = d; best = c; }
+        if (d < bestd) {
+          bestd = d;
+          best = c;
+        }
       }
-      if (assign[i] !== best) { changed = true; assign[i] = best; }
+      if (assign[i] !== best) {
+        changed = true;
+        assign[i] = best;
+      }
       sums[best][0] += pixels[i][0];
       sums[best][1] += pixels[i][1];
       sums[best][2] += pixels[i][2];
@@ -56,7 +62,7 @@ function kmeans(pixels, k = 4, iters = 20) {
 }
 
 async function convertCheckerboard() {
-  console.log('🔍 Detecting checkerboard background...');
+  console.log("🔍 Detecting checkerboard background...");
 
   // Small preview for clustering
   const preview = await sharp(inputPath)
@@ -104,17 +110,26 @@ async function convertCheckerboard() {
   candidates.sort((a, b) => b.frac - a.frac);
 
   // Pick top clusters that have significant border presence
-  const backgroundClusters = candidates.filter(c => c.frac > 0.35).slice(0, 2).map(c => c.idx);
+  const backgroundClusters = candidates
+    .filter((c) => c.frac > 0.35)
+    .slice(0, 2)
+    .map((c) => c.idx);
 
   if (backgroundClusters.length === 0) {
-    console.log('  ⛔ No clear checkerboard/background clusters found — falling back to remove-bg technique.');
+    console.log(
+      "  ⛔ No clear checkerboard/background clusters found — falling back to remove-bg technique.",
+    );
     // fallback: call original remove-bg.mjs via child process
-    const { spawn } = await import('child_process');
-    const cp = spawn(process.execPath, [new URL('./remove-bg.mjs', import.meta.url).pathname], { stdio: 'inherit' });
-    return new Promise((res, rej) => cp.on('close', code => code === 0 ? res() : rej(new Error('remove-bg fallback failed'))));
+    const { spawn } = await import("child_process");
+    const cp = spawn(process.execPath, [new URL("./remove-bg.mjs", import.meta.url).pathname], {
+      stdio: "inherit",
+    });
+    return new Promise((res, rej) =>
+      cp.on("close", (code) => (code === 0 ? res() : rej(new Error("remove-bg fallback failed")))),
+    );
   }
 
-  console.log(`  Identified background clusters: ${backgroundClusters.join(', ')}`);
+  console.log(`  Identified background clusters: ${backgroundClusters.join(", ")}`);
 
   // Now process full-res image and apply mask
   const full = await sharp(inputPath).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
@@ -134,10 +149,14 @@ async function convertCheckerboard() {
       const idx = (y * fw + x) * fchan;
       const rgb = [out[idx], out[idx + 1], out[idx + 2]];
       // find nearest centroid
-      let best = 0; let bd = Infinity;
+      let best = 0;
+      let bd = Infinity;
       for (const ci of backgroundClusters) {
         const d = dist3(rgb, cents[ci]);
-        if (d < bd) { bd = d; best = ci; }
+        if (d < bd) {
+          bd = d;
+          best = ci;
+        }
       }
       if (bd <= threshold) {
         // mark transparent
@@ -155,7 +174,10 @@ async function convertCheckerboard() {
   console.log(`✅ Converted checkerboard → transparency: ${outputPath}`);
 
   // favicon
-  await sharp(outputPath).resize(256, 256, { fit: 'cover', position: 'centre' }).png({ compressionLevel: 9 }).toFile(faviconOut);
+  await sharp(outputPath)
+    .resize(256, 256, { fit: "cover", position: "centre" })
+    .png({ compressionLevel: 9 })
+    .toFile(faviconOut);
   const s = await stat(outputPath);
   console.log(`   Size: ${Math.round(s.size / 1024)}KB`);
 }
@@ -163,9 +185,9 @@ async function convertCheckerboard() {
 (async () => {
   try {
     await convertCheckerboard();
-    console.log('\n✅ Done.');
+    console.log("\n✅ Done.");
   } catch (e) {
-    console.error('Error:', e.message);
+    console.error("Error:", e.message);
     process.exitCode = 1;
   }
 })();
