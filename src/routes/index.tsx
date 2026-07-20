@@ -32,6 +32,7 @@ import monumentImg from "@/assets/project-monument.jpg";
 import { PRODUCTS } from "@/lib/products";
 import { Reveal } from "@/components/site/Reveal";
 import { QuoteForm } from "@/components/site/QuoteForm";
+import { PremiumStoneCollection } from "@/components/site/PremiumStoneCollection";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -81,6 +82,7 @@ function HomePage() {
       <Marquee />
       <About />
       <Products />
+      <PremiumStoneCollection />
       <WhyUs />
       <Process />
       <Markets />
