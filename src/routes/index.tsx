@@ -89,8 +89,208 @@ function HomePage() {
       <Gallery />
       <Testimonials />
       <FAQ />
+      <ExploreProducts />
       <ContactCTA />
     </>
+  );
+}
+
+/* ─── Premium product data for the bottom Explore section ─── */
+const PREMIUM_ITEMS = [
+  {
+    name: "Luxury Marble Bathtub",
+    description:
+      "Freestanding Calacatta marble bathtub with sculptural curves and dramatic grey veining.",
+    image: "/premium-collection/marble-bathtub.png",
+    category: "Bath & Spa",
+  },
+  {
+    name: "Stone Wash Basin",
+    description:
+      "Hand-carved natural stone vessel sink with organic textures for boutique hotels.",
+    image: "/premium-collection/stone-wash-basin.png",
+    category: "Bath & Spa",
+  },
+  {
+    name: "Granite Kitchen Sink",
+    description:
+      "Black Galaxy granite farmhouse sink with a mirror-polished finish and golden flecks.",
+    image: "/premium-collection/granite-kitchen-sink.png",
+    category: "Kitchen",
+  },
+  {
+    name: "Marble Dining Table",
+    description:
+      "Statuario marble dining table with bold veining and clean geometric lines.",
+    image: "/premium-collection/marble-dining-table.png",
+    category: "Furniture",
+  },
+  {
+    name: "Granite Coffee Table",
+    description:
+      "Steel Grey granite coffee table with polished surface and contemporary metal base.",
+    image: "/premium-collection/granite-coffee-table.png",
+    category: "Furniture",
+  },
+  {
+    name: "Stone Console Table",
+    description:
+      "Elegant marble console table with dramatic veining and gold-finished legs.",
+    image: "/premium-collection/stone-console-table.png",
+    category: "Furniture",
+  },
+];
+
+function ExploreProducts() {
+  return (
+    <section
+      id="explore-products"
+      className="py-28 lg:py-40 bg-onyx text-bone relative overflow-hidden border-t border-white/5"
+    >
+      {/* Ambient background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 70% 50% at 50% 30%, rgba(201,166,107,0.03) 0%, transparent 60%)",
+          }}
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.015)_1px,transparent_1px)] [background-size:28px_28px]" />
+      </div>
+
+      <div className="container-wide relative z-10">
+        {/* Section Header */}
+        <Reveal>
+          <div className="flex items-center gap-3 mb-6">
+            <span className="hairline" />
+            <span className="eyebrow">Explore Our Products</span>
+          </div>
+          <h2 className="font-display text-4xl lg:text-6xl max-w-4xl">
+            The complete GraniteBridge range —{" "}
+            <span className="text-gold italic">granite slabs to luxury stone.</span>
+          </h2>
+          <p className="mt-6 text-bone/60 leading-relaxed max-w-2xl text-lg">
+            From premium export-grade granite slabs to bespoke stone furniture and home essentials.
+            Every product is sourced, inspected, and shipped to international standards.
+          </p>
+        </Reveal>
+
+        {/* ── Granite Slabs ── */}
+        <div className="mt-20">
+          <Reveal>
+            <div className="flex items-center gap-3 mb-10">
+              <span className="h-px w-8 bg-gold/40" />
+              <span className="text-[10px] uppercase tracking-[0.3em] text-gold font-semibold">
+                Export-Grade Granite
+              </span>
+            </div>
+          </Reveal>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {PRODUCTS.map((p, i) => (
+              <Reveal key={p.slug} delay={i * 0.04}>
+                <Link
+                  to="/products/$slug"
+                  params={{ slug: p.slug }}
+                  className="group relative flex flex-col bg-[#141414] border border-white/5 hover:border-gold/30 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(201,166,107,0.12)] h-full rounded-xl"
+                >
+                  <div className="aspect-[4/3] overflow-hidden relative">
+                    <img
+                      src={p.image}
+                      alt={p.name}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent opacity-50" />
+                    <div className="absolute top-3 left-3 bg-black/50 backdrop-blur-sm border border-white/10 rounded-full px-2.5 py-1">
+                      <span className="text-[9px] uppercase tracking-[0.2em] text-gold font-semibold">
+                        {p.family} Granite
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex flex-col flex-1 p-5">
+                    <h3 className="font-display text-lg text-bone group-hover:text-gold transition-colors duration-300 leading-tight">
+                      {p.name}
+                    </h3>
+                    <p className="mt-2 text-[13px] text-bone/45 leading-relaxed flex-1 line-clamp-2">
+                      {p.description}
+                    </p>
+                    <div className="mt-4 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-gold">
+                      <span>View Product</span>
+                      <ArrowRight className="size-3 group-hover:translate-x-1 transition-transform duration-300" />
+                    </div>
+                  </div>
+                  {/* Bottom accent */}
+                  <div className="h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-transparent via-gold to-transparent transition-all duration-700 ease-out" />
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Premium Stone Home Essentials ── */}
+        <div className="mt-24">
+          <Reveal>
+            <div className="flex items-center gap-3 mb-10">
+              <span className="h-px w-8 bg-gold/40" />
+              <span className="text-[10px] uppercase tracking-[0.3em] text-gold font-semibold">
+                Premium Stone Home Essentials
+              </span>
+            </div>
+          </Reveal>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {PREMIUM_ITEMS.map((item, i) => (
+              <Reveal key={item.name} delay={i * 0.04}>
+                <a
+                  href="/#premium-stone-collection"
+                  className="group relative flex flex-col bg-[#141414] border border-white/5 hover:border-gold/30 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_-15px_rgba(201,166,107,0.12)] h-full rounded-xl"
+                >
+                  <div className="aspect-[4/3] overflow-hidden relative">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent opacity-50" />
+                    <div className="absolute top-3 left-3 bg-black/50 backdrop-blur-sm border border-white/10 rounded-full px-2.5 py-1">
+                      <span className="text-[9px] uppercase tracking-[0.2em] text-gold font-semibold">
+                        {item.category}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex flex-col flex-1 p-5">
+                    <h3 className="font-display text-lg text-bone group-hover:text-gold transition-colors duration-300 leading-tight">
+                      {item.name}
+                    </h3>
+                    <p className="mt-2 text-[13px] text-bone/45 leading-relaxed flex-1 line-clamp-2">
+                      {item.description}
+                    </p>
+                    <div className="mt-4 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-gold">
+                      <span>Explore</span>
+                      <ArrowRight className="size-3 group-hover:translate-x-1 transition-transform duration-300" />
+                    </div>
+                  </div>
+                  <div className="h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-transparent via-gold to-transparent transition-all duration-700 ease-out" />
+                </a>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom CTA */}
+        <Reveal delay={0.1}>
+          <div className="text-center mt-20">
+            <Link
+              to="/products"
+              className="btn-ghost-light inline-flex items-center gap-2"
+            >
+              View Full Catalogue <ArrowRight className="size-4" />
+            </Link>
+          </div>
+        </Reveal>
+      </div>
+    </section>
   );
 }
 

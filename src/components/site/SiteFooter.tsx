@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { PRODUCTS } from "@/lib/products";
 
 export function SiteFooter() {
   return (
@@ -87,41 +88,21 @@ export function SiteFooter() {
                   All Products
                 </Link>
               </li>
+              {PRODUCTS.map((p) => (
+                <li key={p.slug}>
+                  <Link
+                    to="/products/$slug"
+                    params={{ slug: p.slug }}
+                    className="hover:text-gold transition"
+                  >
+                    {p.name}
+                  </Link>
+                </li>
+              ))}
               <li>
-                <Link
-                  to="/products/$slug"
-                  params={{ slug: "absolute-black" }}
-                  className="hover:text-gold transition"
-                >
-                  Absolute Black
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/products/$slug"
-                  params={{ slug: "black-galaxy" }}
-                  className="hover:text-gold transition"
-                >
-                  Black Galaxy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/products/$slug"
-                  params={{ slug: "steel-grey" }}
-                  className="hover:text-gold transition"
-                >
-                  Steel Grey
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/products/$slug"
-                  params={{ slug: "viscount-white" }}
-                  className="hover:text-gold transition"
-                >
-                  Viscount White
-                </Link>
+                <a href="/#premium-stone-collection" className="hover:text-gold transition">
+                  Premium Collection
+                </a>
               </li>
             </ul>
           </div>

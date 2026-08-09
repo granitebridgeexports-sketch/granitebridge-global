@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { PRODUCTS } from "@/lib/products";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -15,6 +16,7 @@ const nav = [
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -85,19 +87,66 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <div className="absolute top-[calc(100%+0.5rem)] inset-x-0 mx-auto w-[95%] rounded-3xl border border-white/10 bg-[#0F0F0F]/95 backdrop-blur-lg p-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)] lg:hidden">
+        <div className="absolute top-[calc(100%+0.5rem)] inset-x-0 mx-auto w-[95%] rounded-3xl border border-white/10 bg-[#0F0F0F]/95 backdrop-blur-lg p-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)] lg:hidden max-h-[80vh] overflow-y-auto">
           <nav className="flex flex-col gap-1">
-            {nav.map((n) => (
-              <Link
-                key={n.to}
-                to={n.to}
-                onClick={() => setOpen(false)}
-                className="py-3 text-sm uppercase tracking-[0.22em] text-white/80 hover:text-[#D4AF6A] transition-colors"
-                activeProps={{ className: "text-[#D4AF6A]" }}
-              >
-                {n.label}
-              </Link>
-            ))}
+            {nav.map((n) =>
+              n.label === "Products" ? (
+                <div key={n.to}>
+                  {/* Products toggle row */}
+                  <button
+                    onClick={() => setProductsOpen((o) => !o)}
+                    className="w-full flex items-center justify-between py-3 text-sm uppercase tracking-[0.22em] text-white/80 hover:text-[#D4AF6A] transition-colors"
+                  >
+                    <span>Products</span>
+                    <ChevronDown
+                      className={`size-4 text-[#D4AF6A]/60 transition-transform duration-300 ${productsOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                  {/* Expandable product sub-menu */}
+                  <div
+                    className={`overflow-hidden transition-all duration-400 ease-[cubic-bezier(0.19,1,0.22,1)] ${productsOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}
+                  >
+                    <div className="pl-4 border-l border-[#D4AF6A]/20 ml-2 mb-2 flex flex-col gap-0.5">
+                      <Link
+                        to="/products"
+                        onClick={() => setOpen(false)}
+                        className="py-2 text-[12px] uppercase tracking-[0.18em] text-[#D4AF6A]/80 hover:text-[#D4AF6A] transition-colors font-medium"
+                      >
+                        All Products
+                      </Link>
+                      {PRODUCTS.map((p) => (
+                        <Link
+                          key={p.slug}
+                          to="/products/$slug"
+                          params={{ slug: p.slug }}
+                          onClick={() => setOpen(false)}
+                          className="py-2 text-[12px] tracking-[0.12em] text-white/60 hover:text-[#D4AF6A] transition-colors"
+                        >
+                          {p.name}
+                        </Link>
+                      ))}
+                      <a
+                        href="/#premium-stone-collection"
+                        onClick={() => setOpen(false)}
+                        className="py-2 text-[12px] tracking-[0.12em] text-white/60 hover:text-[#D4AF6A] transition-colors"
+                      >
+                        Premium Collection
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  onClick={() => setOpen(false)}
+                  className="py-3 text-sm uppercase tracking-[0.22em] text-white/80 hover:text-[#D4AF6A] transition-colors"
+                  activeProps={{ className: "text-[#D4AF6A]" }}
+                >
+                  {n.label}
+                </Link>
+              ),
+            )}
             <Link
               to="/contact"
               onClick={() => setOpen(false)}
